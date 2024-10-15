@@ -2,12 +2,13 @@
 <html>
 <head>
     <title>Essay Scanner</title>
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
     <div class="header-bar">
         <h1>Welcome to the Essay Scanner!</h1>
     </div>
+    
     <div class="container">
         {% if error %}
             <p class="error" style="color: red;">{{ error }}</p>
@@ -20,6 +21,15 @@
             <textarea name="essay" style="padding: 10px; margin: 15px;" placeholder="Enter your essay here" required></textarea>
             <button type="submit" class="button">Submit</button>
         </form>
+        
+        <!-- Navigation Links -->
+        <nav>
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="templates/set_criteria.html">Set Criteria</a></li>
+                <li><a href="templates/results.html">Results</a></li>
+            </ul>
+        </nav>
     </div>
 </body>
 </html>
