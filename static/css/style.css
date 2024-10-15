@@ -1,0 +1,159 @@
+body {
+  font-family: monospace;
+  background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)), 
+      url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.header-bar {
+  background-color: #3b1a08;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for readability */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+  margin-top: 20px; /* Add spacing before each section */
+}
+
+.button-container {
+  text-align: center; /* Center the button */
+  margin-top: 30px; /* Space above the button */
+}
+
+.form-container {
+  flex: 1; /* Allow the form to take available space */
+  margin-right: 20px; /* Space between the form and the criteria */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+
+.criteria-container {
+  flex: 1; /* Allow the criteria to take available space */
+}
+
+.criteria-container table {
+  width: 100%; /* Set the table width to 100% of its container */
+  border-collapse: collapse; /* Ensure borders collapse */
+}
+
+.criteria-container th,
+.criteria-container td {
+  border: 2px solid black; /* Table cell border */
+  padding: 12px; /* Padding inside table cells */
+  text-align: center; /* Center text in cells */
+  font-size: 30px; /* Font size for table cells */
+}
+
+.criteria-container th {
+  font-size: 25px; /* Font size for table headers */
+}
+
+.criteria {
+  font-size: 36px;
+  color: #333;
+  padding: 40px;
+  margin: 0 auto;
+  background-color: #d9d9dd;
+  border: 2px solid #3b1a08;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Button Styles */
+.button,
+.link-button {
+  background-color: #c67b39;
+  border: 2px solid #3b1a08;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: monospace;
+  margin: 5px 0; /* Adjusted margin for vertical alignment */
+  display: inline-block;
+}
+
+.button:hover,
+.link-button:hover {
+  background-color: #3b1a08; /* change the background color on hover */
+  color: #fff; /* change the text color on hover */
+  border-color: #c67b39; /* change the border color on hover */
+}
+
+.container p {
+  margin-bottom: 20px;
+}
+
+.container form {
+  margin-top: 20px;
+}
+
+.container textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.container button[type="submit"] {
+  background-color: #c67b39;
+  border: 2px solid #3b1a08;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: monospace;
+  margin: 5px 0; /* Adjusted margin for vertical alignment */
+  display: inline-block;
+}
+
+.container button[type="submit"]:hover {
+  background-color: #3b1a08; /* change the background color on hover */
+  color: #fff; /* change the text color on hover */
+  border-color: #c67b39; /* change the border color on hover */
+}
+
+.small-button {
+  background-color: #c67b39;
+  border: 2px solid #3b1a08;
+  font-size: 1em; /* adjust the font size to make it smaller */
+  padding: 10px 20px; /* adjust the padding to make it smaller */
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: monospace;
+  margin: 5px 0; /* Adjusted margin for vertical alignment */
+  display: inline-block;
+}
+
+.small-button:hover {
+  background-color: #3b1a08; /* change the background color on hover */
+  color: #fff; /* change the text color on hover */
+  border-color: #c67b39; /* change the border color on hover */
+}
+
+textarea {
+  box-sizing: border-box; /* include padding and border in width calculation */
+  width: 90%; /* set the width of the textarea to be 100% of the container width */
+  padding-right: 20px; /* add some padding to the right side of the textarea */
+}
