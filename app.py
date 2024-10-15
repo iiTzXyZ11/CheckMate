@@ -17,18 +17,15 @@ def generate_summary(text):
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[{
-                "role":
-                "user",
-                "content":
-                f"Summarize this text in Filipino (make sure to keep the main points and ideas from the text):\n\n{text}"
+                "role": "user",
+                "content": f"Summarize this text in Filipino (make sure to keep the main points and ideas from the text):\n\n{text}"
             }],
         )
 
         if not response.choices:
             return "No summary could be generated."
 
-        return response.choices[0].message.content.strip(
-        ) or "No summary could be generated."
+        return response.choices[0].message.content.strip() or "No summary could be generated."
 
     except Exception as e:
         return f"An error occurred during summarization: {str(e)}"
@@ -48,23 +45,21 @@ def grade_essay(essay_text, context_text):
     justifications = {}  # Store justifications for each criterion
 
     for criterion in criteria:
-        truncated_essay = essay_text[:
-                                     1000]  # Limit the essay text to a maximum length
-        detailed_breakdown = criterion[
-            'detailed_breakdown']  # Retrieve detailed breakdown
+        truncated_essay = essay_text[:1000]  # Limit the essay text to a maximum length
+        detailed_breakdown = criterion['detailed_breakdown']  # Retrieve detailed breakdown
 
         # Adjusted prompt to include detailed breakdown
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[{
-                "role":
-                "user",
-                "content":
-                f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. (do not be too strict when grading)"
-                f"Use the following context to help inform your grading:\n\n{context_text}\n\n"
-                f"Here is the detailed breakdown for this criterion:\n\n{detailed_breakdown}\n\n"
-                f"Essay:\n{truncated_essay}\n\n"
-                f"Respond in this format: Score: [numeric value]/{criterion['points_possible']} Justification: [justification (20 words max)]"
+                "role": "user",
+                "content": (
+                    f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. "
+                    f"(do not be too strict when grading) Use the following context to help inform your grading:\n\n{context_text}\n\n"
+                    f"Here is the detailed breakdown for this criterion:\n\n{detailed_breakdown}\n\n"
+                    f"Essay:\n{truncated_essay}\n\n"
+                    f"Respond in this format: Score: [numeric value]/{criterion['points_possible']} Justification: [justification (20 words max)]"
+                )
             }],
         )
 
@@ -81,10 +76,8 @@ def grade_essay(essay_text, context_text):
             try:
                 # Attempt to parse score and justification
                 score_part = raw_grade.split("Score:")[1].split("/")[0].strip()
-                points_received = float(
-                    score_part)  # Use float to allow decimal values
-                justification = raw_grade.split("Justification:")[1].strip(
-                ) if "Justification:" in raw_grade else "No justification provided."
+                points_received = float(score_part)  # Use float to allow decimal values
+                justification = raw_grade.split("Justification:")[1].strip() if "Justification:" in raw_grade else "No justification provided."
 
                 justifications[criterion['name']] = justification
                 total_points_received += points_received
@@ -102,10 +95,9 @@ def grade_essay(essay_text, context_text):
     # Calculate percentage and letter grade
     percentage = (total_points_received / total_points_possible) * 100
     letter_grade = ("A+" if percentage >= 98 else "A" if percentage >= 95 else
-                    "A-" if percentage >= 93 else "B+" if percentage >=
-                    90 else "B" if percentage >= 85 else "B-" if percentage >=
-                    83 else "C+" if percentage >= 80 else "C" if percentage >=
-                    78 else "D" if percentage >= 75 else "F")
+                    "A-" if percentage >= 93 else "B+" if percentage >= 90 else "B" if percentage >= 85 else
+                    "B-" if percentage >= 83 else "C+" if percentage >= 80 else "C" if percentage >= 78 else
+                    "D" if percentage >= 75 else "F")
 
     justification_summary = "\n".join([
         f"{criterion['name']}: {justifications[criterion['name']]}"
@@ -128,15 +120,15 @@ def process_essay():
         return render_template(
             'index.html',
             essay=essay,
-            error=
-            "Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita."
+            error="Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita."
         )
 
     if not context.strip():  # Check if context is empty or just whitespace
         return render_template(
             'index.html',
             essay=essay,
-            error="Error: Please provide context for grading.")
+            error="Error: Please provide context for grading."
+        )
 
     return redirect(url_for('set_criteria'))
 
@@ -145,26 +137,21 @@ def process_essay():
 def set_criteria():
     if request.method == 'POST':
         criterion_name = request.form['criterion_name']
-        weight = float(
-            request.form['weight']) / 100  # Convert percentage to decimal
-        points_possible = float(
-            request.form['points_possible'])  # Ensure it's treated as a float
-        detailed_breakdown = request.form[
-            'detailed_breakdown']  # Get the detailed breakdown text
+        weight = float(request.form['weight']) / 100  # Convert percentage to decimal
+        points_possible = float(request.form['points_possible'])  # Ensure it's treated as a float
+        detailed_breakdown = request.form['detailed_breakdown']  # Get the detailed breakdown text
 
         if 'criteria' not in session:
             session['criteria'] = []
             session['total_points_possible'] = 0  # Initialize total points
 
-        current_total_weight = sum(
-            criterion['weight'] for criterion in session['criteria']) + weight
+        current_total_weight = sum(criterion['weight'] for criterion in session['criteria']) + weight
 
         if current_total_weight > 1.0:
             return render_template(
                 'set_criteria.html',
                 essay=session.get('original_text', ''),
-                error=
-                "Total weight cannot exceed 100% (1.0). Please adjust your weights."
+                error="Total weight cannot exceed 100% (1.0). Please adjust your weights."
             )
 
         # Append new criterion with the detailed breakdown
@@ -172,8 +159,7 @@ def set_criteria():
             'name': criterion_name,
             'weight': weight,
             'points_possible': points_possible,
-            'detailed_breakdown':
-            detailed_breakdown  # Store detailed breakdown
+            'detailed_breakdown': detailed_breakdown  # Store detailed breakdown
         })
 
         # Update total points possible
@@ -183,7 +169,8 @@ def set_criteria():
             'set_criteria.html',
             essay=session.get('original_text', ''),
             criteria=session['criteria'],
-            total_points_possible=session['total_points_possible'])
+            total_points_possible=session['total_points_possible']
+        )
 
     original_text = session.get('original_text', '')
     criteria = session.get('criteria', [])
@@ -205,12 +192,9 @@ def reset_criteria():
 @app.route('/results', methods=['GET'])
 def grade():
     original_text = session.get('original_text', '')
-    context_text = session.get('context_text',
-                               '')  # Retrieve context text from the session
+    context_text = session.get('context_text', '')  # Retrieve context text from the session
     summary = generate_summary(original_text)
-    grades = grade_essay(
-        original_text,
-        context_text)  # Pass context text to the grading function
+    grades = grade_essay(original_text, context_text)  # Pass context text to the grading function
     return render_template('results.html',
                            summary=summary,
                            grade=grades,
@@ -224,3 +208,4 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
