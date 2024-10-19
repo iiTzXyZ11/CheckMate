@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set Essay Criteria</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Adjusted link for GitHub Pages -->
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- Adjusted link for GitHub Pages -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,6 +78,7 @@
     <div class="container">
         <div class="form-container">
             <form action="/set_criteria" method="POST">
+            </form>
                 <label for="criterion_name">Criterion Name:</label>
                 <input type="text" id="criterion_name" name="criterion_name" required><br><br>
                 
@@ -122,7 +123,7 @@
             {% endif %}
 
             {% if error %}
-                <p class="error">{{ error }}</p>
+                <p class="error">{{ error }}</p> <!-- Placeholder for error message -->
             {% endif %}
         </div>
 
