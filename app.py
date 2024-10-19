@@ -155,6 +155,7 @@ def process_essay():
 @app.route('/set_criteria', methods=['GET', 'POST'])
 def set_criteria():
     if request.method == 'POST':
+        print("POST request received")
         # Process the form submission
         criterion_name = request.form['criterion_name']
         weight = float(request.form['weight']) / 100  # Convert to decimal
@@ -172,6 +173,7 @@ def set_criteria():
             'points_possible': points_possible,
             'detailed_breakdown': detailed_breakdown
         })
+        
 
         # Calculate total points possible
         session['total_points_possible'] = sum(criterion['points_possible'] for criterion in session['criteria'])
