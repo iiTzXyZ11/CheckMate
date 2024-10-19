@@ -77,8 +77,8 @@
     </div>
     <div class="container">
         <div class="form-container">
+            <!-- Opening form tag for criteria submission -->
             <form action="/set_criteria" method="POST">
-            </form>
                 <label for="criterion_name">Criterion Name:</label>
                 <input type="text" id="criterion_name" name="criterion_name" required><br><br>
                 
@@ -93,40 +93,45 @@
 
                 <button type="submit">Add Criterion</button>
             </form>
-
-            {% if criteria %}
-                <h2>Current Criteria</h2>
-                <table class="criteria-table">
-                    <thead>
-                        <tr>
-                            <th>Criterion</th>
-                            <th>Weight (%)</th>
-                            <th>Points Possible</th>
-                            <th>Detailed Breakdown</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for criterion in criteria %}
-                            <tr>
-                                <td>{{ criterion.name }}</td>
-                                <td>{{ criterion.weight * 100 }}%</td>
-                                <td>{{ criterion.points_possible }}</td>
-                                <td>{{ criterion.detailed_breakdown }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                <h3>Total Points Possible: {{ total_points_possible }}</h3>
-                <form action="/reset_criteria" method="POST">
-                    <button type="submit">Reset Criteria</button>
-                </form>                
-            {% endif %}
-
-            {% if error %}
-                <p class="error">{{ error }}</p> <!-- Placeholder for error message -->
-            {% endif %}
         </div>
 
+        <!-- Display existing criteria if they exist -->
+        {% if criteria %}
+            <h2>Current Criteria</h2>
+            <table class="criteria-table">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Weight (%)</th>
+                        <th>Points Possible</th>
+                        <th>Detailed Breakdown</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for criterion in criteria %}
+                        <tr>
+                            <td>{{ criterion.name }}</td>
+                            <td>{{ criterion.weight * 100 }}%</td>
+                            <td>{{ criterion.points_possible }}</td>
+                            <td>{{ criterion.detailed_breakdown }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h3>Total Points Possible: {{ total_points_possible }}</h3>
+
+            <!-- Form for resetting criteria -->
+            <form action="/reset_criteria" method="POST">
+                <button type="submit">Reset Criteria</button>
+            </form>
+        {% endif %}
+
+        <!-- Display any error messages -->
+        {% if error %}
+            <p class="error">{{ error }}</p> <!-- Placeholder for error message -->
+        {% endif %}
+
+        <!-- Button to grade the essay -->
         <div class="form-container">
             <form action="/results" method="GET">
                 <button type="submit">Grade Essay</button>
