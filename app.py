@@ -155,16 +155,17 @@ def process_essay():
 @app.route('/set_criteria', methods=['GET', 'POST'])
 def set_criteria():
     if request.method == 'POST':
+        # Process the form submission
         criterion_name = request.form['criterion_name']
         weight = float(request.form['weight']) / 100  # Convert to decimal
         points_possible = float(request.form['points_possible'])
         detailed_breakdown = request.form['detailed_breakdown']
         
-        # Initialize criteria in session if it doesn't exist
+        # Initialize session if not available
         if 'criteria' not in session:
             session['criteria'] = []
 
-        # Append the new criterion
+        # Append the new criterion to session
         session['criteria'].append({
             'name': criterion_name,
             'weight': weight,
@@ -175,9 +176,11 @@ def set_criteria():
         # Calculate total points possible
         session['total_points_possible'] = sum(criterion['points_possible'] for criterion in session['criteria'])
 
-        return redirect(url_for('set_criteria'))  # Ensure we stay on the same page after adding criteria
+        return redirect(url_for('set_criteria'))  # Redirect to the same page after submission
 
-    return render_template('set_criteria.html', criteria=session.get('criteria', []))  # Render criteria page
+    # Render the form to set criteria
+    return render_template('set_criteria.html', criteria=session.get('criteria', []), total_points_possible=session.get('total_points_possible', 0))
+
 
 @app.route('/results')
 def results():
@@ -197,7 +200,6 @@ def results():
 
 @app.route('/reset_criteria', methods=['POST'])
 def reset_criteria():
-    # Clear the criteria from the session
     session.pop('criteria', None)
     session.pop('total_points_possible', None)
     return redirect(url_for('set_criteria'))
