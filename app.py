@@ -14,9 +14,7 @@ image_to_text_client = Client(api_key="AIzaSyDKnjQPE-x6cJGDbsjX3lBGa5V3tp0WArQ",
 
 # Function to convert image to text using the image-to-text model
 def image_to_text(image_file):
-    # sourcery skip: assign-if-exp, remove-unnecessary-else, swap-if-else-branches
     try:
-        # Check the type of the image file
         print(f"Received image: {image_file.filename}")
         
         response = image_to_text_client.chat.completions.create(
@@ -25,13 +23,10 @@ def image_to_text(image_file):
             image=image_file  # Ensure this is correct for your API
         )
 
-        if hasattr(response, 'choices') and len(response.choices) > 0: # type: ignore
-            content = response.choices[0].message.content # type: ignore
+        if hasattr(response, 'choices') and len(response.choices) > 0:
+            content = response.choices[0].message.content
             print(f"Extracted content: {content}")  # Log the extracted content
-            if content is not None:
-                return content.strip()
-            else:
-                return "No text could be extracted."
+            return content.strip() if content is not None else "No text could be extracted."
         else:
             return "No text could be extracted."
     
@@ -50,17 +45,13 @@ def generate_summary(text):
             messages=[{"role": "user", "content": f"Summarize this text in Filipino (make sure to keep the main points in the text):\n\n{text}"}],
         )
 
-        if not response.choices: # type: ignore
-            return "No summary could be generated."
-
-        return response.choices[0].message.content.strip() or "No summary could be generated." # type: ignore
+        return response.choices[0].message.content.strip() if response.choices else "No summary could be generated."
 
     except Exception as e:
         return f"An error occurred during summarization: {str(e)}"
 
 # Grade essay functionality
 def grade_essay(essay_text, context_text):
-    # sourcery skip: remove-unnecessary-else, swap-if-else-branches
     if len(essay_text.split()) < 200:
         return "Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita."
 
@@ -79,17 +70,17 @@ def grade_essay(essay_text, context_text):
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[{"role": "user",
-                    "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. (Do not be too strict when grading.) "
-                                f"Use the following context to help inform your grading:\n\n{context_text}\n\n"
-                                f"Here is the detailed breakdown for this criterion:\n\n{detailed_breakdown}\n\n"
-                                f"Essay:\n{truncated_essay}\n\n"
-                                f"Respond in this format: Score: [numeric value]/{criterion['points_possible']} Justification: [justification (20 words max)]"}],
+                        "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. (Do not be too strict when grading.) "
+                                   f"Use the following context to help inform your grading:\n\n{context_text}\n\n"
+                                   f"Here is the detailed breakdown for this criterion:\n\n{detailed_breakdown}\n\n"
+                                   f"Essay:\n{truncated_essay}\n\n"
+                                   f"Respond in this format: Score: [numeric value]/{criterion['points_possible']} Justification: [justification (20 words max)]"}],
         )
 
-        if not hasattr(response, 'choices') or len(response.choices) == 0: # type: ignore
+        if not hasattr(response, 'choices') or len(response.choices) == 0:
             return f"Invalid response received for criterion '{criterion['name']}'. No choices were found."
 
-        raw_grade = response.choices[0].message.content if response.choices[0].message.content is not None else "" # type: ignore
+        raw_grade = response.choices[0].message.content if response.choices[0].message.content is not None else ""
         raw_grade = raw_grade.strip()
 
         if "Score:" in raw_grade:
@@ -162,7 +153,7 @@ def process_essay():
     return redirect(url_for('set_criteria'))
 
 @app.route('/set_criteria', methods=['GET', 'POST'])
-def set_criteria():  # sourcery skip: last-if-guard
+def set_criteria():
     if request.method == 'POST':
         criterion_name = request.form['criterion_name']
         weight = float(request.form['weight']) / 100  # Convert to decimal
@@ -184,9 +175,9 @@ def set_criteria():  # sourcery skip: last-if-guard
         # Calculate total points possible
         session['total_points_possible'] = sum(criterion['points_possible'] for criterion in session['criteria'])
 
-        return redirect(url_for('set_criteria'))
+        return redirect(url_for('set_criteria'))  # Ensure we stay on the same page after adding criteria
 
-    return render_template('set_criteria.html', criteria=session.get('criteria', []))
+    return render_template('set_criteria.html', criteria=session.get('criteria', []))  # Render criteria page
 
 @app.route('/results')
 def results():
