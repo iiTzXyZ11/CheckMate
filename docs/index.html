@@ -2,17 +2,15 @@
 <html>
 <head>
     <title>Essay Scanner</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Adjusted link for GitHub Pages -->
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- Adjusted link for GitHub Pages -->
 </head>
 <body>
     <div class="header-bar">
         <h1>Welcome to the Essay Scanner!</h1>
     </div>
     <div class="container">
-        {% if error %}
-            <p class="error" style="color: red;">{{ error }}</p>
-        {% endif %}
-        
+        <p class="error" style="color: red; display: none;">Error message will show here</p> <!-- Placeholder for error message -->
+
         <p>Enter the context for your essay below (Provide background information, the main topic or question of your essay, and any specific guidelines that will help in assessing the essay):</p>
         <form action="process_essay" method="POST" enctype="multipart/form-data"> <!-- Changed to relative URL -->
             <textarea name="context" style="padding: 10px; margin: 15px;" placeholder="Enter context here" required></textarea>
