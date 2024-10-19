@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>View Criteria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header-bar">
+        <h1>Your Criteria</h1>
+    </div>
+    <div class="criteria-container">
+        <div class="criteria">
+            <table>
+                <tr>
+                    <th>Criterion Name</th>
+                    <th>Weight</th>
+                    <th>Points Possible</th>
+                </tr>
+                {% if criteria and criteria|length > 0 %}
+                    {% for criterion_name, criterion_data in criteria.items() %}
+                    <tr>
+                        <td class="centered">{{ criterion_name }}</td>
+                        <td class="centered">{{ criterion_data.weight }}</td>
+                        <td class="centered">{{ criterion_data.points_possible }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="centered">No criteria available.</td>
+                    </tr>
+                {% endif %}
+            </table>
+            <p>
+                <a href="/set_criteria" class="button">Add More Criteria</a>
+                <a href="/" class="button">Back to Essay Scanner</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
