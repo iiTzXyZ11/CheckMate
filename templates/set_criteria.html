@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set Essay Criteria</title>
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -116,7 +116,7 @@
                     </tbody>
                 </table>
                 <h3>Total Points Possible: {{ total_points_possible }}</h3>
-                <form action="/reset_criteria" method="POST">
+                <form action="/clear_session" method="POST">
                     <button type="submit">Reset Criteria</button>
                 </form>                
             {% endif %}
@@ -127,10 +127,10 @@
         </div>
 
         <div class="form-container">
-            <form action="/results" method="GET">
-                <button type="submit">Grade Essay</button>
-            </form>
-        </div>
+            <form action="{{ url_for('results') }}" method="GET">
+                <button type="submit" class="button">Grade Essay</button>
+            </form> 
+        </div>  
     </div>
 </body>
 </html>
