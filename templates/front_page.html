@@ -45,7 +45,7 @@
         }
 
         h1 {
-            color: #CBC3E3;
+            color: #861b99;
             margin: 0;
             font-size: 50px;
             font-weight: bold;
@@ -59,51 +59,80 @@
         }
 
         p {
-            max-width: 600px; /* Set the maximum width */
-            text-align: left; /* Center the text for better readability */
-            line-height: 1.5;  /* Improve line spacing */
-            font-size: 17px;  /* Adjust font size if necessary */
-        }
-
-        .header-buttons {
-            position: absolute; /* Positioning relative to the body */
-            top: 20px; /* Adjust as needed */
-            right: 20px; /* Adjust as needed */
-        }
-
-        .header-buttons a {
-            margin-left: 10px; /* Space between buttons */
-            padding: 10px 20px;
-            border: 2px solid white;
-            border-radius: 25px;
-            background-color: transparent;
-            color: white;
-            text-decoration: none;
+            max-width: 600px;
+            text-align: left;
+            line-height: 1.5;
             font-size: 16px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .header-buttons a:hover {
-            background-color: white;
-            color: black;
         }
 
         a {
             display: inline-block;
             padding: 10px 20px;
             border: 2px solid white;
-            border-radius: 25px;
             background-color: transparent;
             color: white;
             text-decoration: none;
             font-size: 16px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: color 0.3s, text-decoration 0.3s, border -color 0.3s;
+            font-weight: bold;
+
             margin-top: 10px;
         }
 
         a:hover {
-            background-color: white;
-            color: black;
+            font-weight: bold;
+            color: #591066; /* Change text color on hover */
+            text-decoration: 1px underline #591066; /* Add underline on hover */
+            text-underline-offset: 6px;
+            background-color: white; 
+            border-color: #591066;
+            text-decoration-thickness: 2px;
+            transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color  0.3s;
+
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between; /* Space between text and buttons */
+            align-items: center; /* Center vertically */
+            position: absolute; /* Positioning relative to the body */
+            top: 0px; /* Adjust as needed */
+            left: -20px;
+            width: 100%; /* Full width */
+            background-color: white; /* White background for header */
+            padding: 10px 20px; /* Padding around the header */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add a shadow for depth */
+        }
+
+        .header-text {
+            color: #591066; /* Dark color for text */
+            font-size: 20px; /* Font size for header text */
+            padding-left: 50px;
+            font-weight: 1000;
+        }
+
+        .header-buttons {
+            margin-right: 50px; /* Move the buttons to the left */
+            font-weight: 900;
+        }
+
+        .header-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid white;
+            margin-left: 5px;
+            background-color: transparent;
+            color: #1c1c1c; /* Dark color for button text */
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .header-buttons a:hover {
+            color: #591066;
+            text-decoration: underline; /* Add underline on hover */
+            background-color: solid white;
+            border-color: #591066;
+            transition: color 0.3s, text-decoration 0.3s, border 0.3s;
         }
 
     </style>
@@ -118,9 +147,12 @@
         <p>CheckMate is an innovative tool that streamlines essay evaluation by using advanced AI technology for accurate grading and insightful feedback. With features like image-to-text conversion, it allows users to upload handwritten work for easy text extraction. Whether you're a student or educator, CheckMate enhances writing skills and simplifies the grading process.</p>
         <a href="{{ url_for('index') }}">Start Scanning Student Works</a>
     </div>
-    <div class="header-buttons">
-        <a href="{{ url_for('contact') }}">Contact Us</a>
-        <a href="{{ url_for('how_to_use') }}">How to Use</a>
+    <div class="header">
+        <div class="header-text">CheckMateAI</div>
+        <div class="header-buttons">
+            <a href="{{ url_for('contact') }}">Contact Us</a>
+            <a href="{{ url_for('how_to_use') }}">How to Use</a>
+        </div>
     </div>
 </body>
 </html>
