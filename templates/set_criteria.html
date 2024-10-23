@@ -12,12 +12,14 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         .header-bar {
             background-color: #3b1a08;
             color: white;
             padding: 10px;
             text-align: center;
         }
+
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -26,14 +28,18 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-container {
             margin-bottom: 20px;
         }
+
         label {
             font-weight: bold;
         }
+
         input[type="text"],
         input[type="number"],
+
         textarea {
             width: calc(100% - 20px);
             padding: 10px;
@@ -41,6 +47,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
         button {
             background-color: #007bff;
             color: white;
@@ -49,23 +56,28 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
         .error {
             color: red;
         }
+
         .criteria-table {
             width: 100%;
             margin-top: 20px;
             border-collapse: collapse;
         }
+
         .criteria-table th,
         .criteria-table td {
             border: 1px solid #ccc;
             padding: 8px;
             text-align: left;
         }
+
         .criteria-table th {
             background-color: #f2f2f2;
         }
@@ -127,7 +139,7 @@
         </div>
 
         <div class="form-container">
-            <form action="{{ url_for('results') }}" method="GET">
+            <form action="{{ url_for('process_essay') }}" method="GET">
                 <button type="submit" class="button">Grade Essay</button>
             </form> 
         </div>  
