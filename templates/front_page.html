@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CheckMate AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <style>
         body {
             display: flex;
@@ -17,22 +18,16 @@
             overflow: hidden;
         }
 
-        .image-container {
-            flex: 1;                     
-            max-width: 50%;           
-            padding-right: 20px;       
-        }
-
         .text-container {
-            flex: 1;                    
+            flex: 1 3 3 14;                 
             color: white;
             text-align: left;
-            padding-left: 40px;
-            margin-left: -1in;
+            padding-left: 0px;
+            margin-left: 100px;
         }
 
-        img {
-            max-width: 100%;
+        .logo {
+            max-width: 78%;
             height: auto;
             pointer-events: none;
             user-select: none;
@@ -41,79 +36,118 @@
             -moz-user-drag: none;
             -ms-user-drag: none;
             user-drag: none;
-            padding-top: 20px; 
+            padding-right: 10px; 
+            padding-top: 0%;
+            margin-left: 123px;
         }
 
         h1 {
-            color: #a323ba;
-            margin: 0;
-            font-size: 50px;
-            font-weight: bold;
-            margin-bottom: 0.1in;
-        }
-
-        h2 {
+            font-family: serif;
             color: white;
             margin: 0;
-            margin-bottom: 0.1in;
+            font-size: 130px;
+            font-weight: normal;
+        }
+
+        .subhead {
+            font-family: 'Oswald';
+            color: white;
+            margin: 0;
+            margin-top: 1px;
+            font-size: 38px;
         }
 
         p {
-            max-width: 600px;
+            max-width: 650px;
             text-align: left;
             line-height: 1.5;
-            font-size: 16px;
+            font-size: 20px;
         }
 
         a {
+            font-family: 'Oswald';
             display: inline-block;
             padding: 10px 20px;
-            border: 2px solid white;
+            border: 4px solid white;
             background-color: transparent;
             color: white;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 30px;
             transition: color 0.3s, text-decoration 0.3s, border -color 0.3s;
-            font-weight: bold;
-
+            font-weight: normal;
+            padding-top: -2px;
+            text: center;
             margin-top: 10px;
         }
 
         a:hover {
             font-weight: bold;
-            color: #591066; /* Change text color on hover */
-            text-decoration: 1px underline #591066; /* Add underline on hover */
+            color: black; /* Change text color on hover */
+            text-decoration: 1px underline black; /* Add underline on hover */
             text-underline-offset: 6px;
             background-color: white; 
-            border-color: #591066;
+            border-color: white;
             text-decoration-thickness: 2px;
             transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color  0.3s;
-
         }
 
         .header {
             display: flex;
-            justify-content: space-between; /* Space between text and buttons */
-            align-items: center; /* Center vertically */
-            position: absolute; /* Positioning relative to the body */
-            top: 0px; /* Adjust as needed */
-            left: -20px;
-            width: 100%; /* Full width */
-            background-color: white; /* White background for header */
-            padding: 10px 20px; /* Padding around the header */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add a shadow for depth */
+            justify-content: space-between; 
+            align-items: center; 
+            position: fixed; /* Change to fixed */
+            top: 0; /* Stick to the top */
+            left: 0; /* Ensure no left offset */
+            width: 100%; 
+            height: 85px; /* Fixed height */
+            background-color: white; 
+            padding: 10px 20px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .header-text {
-            color: #591066; /* Dark color for text */
-            font-size: 20px; /* Font size for header text */
-            padding-left: 50px;
-            font-weight: 1000;
+            font-family: 'Oswald';
+            color: black; /* Dark color for text */
+            font-size: 39px; /* Font size for header text */
+            padding-left: 180px;
+            padding-top: -10px;
+            text-align: left;
+            margin-left:-2050px;
         }
 
+        .header-logo {
+            width: 60px; /* Adjust image size */
+            height: auto; /* Keep aspect ratio */
+            margin-left: 30px;
+            margin-top: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <img src="{{ url_for('static', filename='css/images/artificial_intelligence.jpg') }}" alt="CheckMate Image" class="logo">
+    </div>
+    <div class="text-container">
+        <h1>CheckMateAI</h1>
+        <p class="subhead">a powerful teacher's assistant</p>
+        <p>CheckMate is an innovative tool that streamlines essay evaluation by using advanced AI technology for accurate grading and insightful feedback. With features like image-to-text conversion, it allows users to upload handwritten work for easy text extraction. Whether you're a student or educator, CheckMate enhances writing skills and simplifies the grading process.</p>
+        <a href="{{ url_for('index') }}">Start Scanning Essays</a>
+    </div>
+    <div class="header">
+        <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="Logo" class="header-logo">
+        <div class="header-text">
+            CHECKMATE
+        </div>
+        <div class="header-buttons">
+            <a href="{{ url_for('contact') }}">Contact Us</a>
+            <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" class="button" target="_blank">How to Use</a>
+        </div>
+    </div>
+
+    <style>
         .header-buttons {
-            margin-right: 50px; /* Move the buttons to the left */
-            font-weight: 900;
+            margin-right: 50px; 
         }
 
         .header-buttons a {
@@ -121,38 +155,24 @@
             padding: 10px 20px;
             border: 2px solid white;
             margin-left: 5px;
-            background-color: transparent;
-            color: #1c1c1c; /* Dark color for button text */
+            background-color: transparent; 
+            color: #1c1c1c; 
             text-decoration: none;
-            font-size: 20px;
+            font-size: 30px;
+            transition: background-color 0.3s, border-color 0.3s, text-decoration 0.3s;
+            font-family: 'Oswald';
+            font-weight: normal; /* Set default font weight to normal */
         }
 
         .header-buttons a:hover {
-            color: #591066;
-            text-decoration: underline; /* Add underline on hover */
-            background-color: solid white;
-            border-color: #591066;
-            transition: color 0.3s, text-decoration 0.3s, border 0.3s;
+            color: black;
+            text-decoration: underline; 
+            background-color: white; 
+            border-color: white; 
+            text-underline-offset: 6px;
+            font-weight: bold;
         }
-
     </style>
-</head>
-<body>
-    <div class="image-container">
-        <img src="{{ url_for('static', filename='css/images/artificial_intelligence.jpg') }}" alt="CheckMate Image">
-    </div>
-    <div class="text-container">
-        <h1>Welcome to CheckMate</h1>
-        <h2>a powerful teacher's assistant</h2>
-        <p>CheckMate is an innovative tool that streamlines essay evaluation by using advanced AI technology for accurate grading and insightful feedback. With features like image-to-text conversion, it allows users to upload handwritten work for easy text extraction. Whether you're a student or educator, CheckMate enhances writing skills and simplifies the grading process.</p>
-        <a href="{{ url_for('index') }}">Start Scanning Student Works</a>
-    </div>
-    <div class="header">
-        <div class="header-text">CheckMateAI</div>
-        <div class="header-buttons">
-            <a href="{{ url_for('contact') }}">Contact Us</a>
-            <a href="{{ url_for('how_to_use') }}">How to Use</a>
-        </div>
-    </div>
+
 </body>
 </html>

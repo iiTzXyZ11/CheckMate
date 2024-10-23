@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Roboto';
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('background.jpg');
@@ -78,26 +79,38 @@ body {
 .link-button,
 .container button[type="submit"],
 .small-button {
-  background-color: #c67b39;
-  border: 2px solid #3b1a08;
+  background-color: #ffffff;
+  border: 2px solid black;
   border-radius: 10px;
-  color: white;
+  color: black;
   padding: 10px 20px;
   text-decoration: none;
   cursor: pointer;
-  font-family: monospace;
+  font-family: 'Roboto';
   margin: 5px 0;
   display: inline-block;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition */
+  font-weight: bold;
 }
 
 .button:hover,
 .link-button:hover,
 .container button[type="submit"]:hover,
 .small-button:hover {
-  background-color: #3b1a08;
+  background-color: black;
   color: #fff;
-  border-color: #c67b39;
+  border-color: black;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 800px;
+  margin: 290px 0 0 50px;
+  padding: 20px;
+  background: white;
+  border: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .container p {
@@ -122,4 +135,32 @@ textarea {
   width: 90%; /* Set width to 90% for additional padding */
   padding-right: 20px; /* Add padding to the right */
 }
+
+/* Style the file input */
+input[type="file"] {
+  display: none;  /* Hide the default file input */
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 2px solid #000000; /* Customize border color */
+  border-radius: 10px;
+  color: black; /* Customize text color */
+  background-color: rgb(255, 255, 255); /* Button background */
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+  margin: 15px 0; /* Add some margin */
+  font-weight: bold;
+}
+
+.custom-file-upload:hover {
+  background-color: black; /* Background color on hover */
+  color: white; /* Change text color on hover */
+  border-color: transparent; /* Change border color on hover */
+}
+
+
 
