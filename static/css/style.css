@@ -6,6 +6,7 @@ body {
   background-position: center center; /* Center image on both axes */
   background-repeat: no-repeat;
   background-attachment: fixed;
+  overflow-y: auto;
 }
 
 .header-bar {
