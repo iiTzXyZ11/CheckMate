@@ -153,11 +153,11 @@ def index():
         # Check if the essay has at least 200 words
         if len(essay.split()) < 200:
             return render_template('index.html', essay=essay,
-                                   error="Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita.")
+                                error="Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita.")
 
         if not context.strip():  # Check if context is empty or just whitespace
             return render_template('index.html', essay=essay,
-                                   error="Error: Please provide context for grading.")
+                                error="Error: Please provide context for grading.")
 
         return redirect(url_for('set_criteria'))  # Redirect to set_criteria
 

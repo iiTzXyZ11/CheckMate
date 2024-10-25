@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CheckMate AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="E:/Text-Summarizer-and-Grader-1/static/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <style>
+
+        @font-face {
+            font-family: 'Seasons';
+            src: url('../fonts/FONTSPRINGDEMO-TheSeasonsBold.woff2') format('woff2'),
+                url('../fonts/FONTSPRINGDEMO-TheSeasonsBold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             display: flex;
             align-items: center;
@@ -18,79 +28,83 @@
             overflow: hidden;
         }
 
-        .text-container {
-            flex: 1;
-            color: white;
-            text-align: left;
-            padding-left: 0px;
-            margin-left: 100px;
-        }
+        @media (max-width: 1920px){
+            .text-container {
+                flex: 1;                 
+                color: white;
+                text-align: left;
+                position: fixed;
+                left: 50vw;
+                top: 16.3vw;
+            }
 
-        .logo {
-            max-width: 78%;
-            height: auto;
-            pointer-events: none;
-            user-select: none;
-            display: block;
-            -webkit-user-drag: none;
-            -moz-user-drag: none;
-            -ms-user-drag: none;
-            user-drag: none;
-            padding-right: 10px; 
-            padding-top: 0%;
-            margin-left: 123px;
-        }
+            .logo {
+                max-width: 35%;
+                height: auto;
+                pointer-events: none;
+                user-select: none;
+                display: block;
+                position: fixed;
+                top: 6vw;
+                left: 6.1vw;
+            }
 
-        h1 {
-            font-family: serif;
-            color: white;
-            margin: 0;
-            font-size: 80px; /* Adjusted to a smaller font size */
-            font-weight: normal;
-        }
+            h1 {
+                font-family: 'Seasons';
+                color: white;
+                font-size: 3.9vw;
+                margin: 0px;
+            }
 
-        .subhead {
-            font-family: 'Oswald';
-            color: white;
-            margin: 0;
-            margin-top: 1px;
-            font-size: 24px; /* Reverted to smaller font size */
-        }
+            .subhead {
+                font-family: 'Oswald';
+                color: white;
+                font-size: 38px;
+                margin-top: -10px;
+            }
 
-        p {
-            max-width: 650px;
-            text-align: left;
-            line-height: 1.5;
-            font-size: 18px; /* Reverted to a smaller font size */
-        }
+            p {
+                max-width: 650px;
+                text-align: left;
+                line-height: 1.5;
+                font-size: 20px;
+                margin-top: -2px;
+            }
 
-        a {
-            font-family: 'Oswald';
-            display: inline-block;
-            padding: 10px 20px;
-            border: 4px solid white;
-            background-color: transparent;
-            color: white;
-            text-decoration: none;
-            font-size: 24px; /* Reverted to original font size */
-            transition: color 0.3s, text-decoration 0.3s, border-color 0.3s;
-            font-weight: normal;
-        }
+            .text-container a {
+                font-family: 'Oswald';
+                display: inline-block;
+                padding: 10px 20px;
+                border: 4px solid white;
+                background-color: transparent;
+                color: white;
+                text-decoration: none;
+                font-size: 30px;
+                transition: color 0.3s, text-decoration 0.3s, border -color 0.3s;
+                font-weight: normal;
+                position: fixed;
+                padding-top: -2px;
+                text: center;
 
-        a:hover {
-            font-weight: bold;
-            color: black;
-            text-decoration: underline;
-            text-underline-offset: 6px;
-            background-color: white; 
-            border-color: white;
-        }
+            }
 
+            .text-container a:hover {
+                font-weight: bold;
+                color: black; /* Change text color on hover */
+                text-decoration: 1px underline black; /* Add underline on hover */
+                text-underline-offset: 6px;
+                background-color: white; 
+                border-color: white;
+                text-decoration-thickness: 2px;
+                transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color  0.3s;
+            }
+        }
     </style>
 </head>
 <body>
     <div>
-        <img src="{{ url_for('static', filename='css/images/artificial_intelligence.jpg') }}" alt="CheckMate Image" class="logo">
+        <!--<img src="{{ url_for('static', filename='css/images/artificial_intelligence.jpg') }}" alt="CheckMate Image" class="logo">-->
+        <img src="E:/Text-Summarizer-and-Grader-1/static/css/images/artificial_intelligence.jpg" alt="CheckMate Image" class="logo">
     </div>
     <div class="text-container">
         <h1>CheckMateAI</h1>
@@ -99,76 +113,132 @@
         <a href="{{ url_for('index') }}">Start Scanning Essays</a>
     </div>
 
+    <div class="top-bar"></div>
     <div class="header">
-        <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="Logo" class="header-logo">
+        <!-- <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="Logo" class="header-logo"> -->
+        <img src="E:\Text-Summarizer-and-Grader-1\static\css\images\logo_black.jpg" alt="Log" class="header-logo">
         <div class="header-text">
             CHECKMATE
         </div>
 
-        <style>
-            .header {
-                display: flex;
-                justify-content: space-between; 
-                align-items: center; 
-                position: fixed; 
-                top: 0; 
-                left: 0; 
-                width: 100%; 
-                height: 85px; 
-                background-color: white; 
-                padding: 10px 20px; 
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-    
-            .header-text {
-                font-family: 'Oswald';
-                color: black;
-                font-size: 32px; /* Reverted to original font size */
-                position: absolute; 
-                left: 135px; 
-                top: 29px; 
-            }            
-
-            .header-logo {
-                width: 60px; 
-                height: auto;
-                margin-left: 30px;
-                margin-top: 8px;
-            }
-        </style>
-
         <div class="header-buttons">
             <a href="{{ url_for('contact') }}">Contact Us</a>
-            <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" class="button" target="_blank">How to Use</a>
+            <a href="https://www.youtube.com/watch?v=Oh9f3SV6xh8&list=RDOh9f3SV6xh8&start_radio=1" target="_blank">How to Use</a>
         </div>
     </div>
 
+
+
     <style>
-        .header-buttons {
-            margin-right: 50px; 
+        
+        @media (max-width: 1920px){
+            .header {
+                display: flex;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3.3vw; /* Use px temporarily */
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                justify-content: space-between;
+            }
+
+            .header-buttons {
+                margin-left: auto;                /* Push the buttons to the right */
+                display: flex;                    /* Ensure buttons are in a flex container */
+                align-items: center;              /* Center buttons vertically */
+                margin-right: 3.3vw;               /* Space from the right */
+                font-size: 1vw;
+
+            }
+
+            .header-logo {
+                width: 2.3%;                         /* Responsive width */
+                height: auto;                     /* Maintain aspect ratio */
+                max-width: 100px;                 /* Prevent logo from becoming too large */
+                margin-left: 3vw;                  /* Space from the left */
+                padding-top: 0vw;
+            }
+            
+            .header-text {
+                font-family: 'Oswald';            /* Font for the text */
+                color: black;                     /* Text color */
+                font-size: 1.3vw;                   /* Responsive font size */
+                margin-left: 1vw;                /* Space between logo and text */
+                padding-bottom: -100px;
+            }
+
+            .top-bar {
+                display: flex;
+                align-items: center;
+                position: fixed;
+                top: 3.9vw;
+                left: 0;
+                width: 100%;
+                height: 7px; /* Use px temporarily */
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                justify-content: space-between;         /* Ensures it stays above other content */
+            }
+            
         }
 
+        @media (min-width: 2560px){
+            .header {
+                display: flex;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 60px; /* Use px temporarily */
+                background-color: white;
+                padding: 10px 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                justify-content: space-between;
+            }
+
+            .header-buttons {
+                margin-left: auto;                /* Push the buttons to the right */
+                display: flex;                    /* Ensure buttons are in a flex container */
+                align-items: center;              /* Center buttons vertically */
+                margin-right: 30px;               /* Space from the right */
+            }
+
+            .header-logo {
+                width: 2.3%;                         /* Responsive width */
+                height: auto;                     /* Maintain aspect ratio */
+                max-width: 100px;                 /* Prevent logo from becoming too large */
+                margin-left: 1%;                  /* Space from the left */
+            }
+            
+            .header-text {
+                font-family: 'Oswald';            /* Font for the text */
+                color: black;                     /* Text color */
+                font-size: 1.5vw;                   /* Responsive font size */
+                margin-left: 10px;                /* Space between logo and text */
+            }
+        }        
+
+        
         .header-buttons a {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 2px solid white;
-            margin-left: 5px;
-            background-color: transparent; 
-            color: #1c1c1c; 
-            text-decoration: none;
-            font-size: 24px; /* Reverted to smaller font size */
             transition: background-color 0.3s, border-color 0.3s, text-decoration 0.3s;
             font-family: 'Oswald';
-            font-weight: normal; 
-        }
-
-        .header-buttons a:hover {
+            font-weight: normal;               /* Set default font weight to normal */
             color: black;
-            text-decoration: underline; 
-            background-color: white; 
-            border-color: white; 
-            text-underline-offset: 6px;
-            font-weight: bold;
+            margin-left: 15px;                 /* Space between buttons */
+            text-decoration: none;             /* Remove underline from links */
+            padding: 8px 12px;                /* Add padding for button appearance */
+            border: 1px solid transparent;     /* Optional border for button */
+        }
+        
+        .header-buttons a:hover {
+            background-color: black;          /* Light background on hover */
+            color: white;
         }
     </style>
 

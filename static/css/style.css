@@ -2,8 +2,8 @@
 body {
   font-family: 'Roboto';
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('background.jpg');
-  background-size: cover;
-  background-position: center;
+  background-size: contain; /* Changed from cover to contain */
+  background-position: center center; /* Center image on both axes */
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -162,6 +162,10 @@ input[type="file"] {
   border-color: transparent; /* Change border color on hover */
 }
 
-
-
-
+@font-face {
+  font-family: 'Seasons';
+  src: url('../fonts/FONTSPRINGDEMO-TheSeasonsBold.woff2') format('woff2'),
+      url('../fonts/FONTSPRINGDEMO-TheSeasonsBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
