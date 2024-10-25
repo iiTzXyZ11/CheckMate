@@ -28,62 +28,134 @@
             overflow: hidden;
         }
 
-        @media (max-width: 1920px){
-            .text-container {
-                flex: 1;                 
-                color: white;
-                text-align: left;
-                position: fixed;
-                left: 50vw;
-                top: 16.3vw;
-            }
-
+        @media (max-width: 2650px){
             .logo {
-                max-width: 35%;
+                max-width: 33%;
                 height: auto;
                 pointer-events: none;
                 user-select: none;
                 display: block;
                 position: fixed;
-                top: 6vw;
-                left: 6.1vw;
+                top: 7.5vw;
+                left: 9.1vw;
             }
 
             h1 {
-                font-family: 'Seasons';
+                font-family: 'Seaons';
                 color: white;
-                font-size: 3.9vw;
-                margin: 0px;
+                font-size: 3vw;
+                margin-bottom: .8vw; /* Adjust this value to control the space below the h1 */
             }
 
             .subhead {
-                font-family: 'Oswald';
+                font-family: 'Agrandir Wide';
                 color: white;
-                font-size: 38px;
-                margin-top: -10px;
+                font-size: 1vw;
+                margin-top: 0;
             }
 
             p {
+                font-family: 'Agrandir';
                 max-width: 650px;
                 text-align: left;
-                line-height: 1.5;
-                font-size: 20px;
+                line-height: 1vw;
+                font-size: .8vw;
                 margin-top: -2px;
+            }
+
+            .text-container {
+                flex: 1;                 
+                color: white;
+                text-align: left;
+                position: fixed;
+                left: 55vw;
+                top: 16.3vw;
             }
 
             .text-container a {
                 font-family: 'Oswald';
                 display: inline-block;
-                padding: 10px 20px;
                 border: 4px solid white;
                 background-color: transparent;
                 color: white;
                 text-decoration: none;
-                font-size: 30px;
+                font-size: 1vw;
                 transition: color 0.3s, text-decoration 0.3s, border -color 0.3s;
                 font-weight: normal;
                 position: fixed;
-                padding-top: -2px;
+                padding: .3vw 1vw;
+                text: center;
+
+            }
+
+            .text-container a:hover {
+                font-weight: bold;
+                color: black; /* Change text color on hover */
+                text-decoration: 1px underline black; /* Add underline on hover */
+                text-underline-offset: 6px;
+                background-color: white; 
+                border-color: white;
+                text-decoration-thickness: 2px;
+                transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color  0.3s;
+            }
+        }
+
+        @media (max-width: 1920px){
+            .logo {
+                max-width: 33%;
+                height: auto;
+                pointer-events: none;
+                user-select: none;
+                display: block;
+                position: fixed;
+                top: 7.5vw;
+                left: 9.1vw;
+            }
+
+            h1 {
+                font-family: 'Seaons';
+                color: white;
+                font-size: 3vw;
+                margin-bottom: .8vw; /* Adjust this value to control the space below the h1 */
+            }
+
+            .subhead {
+                font-family: 'Agrandir Wide';
+                color: white;
+                font-size: 1vw;
+                margin-top: 0;
+            }
+
+            p {
+                font-family: 'Agrandir';
+                max-width: 650px;
+                text-align: left;
+                line-height: 1vw;
+                font-size: .8vw;
+                margin-top: -2px;
+            }
+
+            .text-container {
+                flex: 1;                 
+                color: white;
+                text-align: left;
+                position: fixed;
+                left: 55vw;
+                top: 16.3vw;
+            }
+
+            .text-container a {
+                font-family: 'Oswald';
+                display: inline-block;
+                border: 4px solid white;
+                background-color: transparent;
+                color: white;
+                text-decoration: none;
+                font-size: 1vw;
+                transition: color 0.3s, text-decoration 0.3s, border -color 0.3s;
+                font-weight: normal;
+                position: fixed;
+                padding: .3vw 1vw;
                 text: center;
 
             }
@@ -103,25 +175,28 @@
 </head>
 <body>
     <div>
-        <!--<img src="{{ url_for('static', filename='css/images/artificial_intelligence.jpg') }}" alt="CheckMate Image" class="logo">-->
-        <img src="E:/Text-Summarizer-and-Grader-1/static/css/images/artificial_intelligence.jpg" alt="CheckMate Image" class="logo">
+        <img src="{{ url_for('static', filename='css/images/artificial_intelligence.jpg') }}" alt="CheckMate Image" class="logo">
     </div>
     <div class="text-container">
         <h1>CheckMateAI</h1>
-        <p class="subhead">a powerful teacher's assistant</p>
+        <p class="subhead">The Ultimate Rook in Your Educational Arsenal</p>
         <p>CheckMate is an innovative tool that streamlines essay evaluation by using advanced AI technology for accurate grading and insightful feedback. With features like image-to-text conversion, it allows users to upload handwritten work for easy text extraction. Whether you're a student or educator, CheckMate enhances writing skills and simplifies the grading process.</p>
         <a href="{{ url_for('index') }}">Start Scanning Essays</a>
     </div>
-
+    <p class='disclaimer'>CheckMate AI is not always correct and may generate minor inaccurate responses.  Please double check the work that you are checking.</p>
     <div class="top-bar"></div>
     <div class="header">
-        <!-- <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="Logo" class="header-logo"> -->
-        <img src="E:\Text-Summarizer-and-Grader-1\static\css\images\logo_black.jpg" alt="Log" class="header-logo">
+        <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="Logo" class="header-logo">
         <div class="header-text">
             CHECKMATE
         </div>
 
+        <div class="home-page">
+            Home Page 
+        </div>
+
         <div class="header-buttons">
+            <img>
             <a href="{{ url_for('contact') }}">Contact Us</a>
             <a href="https://www.youtube.com/watch?v=Oh9f3SV6xh8&list=RDOh9f3SV6xh8&start_radio=1" target="_blank">How to Use</a>
         </div>
@@ -167,9 +242,20 @@
                 font-family: 'Oswald';            /* Font for the text */
                 color: black;                     /* Text color */
                 font-size: 1.3vw;                   /* Responsive font size */
-                margin-left: 1vw;                /* Space between logo and text */
+                margin-left: 0.7vw;                /* Space between logo and text */
                 padding-bottom: -100px;
             }
+            .home-page {
+                font-family: 'Oswald';
+                color: black;
+                font-size: 1.3vw;
+                text-align: center; /* Center text within the div */
+                position: fixed; /* Center horizontally */
+                left: 47.1vw;
+                text-decoration: underline;
+                text-underline-offset: 0.3vw;
+            }
+            
 
             .top-bar {
                 display: flex;
@@ -184,6 +270,21 @@
                 justify-content: space-between;         /* Ensures it stays above other content */
             }
             
+            .disclaimer {
+                font-family: 'Oswald';
+                font-size: .7vw; 
+                color: white;
+                position: absolute; 
+                bottom: -10px; 
+                left: 50%; 
+                transform: translateX(-50%); 
+                width: auto; 
+                max-width: 90%; 
+                text-align: center; 
+                padding: 5px; 
+                white-space: nowrap; /* Prevents text wrapping */
+            }
+            
         }
 
         @media (min-width: 2560px){
@@ -194,9 +295,8 @@
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 60px; /* Use px temporarily */
+                height: 3.3vw; /* Use px temporarily */
                 background-color: white;
-                padding: 10px 20px;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
                 z-index: 1000;
                 justify-content: space-between;
@@ -206,24 +306,66 @@
                 margin-left: auto;                /* Push the buttons to the right */
                 display: flex;                    /* Ensure buttons are in a flex container */
                 align-items: center;              /* Center buttons vertically */
-                margin-right: 30px;               /* Space from the right */
+                margin-right: 3.3vw;               /* Space from the right */
+                font-size: 1vw;
+
             }
 
             .header-logo {
                 width: 2.3%;                         /* Responsive width */
                 height: auto;                     /* Maintain aspect ratio */
                 max-width: 100px;                 /* Prevent logo from becoming too large */
-                margin-left: 1%;                  /* Space from the left */
+                margin-left: 3vw;                  /* Space from the left */
+                padding-top: 0vw;
             }
             
             .header-text {
                 font-family: 'Oswald';            /* Font for the text */
                 color: black;                     /* Text color */
-                font-size: 1.5vw;                   /* Responsive font size */
-                margin-left: 10px;                /* Space between logo and text */
+                font-size: 1.3vw;                   /* Responsive font size */
+                margin-left: 0.7vw;                /* Space between logo and text */
+                padding-bottom: -100px;
             }
-        }        
+            .home-page {
+                font-family: 'Oswald';
+                color: black;
+                font-size: 1.3vw;
+                text-align: center; /* Center text within the div */
+                position: fixed; /* Center horizontally */
+                left: 47.1vw;
+                text-decoration: underline;
+                text-underline-offset: 0.3vw;
+            }
+            
 
+            .top-bar {
+                display: flex;
+                align-items: center;
+                position: fixed;
+                top: 3.9vw;
+                left: 0;
+                width: 100%;
+                height: 7px; /* Use px temporarily */
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                justify-content: space-between;         /* Ensures it stays above other content */
+            }
+            
+            .disclaimer {
+                font-family: 'Oswald';
+                font-size: .7vw; 
+                color: white;
+                position: absolute; 
+                bottom: -10px; 
+                left: 50%; 
+                transform: translateX(-50%); 
+                width: auto; 
+                max-width: 90%; 
+                text-align: center; 
+                padding: 5px; 
+                white-space: nowrap; /* Prevents text wrapping */
+        }        
+    }
         
         .header-buttons a {
             transition: background-color 0.3s, border-color 0.3s, text-decoration 0.3s;

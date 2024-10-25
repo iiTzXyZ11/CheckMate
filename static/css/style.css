@@ -2,7 +2,7 @@
 body {
   font-family: 'Roboto';
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('background.jpg');
-  background-size: contain; /* Changed from cover to contain */
+  background-size: cover; /* Changed from cover to contain */
   background-position: center center; /* Center image on both axes */
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -13,16 +13,6 @@ body {
   color: #fff;
   padding: 10px;
   text-align: center;
-}
-
-.container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .container h2 {
@@ -103,37 +93,143 @@ body {
   font-weight: bold;
 }
 
-.container {
-  max-width: 800px;
-  margin: 290px 0 0 50px;
-  padding: 20px;
-  background: white;
-  border: transparent;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+@media (max-width: 2460px) and (min-width: 2460px){
+  .container {
+    max-width: 100%;
+    margin: 100px 0 0 50px;
+    padding: 20px;
+    background: white;
+    border: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .container p {
+      margin-bottom: 20px;
+    }
+    
+    .container form {
+      margin-top: 20px;
+    }
+    
+    .container textarea {
+      box-sizing: border-box; /* Include padding and border in width calculation */
+      width: 100%; /* Set to 100% to fill the container */
+      height: 25vh;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
 
-.container p {
-  margin-bottom: 20px;
-}
+    .container button {
+      width: 100%; /* Full-width button */
+      padding: 10px; /* Padding for button */
+      font-size: 16px; /* Font size for button */
+      border: none; /* Remove default border */
+      border-radius: 10px; /* Rounded corners */
+      background: #007BFF; /* Button background color */
+      color: white; /* Button text color */
+      cursor: pointer; /* Change cursor on hover */
+    }
+  
+    .container button:hover {
+      background: #0056b3; /* Darker shade on hover */
+    }
+  }
 
-.container form {
-  margin-top: 20px;
-}
+  @media (max-width: 1920px) {
+    .container {
+      max-width: 100%; /* Limit the container's max width */
+      margin: 13vh auto; /* Center the container horizontally and add top margin */
+      padding: 20px; /* Maintain padding */
+      background: white;
+      border: transparent;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    .container p {
+      margin-bottom: 20px; /* Space between paragraphs */
+    }
+  
+    .container form {
+      margin-top: 20px; /* Space above the form */
+    }
+  
+    .container textarea {
+      box-sizing: border-box; /* Include padding and border in width calculation */
+      width: 100%; /* Set to 100% to fill the container */
+      height: 20vh; /* Responsive height based on viewport height */
+      max-height: 200px; /* Optional: set a maximum height */
+      padding: 10px;
+      font-size: 16px; /* Font size for text areas */
+      border: 1px solid #ccc; /* Border styling */
+      border-radius: 10px; /* Rounded corners */
+    }
+  
+    .container button {
+      width: 100%; /* Full-width button */
+      padding: 10px; /* Padding for button */
+      font-size: 16px; /* Font size for button */
+      border: none; /* Remove default border */
+      border-radius: 10px; /* Rounded corners */
+      background: #007BFF; /* Button background color */
+      color: white; /* Button text color */
+      cursor: pointer; /* Change cursor on hover */
+    }
+  
+    .container button:hover {
+      background: #0056b3; /* Darker shade on hover */
+    }
+  }
+  
+@media (max-width: 1280px) {
+  .container {
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack items vertically */
+    max-width: 90%;
+    margin: 90px 0 0 0; /* Decrease the top margin */
+    padding: 10px; /* Decrease padding to make it smaller */
+    background: white;
+    border: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevent content from overflowing */
+  }
 
-.container textarea {
-  box-sizing: border-box; /* Include padding and border in width calculation */
-  width: 100%; /* Set to 100% to fill the container */
-  height: 200px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
+  .container p {
+    margin-bottom: 2px; /* Maintain space between paragraphs */
+  }
 
-textarea {
-  width: 90%; /* Set width to 90% for additional padding */
-  padding-right: 20px; /* Add padding to the right */
+  .container form {
+    margin-top: 2px; /* Maintain space above the form */
+  }
+
+  .container textarea {
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    width: 100%; /* Set to 100% to fill the container */
+    height: 12vh; /* Use viewport height for responsiveness */
+    max-height: 200px; /* Optional: set a maximum height */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  .container button {
+    width: 100%; /* Make the button full width */
+    padding: 10px; /* Adjust padding for better appearance */
+    font-size: 16px; /* Adjust font size */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* Add border radius */
+    background: #007BFF; /* Example background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Change cursor on hover */
+  }
+
+  .container button:hover {
+    background: #0056b3; /* Darker shade on hover */
+  }
 }
 
 /* Style the file input */
@@ -156,6 +252,12 @@ input[type="file"] {
   font-weight: bold;
 }
 
+textarea {
+  width: 90%; /* Set width to 90% for additional padding */
+  padding-right: 20px; /* Add padding to the right */
+}
+
+
 .custom-file-upload:hover {
   background-color: black; /* Background color on hover */
   color: white; /* Change text color on hover */
@@ -168,4 +270,22 @@ input[type="file"] {
       url('../fonts/FONTSPRINGDEMO-TheSeasonsBold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Agrandir Wide';
+  src: url('..fonts/Agrandir-WideBlackItalic.woff2') format('woff2'),
+      url('../fonts/Agrandir-WideBlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Agrandir';
+  src: url('../fonts/Agrandir-Regular.woff') format('woff'),
+      url('../fonts/Agrandir-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
