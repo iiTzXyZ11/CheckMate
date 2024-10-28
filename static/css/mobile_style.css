@@ -1,0 +1,20 @@
+/* MOBILE DEVICES */
+/* Small Mobile */
+@media (max-width: 320px) {
+            
+}
+
+/* Medium Mobile */
+@media (max-width: 375px) {
+    /* Styles for typical smartphones */
+}
+
+/* Large Mobile */
+@media (max-width: 425px) {
+    /* Styles for larger smartphones */
+}
+
+/* Small Tablets and Large Mobiles */
+@media (max-width: 768px) {
+    /* Styles for small tablets and large phones */
+}

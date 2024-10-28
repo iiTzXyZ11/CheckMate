@@ -72,7 +72,7 @@ def grade_essay(essay_text, context_text):
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[{"role": "user",
-                        "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. (Do not be too strict when grading. Make considerations so that you wont be too strict. and make it possible to achieve a perfect score if it deserves it, but ALWAYS stick to the context and criteria.) "
+                        "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. (Do not be too strict when grading. Make considerations so that you wont be too strict. and make it possible to achieve a perfect score if it deserves it, but stick to the context and criteria. Respond in Filipino. And always review your grading) "
                                     f"Use the following context to help inform your grading:\n\n{context_text}\n\n"
                                     f"Here is the detailed breakdown for this criterion:\n\n{detailed_breakdown}\n\n"
                                     f"Essay:\n{truncated_essay}\n\n"

@@ -1,11 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+@font-face {
+  font-family: 'Agrandir Wide';
+  src: url('..fonts/Agrandir-WideBlackItalic.woff2') format('woff2'),
+      url('../fonts/Agrandir-WideBlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Agrandir';
+  src: url('../fonts/Agrandir-Regular.woff') format('woff'),
+      url('../fonts/Agrandir-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
-  font-family: 'Roboto';
+  font-family: 'Oswald';
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('background.jpg');
   background-size: cover; /* Changed from cover to contain */
   background-position: center center; /* Center image on both axes */
   background-repeat: no-repeat;
   background-attachment: fixed;
+
 }
 
 .header-bar {
@@ -76,7 +96,7 @@ body {
   padding: 10px 20px;
   text-decoration: none;
   cursor: pointer;
-  font-family: 'Roboto';
+  font-family: 'Oswald';
   margin: 5px 0;
   display: inline-block;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition */
@@ -93,201 +113,807 @@ body {
   font-weight: bold;
 }
 
-@media (min-width: 2460px){
+/* Web Headers and disclaimers on all HTMLs */
+/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1440p------------------------------------------------------------------------------------------------------------------------ */
+@media (max-height: 1440px){
+  .header {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.3vw; /* Use px temporarily */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    width: 2.3%;                         /* Responsive width */
+    height: auto;                     /* Maintain aspect ratio */
+    max-width: 100px;                 /* Prevent logo from becoming too large */
+    margin-left: 3vw;                  /* Space from the left */
+    padding-top: 0vw;
+  }
+  
+  .header-text {
+    font-family: 'Oswald';            /* Font for the text */
+    color: black;                     /* Text color */
+    font-size: 1.3vw;                   /* Responsive font size */
+    margin-left: 0.7vw;                /* Space between logo and text */
+    padding-bottom: -100px;
+}
+  .home-page {
+    font-family: 'Oswald';
+    color: black;
+    font-size: 1.3vw;
+    text-align: center; /* Center text within the div */
+    position: fixed; /* Center horizontally */
+    left: 46.8vw;
+    text-decoration: underline;
+    text-underline-offset: 0.3vw;
+  }
+  
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 3.9vw;
+    left: 0;
+    width: 100%;
+    height: 7px; /* Use px temporarily */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;         /* Ensures it stays above other content */
+}
+
+  .disclaimer {
+    font-family: 'Oswald';
+    font-size: .6vw; 
+    color: white;
+    position: absolute; 
+    bottom: -5px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: auto; 
+    max-width: 90%; 
+    text-align: center; 
+    padding: 5px 20px; 
+    white-space: nowrap; /* Prevents text wrapping */
+    background: black;
+    border: 4px solid white; /* Specify width and style */
+    border-radius: 20px; /* Remove the extra semicolon */
+  }
+  
+  .chessboard {
+    width: 100vw; /* Set width to match the full viewport width */
+    height: auto; /* Let height scale proportionally */
+    position: fixed;
+    left: 0;
+    bottom: -20vh; /* Align it at the bottom of the viewport */
+    z-index: -1000;
+    max-height: 40vh; /* Optional: limit max height to prevent excessive scaling */
+  }
+
+  .header-buttons {
+    margin-left: auto;                /* Push the buttons to the right */
+    display: flex;                    /* Ensure buttons are in a flex container */
+    align-items: center;              /* Center buttons vertically */
+    margin-right: 1.3vw;               /* Space from the right */
+    font-size: 1vw;
+  }
+
+  .header-buttons a {
+    transition: background-color 0.3s, border-color 0.3s, text-decoration 0.3s, opacity 0.3s;
+    font-family: 'Oswald';
+    font-weight: normal;               /* Set default font weight to normal */
+    color: black;
+    margin-left: 0vh;                 /* Space between buttons */
+    text-decoration: none;             /* Remove underline from links */
+    padding: 0.8vh 1.5vh;                /* Add padding for button appearance */
+    border: 1px solid transparent;     /* Optional border for button */
+    padding-left: 5vh;
+    border-radius:1vh;
+  }
+
+  .header-buttons a:hover {
+      background-color: black;          /* Light background on hover */
+      color: white;
+  }
+
+  .contact-icon, .contact_white-icon {
+    width: 3vh;                      /* Adjust size */
+    height: auto;                     /* Maintain aspect ratio */
+    position: absolute;               /* Position them on top of each other */
+    top: 53%;                         /* Center vertically */
+    left: 85.3%;                        /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for true centering */
+  }
+
+.contact_white-icon {
+    opacity: 0;                      /* Hide the white icon by default */
+    transition: opacity 0.3s;        /* Smooth transition for opacity */
+  }
+
+.header-buttons a:hover .contact-icon {
+    opacity: 0;                      /* Make the original icon invisible on hover */
+  }
+
+.header-buttons a:hover .contact_white-icon {
+    opacity: 1;                      /* Show the white icon on hover */
+  }
+    .qm-icon, .qm-white-icon {
+      width: 2.8vh;                      /* Adjust size */
+      height: auto;                     /* Maintain aspect ratio */
+      position: absolute;               /* Position them on top of each other */
+      top:3.4vh;                         /* Center vertically */
+      left: 188.3vh;                        /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust for true centering */
+  }
+
+  .qm-white-icon {
+      opacity: 0;
+  }
+
+  .header-buttons a:hover .qm-icon {
+      opacity: 0;
+  }
+
+  .header-buttons a:hover .qm-white-icon {
+      opacity: 1;
+  }
+}
+/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1080p------------------------------------------------------------------------------------------------------------------------ */
+@media (min-height: 1080px){
+  .header {
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3.3vw; /* Use px temporarily */
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      justify-content: space-between;
+  }
+
+  .header-buttons {
+      margin-left: auto;                /* Push the buttons to the right */
+      display: flex;                    /* Ensure buttons are in a flex container */
+      align-items: center;              /* Center buttons vertically */
+      margin-right: 3.3vw;               /* Space from the right */
+      font-size: 1vw;
+
+  }
+
+  .header-buttons a {
+    transition: background-color 0.3s, border-color 0.3s, text-decoration 0.3s, opacity 0.3s;
+    font-family: 'Oswald';
+    font-weight: normal;               /* Set default font weight to normal */
+    color: black;
+    margin-left: 0vh;                 /* Space between buttons */
+    text-decoration: none;             /* Remove underline from links */
+    padding: 0.8vh 1.5vh;                /* Add padding for button appearance */
+    border: 1px solid transparent;     /* Optional border for button */
+    padding-left: 5vh;
+  }
+
+  .header-logo {
+      width: 2.3%;                         /* Responsive width */
+      height: auto;                     /* Maintain aspect ratio */
+      max-width: 100px;                 /* Prevent logo from becoming too large */
+      margin-left: 3vw;                  /* Space from the left */
+      padding-top: 0vw;
+  }
+  
+  .header-text {
+      font-family: 'Oswald';            /* Font for the text */
+      color: black;                     /* Text color */
+      font-size: 1.3vw;                   /* Responsive font size */
+      margin-left: 0.7vw;                /* Space between logo and text */
+      padding-bottom: -100px;
+  }
+  .home-page {
+      font-family: 'Oswald';
+      color: black;
+      font-size: 1.3vw;
+      text-align: center; /* Center text within the div */
+      position: fixed; /* Center horizontally */
+      left: 47.1vw;
+      text-decoration: underline;
+      text-underline-offset: 0.3vw;
+  }
+  
+
+  .top-bar {
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 3.9vw;
+      left: 0;
+      width: 100%;
+      height: 7px; /* Use px temporarily */
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      justify-content: space-between;         /* Ensures it stays above other content */
+  }
+  
+  .disclaimer {
+    font-family: 'Oswald';
+    font-size: .6vw; 
+    color: white;
+    position: absolute; 
+    bottom: -5px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: auto; 
+    max-width: 90%; 
+    text-align: center; 
+    padding: 5px 20px; 
+    white-space: nowrap; /* Prevents text wrapping */
+    background: black;
+    border: 4px solid white; /* Specify width and style */
+    border-radius: 20px; /* Remove the extra semicolon */
+  }
+  
+  .chessboard {
+    width: 100vw; /* Set width to match the full viewport width */
+    height: auto; /* Let height scale proportionally */
+    position: fixed;
+    left: 0;
+    bottom: -18vh; /* Align it at the bottom of the viewport */
+    z-index: -1000;
+    max-height: 40vh; /* Optional: limit max height to prevent excessive scaling */
+  }
+  
+  .header-buttons {
+    margin-left: auto;                /* Push the buttons to the right */
+    display: flex;                    /* Ensure buttons are in a flex container */
+    align-items: center;              /* Center buttons vertically */
+    margin-right: 1.3vw;               /* Space from the right */
+    font-size: 1vw;
+  }
+
+  .header-buttons a {
+    transition: background-color 0.3s, border-color 0.3s, text-decoration 0.3s, opacity 0.3s;
+    font-family: 'Oswald';
+    font-weight: normal;               /* Set default font weight to normal */
+    color: black;
+    margin-left: 0vh;                 /* Space between buttons */
+    text-decoration: none;             /* Remove underline from links */
+    padding: 0.8vh 1.5vh;                /* Add padding for button appearance */
+    border: 1px solid transparent;     /* Optional border for button */
+    padding-left: 5vh;
+    border-radius:1vh;
+  }
+
+  .header-buttons a:hover {
+      background-color: black;          /* Light background on hover */
+      color: white;
+  }
+
+  .contact-icon, .contact_white-icon {
+    width: 3vh;                      /* Adjust size */
+    height: auto;                     /* Maintain aspect ratio */
+    position: absolute;               /* Position them on top of each other */
+    top: 53%;                         /* Center vertically */
+    left: 85.3%;                        /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for true centering */
+  }
+
+.contact_white-icon {
+    opacity: 0;                      /* Hide the white icon by default */
+    transition: opacity 0.3s;        /* Smooth transition for opacity */
+  }
+
+.header-buttons a:hover .contact-icon {
+    opacity: 0;                      /* Make the original icon invisible on hover */
+  }
+
+.header-buttons a:hover .contact_white-icon {
+    opacity: 1;                      /* Show the white icon on hover */
+  }
+    .qm-icon, .qm-white-icon {
+      width: 2.8vh;                      /* Adjust size */
+      height: auto;                     /* Maintain aspect ratio */
+      position: absolute;               /* Position them on top of each other */
+      top:3.4vh;                         /* Center vertically */
+      left: 181.9vh;                        /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust for true centering */
+  }
+
+  .qm-white-icon {
+      opacity: 0;
+  }
+
+  .header-buttons a:hover .qm-icon {
+      opacity: 0;
+  }
+
+  .header-buttons a:hover .qm-white-icon {
+      opacity: 1;
+  }
+}
+/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
+
+/* INDEX.HTML */
+/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1440p------------------------------------------------------------------------------------------------------------------------ */
+@media (max-height: 1440px) {
   .container {
-    max-width: 100%;
-    margin: 100px 0 0 50px;
-    padding: 20px;
-    background: white;
-    border: transparent;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 45%;
+    margin: 10vh 0 0 100vh;
+    padding: 0px 30px 0px 30px; /* top, right, bottom, left */
+    background-color: white;
+    border: 3px solid #282828;
+    border-radius: 3.5vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    }
-    .container p {
-      margin-bottom: 20px;
-    }
-    
-    .container form {
-      margin-top: 20px;
-    }
-    
-    .container textarea {
-      box-sizing: border-box; /* Include padding and border in width calculation */
-      width: 100%; /* Set to 100% to fill the container */
-      height: 25vh;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-    }
-
-    .container button {
-      width: 100%; /* Full-width button */
-      padding: 10px; /* Padding for button */
-      font-size: 16px; /* Font size for button */
-      border: none; /* Remove default border */
-      border-radius: 10px; /* Rounded corners */
-      background: #007BFF; /* Button background color */
-      color: white; /* Button text color */
-      cursor: pointer; /* Change cursor on hover */
-    }
-  
-    .container button:hover {
-      background: #0056b3; /* Darker shade on hover */
-    }
+    height: 84vh;
   }
 
-  @media (max-width: 1920px) {
-    .container {
-      max-width: 100%; /* Limit the container's max width */
-      margin: 13vh auto; /* Center the container horizontally and add top margin */
-      padding: 20px; /* Maintain padding */
-      background: white;
-      border: transparent;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      overflow-y: auto;
-    }
-  
-    .container p {
-      margin-bottom: 20px; /* Space between paragraphs */
-    }
-  
-    .container form {
-      margin-top: 20px; /* Space above the form */
-    }
-  
-    .container textarea {
-      box-sizing: border-box; /* Include padding and border in width calculation */
-      width: 100%; /* Set to 100% to fill the container */
-      height: 20vh; /* Responsive height based on viewport height */
-      max-height: 200px; /* Optional: set a maximum height */
-      padding: 10px;
-      font-size: 16px; /* Font size for text areas */
-      border: 1px solid #ccc; /* Border styling */
-      border-radius: 10px; /* Rounded corners */
-    }
-  
-    .container button {
-      width: 100%; /* Full-width button */
-      padding: 10px; /* Padding for button */
-      font-size: 16px; /* Font size for button */
-      border: none; /* Remove default border */
-      border-radius: 10px; /* Rounded corners */
-      background: #007BFF; /* Button background color */
-      color: white; /* Button text color */
-      cursor: pointer; /* Change cursor on hover */
-    }
-  
-    .container button:hover {
-      background: #0056b3; /* Darker shade on hover */
-    }
-  }
-  
-@media (max-width: 1280px) {
-  .container {
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack items vertically */
-    max-width: 90%;
-    margin: 90px 0 0 0; /* Decrease the top margin */
-    padding: 10px; /* Decrease padding to make it smaller */
-    background: white;
-    border: transparent;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-  }
-
-  .container p {
-    margin-bottom: 2px; /* Maintain space between paragraphs */
-  }
-
+  .container p,
   .container form {
-    margin-top: 2px; /* Maintain space above the form */
+    margin: 10px 0;
+  }
+
+  .container textarea,
+  .container button {
+    font-family: 'Oswald';
+    width: 100%;
+    height: auto;
+    padding: 10px 10px 0 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
   }
 
   .container textarea {
-    box-sizing: border-box; /* Include padding and border in width calculation */
-    width: 100%; /* Set to 100% to fill the container */
-    height: 12vh; /* Use viewport height for responsiveness */
-    max-height: 200px; /* Optional: set a maximum height */
-    padding: 10px;
-    font-size: 16px;
+    height: 24vh;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    resize: vertical;
+    margin-bottom: 2vh;
+    background-color: #ededed;
   }
 
   .container button {
-    width: 100%; /* Make the button full width */
-    padding: 10px; /* Adjust padding for better appearance */
-    font-size: 16px; /* Adjust font size */
-    border: none; /* Remove default border */
-    border-radius: 10px; /* Add border radius */
-    background: #007BFF; /* Example background color */
-    color: white; /* Text color */
-    cursor: pointer; /* Change cursor on hover */
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
 
   .container button:hover {
-    background: #0056b3; /* Darker shade on hover */
+    background-color: #0056b3;
+  }
+
+  .tips-container {
+    width: 68%; /* Set the width to your desired length (increase as needed) */
+    max-width: 80%; /* Adjust maximum width as needed */
+    margin: 10vh -20vh 0vh 100vh ; /* Top, right, bottom, left; negative value to extend left */
+    padding: 3vh; /* Uniform padding on all sides */
+    background-color: #151515;
+    border: 3px solid white;
+    border-radius: 3.5vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: 78vh; /* Fixed height */
+    position: absolute;
+    right: 120vh ; /* Keep aligned to the right */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center align children horizontally */
+    overflow-y:hidden;
+  }
+
+
+  .tips-header {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center items horizontally */
+    width: 10%; /* Full width of the container */
+    height: auto;
+    font-size: 3vh;
+    margin-top: -5vh;
+    margin-left: 28vh;
+    gap: 3vh;
+  }
+
+  .tips-container h1 {
+    white-space: nowrap; /* Prevent text from wrapping */
+    font-weight: bold; /* Bold text */
+    color: white; /* White color */
+    flex-grow: 1; /* Allow heading to take available space */
+    text-align: center; /* Center text within the header */
+  }
+  .tips-container h1::after {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it act as a block */
+    width: 15%; /* Set the desired width of the underline */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: white; /* Set the color of the underline */
+    margin: 0 auto; /* Center the underline */
+    position: absolute; /* Position it relative to the heading */
+    top: 10.6vh; /* Position it at the bottom of the heading */
+    left: 76vh; /* Align to the left */
+  }
+
+  .tips-container img {
+    width: 50%; /* Set the width as a percentage of the container */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: -0.5vh; /* Add margin on top if needed for spacing */
+  }
+
+  .tips{
+    width: 32%;
+    font-family: 'Agrandir Wide';
+    font-size: 1.3vh;
+    color: white;;
+    position: absolute;
+    top: 13vh;
+    left: 48vh;
+  }
+
+  .tips h2 {
+    margin-bottom: 19vh; /* Adjust the value as needed for spacing */
+  }
+
+/* LINES */
+  .lines{
+    position: absolute;
+  }
+
+  .line-h1 {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it act as a block */
+    width: 64%; /* Set the desired width of the underline */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: white; /* Set the color of the underline */
+    margin: 0 auto; /* Center the underline */
+    position: absolute; /* Position it relative to the heading */
+    top: 33.5vh; /* Position it at the bottom of the heading */
+    left: 47vh; /* Align to the left */
+    z-index: 1000;
+  }
+
+  .line-h2 {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it act as a block */
+    width: 64%; /* Set the desired width of the underline */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: white; /* Set the color of the underline */
+    margin: 0 auto; /* Center the underline */
+    position: absolute; /* Position it relative to the heading */
+    top: 58.5vh; /* Position it at the bottom of the heading */
+    left: 47vh; /* Align to the left */
+    z-index: 1000;
+  }
+
+  .line-vertical {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it act as a block */
+    width: 49%; /* Set the desired width of the underline */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: white; /* Set the color of the underline */
+    margin: 0 auto; /* Center the underline */
+    position: absolute; /* Position it relative to the heading */
+    top: 48.5vh; /* Position it at the bottom of the heading */
+    left: 70vh; /* Align to the left */
+    z-index: 1000;
+    transform:rotate(90deg)
+  }
+
+  .tips-text{
+    width: 30%;
+    font-size: 2.5vh;
+    color: white;
+    position: absolute;
+    left: 48vh;
+    top: 14.6vh;
+  }
+
+  .tips-text p{
+    margin-bottom: 9.5vh;
+  }
+
+  .tips-container .glasses{
+    width: 20vh; /* Set the width as a percentage of the container */
+    position: absolute;
+    left:111vh;
+    top: 14vh;
+
+    
+  }
+
+  .tips-container .list{
+    width: 20vh;
+    position: absolute;
+    left:111vh;
+    top: 36.5vh;  
+  }
+
+  .tips-container .board{
+    width: 20vh;
+    position: absolute;
+    left:112vh;
+    top: 62vh;
   }
 }
+/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
 
-/* Style the file input */
-input[type="file"] {
-  display: none;  /* Hide the default file input */
+/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1080p------------------------------------------------------------------------------------------------------------------------ */
+
+@media (max-height: 1080px) {
+  .container {
+    width: 100%;
+    max-width: 45%;
+    margin: 10vh 0 0 103vh;
+    padding: 0px 30px 0px 30px; /* top, right, bottom, left */
+    background-color: white;
+    border: 3px solid #282828;
+    border-radius: 3.5vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: 84vh;
+  }
+
+  .container p,
+  .container form {
+    margin: 10px 0;
+  }
+
+  .container textarea,
+  .container button {
+    font-family: 'Oswald';
+    width: 100%;
+    height: auto;
+    padding: 10px 10px 0 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  .container textarea {
+    height: 18vh;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-bottom: 2vh;
+    background-color: #ededed;
+  }
+
+  .container button {
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .container button:hover {
+    background-color: #0056b3;
+  }
 }
+/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
 
-.custom-file-upload {
-  display: inline-block;
-  padding: 10px 18px;
-  border: 2px solid #000000; /* Customize border color */
-  border-radius: 10px;
-  color: black; /* Customize text color */
-  background-color: rgb(255, 255, 255); /* Button background */
-  text-decoration: none;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
-  margin: 15px 0; /* Add some margin */
-  font-weight: bold;
+/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 720p------------------------------------------------------------------------------------------------------------------------ */
+@media (max-height: 720px) {
+  
+  body{
+    overflow-x:hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 45%;
+    margin: 10vh 0 0 110vh;
+    padding: 0px 30px 0px 30px; /* top, right, bottom, left */
+    background-color: white;
+    border: 3px solid #282828;
+    border-radius: 3.5vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: 80vh;
+  }
+
+  .container p,
+  .container form {
+    font-size: 2vh;
+    margin: 10px 0;
+  }
+
+  .container textarea,
+  .container button {
+    font-family: 'Oswald';
+    width: 100%;
+    height: auto;
+    padding: 10px 10px 0 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  .container textarea {
+    height: 16vh;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-bottom: 2vh;
+    background-color: #ededed;
+  }
+
+  .container textarea::placeholder {
+    font-size: 2vh;
+  }
+
+  .container button {
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .container button:hover {
+    background-color: #0056b3;
+  }
+
+  .tips-container {
+    width: 68%; /* Set the width to your desired length (increase as needed) */
+    max-width: 80%; /* Adjust maximum width as needed */
+    margin: 10vh -20vh 0vh 100vh ; /* Top, right, bottom, left; negative value to extend left */
+    padding: 3vh; /* Uniform padding on all sides */
+    background-color: #151515;
+    border: 3px solid white;
+    border-radius: 3.5vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: 75vh; /* Fixed height */
+    position: absolute;
+    right: 129vh ; /* Keep aligned to the right */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center align children horizontally */
+    overflow-y:hidden;
+  }
+
+
+  .tips-header {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center items horizontally */
+    width: 10%; /* Full width of the container */
+    height: auto;
+    font-size: 3vh;
+    margin-top: -5vh;
+    margin-left: 28vh;
+    gap: 3vh;
+  }
+
+  .tips-container h1 {
+    white-space: nowrap; /* Prevent text from wrapping */
+    font-weight: bold; /* Bold text */
+    color: white; /* White color */
+    flex-grow: 1; /* Allow heading to take available space */
+    text-align: center; /* Center text within the header */
+  }
+  .tips-container h1::after {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it act as a block */
+    width: 15%; /* Set the desired width of the underline */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: white; /* Set the color of the underline */
+    margin: 0 auto; /* Center the underline */
+    position: absolute; /* Position it relative to the heading */
+    top: 10.6vh; /* Position it at the bottom of the heading */
+    left: 76vh; /* Align to the left */
+  }
+
+  .tips-container img {
+    width: 50%; /* Set the width as a percentage of the container */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: -0.5vh; /* Add margin on top if needed for spacing */
+  }
+
+  .tips{
+    width: 32%;
+    font-family: 'Agrandir Wide';
+    font-size: 1.3vh;
+    color: white;;
+    position: absolute;
+    top: 13vh;
+    left: 48vh;
+  }
+
+  .tips h2 {
+    margin-bottom: 19vh; /* Adjust the value as needed for spacing */
+  }
+
+/* LINES */
+  .lines{
+    position: absolute;
+  }
+
+  .line-h1 {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it act as a block */
+    width: 64%; /* Set the desired width of the underline */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: white; /* Set the color of the underline */
+    margin: 0 auto; /* Center the underline */
+    position: absolute; /* Position it relative to the heading */
+    top: 33.5vh; /* Position it at the bottom of the heading */
+    left: 47vh; /* Align to the left */
+    z-index: 1000;
+  }
+
+  .line-h2 {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it act as a block */
+    width: 64%; /* Set the desired width of the underline */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: white; /* Set the color of the underline */
+    margin: 0 auto; /* Center the underline */
+    position: absolute; /* Position it relative to the heading */
+    top: 56.5vh; /* Position it at the bottom of the heading */
+    left: 47vh; /* Align to the left */
+    z-index: 1000;
+  }
+
+  .line-vertical {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it act as a block */
+    width: 49%; /* Set the desired width of the underline */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: white; /* Set the color of the underline */
+    margin: 0 auto; /* Center the underline */
+    position: absolute; /* Position it relative to the heading */
+    top: 48.5vh; /* Position it at the bottom of the heading */
+    left: 70vh; /* Align to the left */
+    z-index: 1000;
+    transform:rotate(90deg)
+  }
+
+  .tips-text{
+    width: 30%;
+    font-size: 2.5vh;
+    color: white;
+    position: absolute;
+    left: 48vh;
+    top: 14.6vh;
+  }
+
+  .tips-text p{
+    margin-bottom: 9.5vh;
+  }
+
+  .tips-container .glasses{
+    width: 20vh; /* Set the width as a percentage of the container */
+    position: absolute;
+    left:120vh;
+    top: 12vh;
+
+    
+  }
+
+  .tips-container .list{
+    position: absolute;
+    left:120vh;
+    width: 20vh;
+    top: 36vh;  
+  }
+
+  .tips-container .board{
+    width: 20vh;
+    position: absolute;
+    left:121vh;
+    top: 60vh;
+  }
 }
-
-textarea {
-  width: 90%; /* Set width to 90% for additional padding */
-  padding-right: 20px; /* Add padding to the right */
-}
-
-
-.custom-file-upload:hover {
-  background-color: black; /* Background color on hover */
-  color: white; /* Change text color on hover */
-  border-color: transparent; /* Change border color on hover */
-}
-
-@font-face {
-  font-family: 'Seasons';
-  src: url('../fonts/FONTSPRINGDEMO-TheSeasonsBold.woff2') format('woff2'),
-      url('../fonts/FONTSPRINGDEMO-TheSeasonsBold.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Agrandir Wide';
-  src: url('..fonts/Agrandir-WideBlackItalic.woff2') format('woff2'),
-      url('../fonts/Agrandir-WideBlackItalic.woff') format('woff');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Agrandir';
-  src: url('../fonts/Agrandir-Regular.woff') format('woff'),
-      url('../fonts/Agrandir-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
