@@ -113,7 +113,169 @@ body {
   font-weight: bold;
 }
 
-/* Web Headers and disclaimers on all HTMLs */
+/* FRONT_PAGE.HTML */
+/* Shared styles */
+.logo {
+  max-width: 33%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  display: block;
+  position: fixed;
+  top: 15vh;
+  left: 11.1vw;
+}
+
+.text-container .subhead {
+  font-family: 'Agrandir Wide';
+  color: white;
+  font-size: 1.6rem;
+  margin-left: -3vw;
+}
+
+.text-container .desc {
+  font-family: 'Agrandir';
+  max-width: 100vw;
+  text-align: justify;
+  line-height: 1vw;
+  margin-top: -1.5vh;
+}
+
+.text-container {
+  flex: 1;
+  color: white;
+  text-align: left;
+  position: fixed;
+  left: 58vw;
+}
+
+.text-container h1 {
+  font-family: 'Oswald';
+  color: black;
+  font-size: 3.3vw;
+  font-style: italic;
+  transform: rotate(-5deg);
+  position: relative;
+}
+
+.text-container a {
+  font-family: 'Oswald';
+  display: inline-block;
+  border: 4px solid white;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  font-size: 1vw;
+  font-weight: normal;
+  padding: .3vw 1vw;
+  transition: color 0.3s, text-decoration 0.3s, border-color 0.3s;
+  position: fixed;
+  right: 34.78vw;
+}
+
+.text-container a:hover {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline 1px black;
+  text-underline-offset: 6px;
+  background-color: white;
+  border-color: white;
+  text-decoration-thickness: 2px;
+  transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1440p------------------------------------------------------------------------------------------------------------------------ */
+@media (max-width: 2650px) {
+  .text-container {
+      top: 14.3vw;
+  }
+
+  .text-container h1 {
+      margin-bottom: 1.5vw;
+      top: -4.3vh;
+      left: 3.8vw;
+  }
+
+  .ribbon {
+      position: fixed;
+      max-width: 32%;
+      max-height: auto;
+      top: 23vh;
+      right:13vw;
+  }
+
+  .subhead {
+      margin-top: 5vh;
+  }
+
+  .desc{
+    margin-left: -3vw;
+    width: 28vw;
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    max-width: 33%;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1080p------------------------------------------------------------------------------------------------------------------------ */
+@media (max-height: 1080px) {
+  .text-container {
+      top: 16.3vw;
+  }
+
+  .text-container h1 {
+      margin-bottom: 0vw;
+      top: -9.3vh;
+
+  }
+
+  .text-container .subhead {
+    font-size: 1.2rem;
+  }
+
+  .subhead {
+      margin-top: -0.5vw;
+  }
+
+  .desc {
+    width: 28vw;
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    max-width: 30%;
+  }
+}
+
+@media (max-height: 768px){
+  .text-container h1 {
+    top: -12.5vh;
+    right: 18vw;
+  }
+
+  .text-container .subhead {
+    font-size: 0.9rem;
+  }
+
+  .desc {
+    font-size: 0.9rem;
+    width: 30vw;
+  }
+
+  .ribbon {
+    position: fixed;
+    max-width: 30%;
+    max-height: auto;
+    top: 23vh;
+    right:15vw;
+}
+}
+/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
+
+
+/* Web Headers, chessboard and disclaimers on all HTMLs */
 /* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1440p------------------------------------------------------------------------------------------------------------------------ */
 /* Media Query for screens up to 1440px */
 @media (max-height: 1440px) {
@@ -221,7 +383,7 @@ body {
   .qm-icon {
     width: 3vh; /* Consistent size */
     height: auto; /* Maintain aspect ratio */
-    margin-right: 0.5vh; /* Space between icon and text */
+    margin-right: 1vh; /* Space between icon and text */
   }
 
   .contact-icon{
@@ -234,22 +396,56 @@ body {
 }
 
 /* Media Query for screens up to 1080px */
-@media (max-height: 1080px) {
+@media (max-width: 1920px) and (max-height: 1080px) {
   .header-buttons {
-    margin-right: 3.3vw; /* More space from the right */
+    margin-right: 1.5vw; /* More space from the right */
   }
 
   .home-page {
-    left: 47.1vw; /* Adjust position */
+    left: 48.1vw; /* Adjust position */
   }
 
   .chessboard {
-    bottom: -18vh; /* Align it at the bottom of the viewport */
+    bottom: -22vh; /* Align it at the bottom of the viewport */
+  }
+}
+
+/* Media Query for screens up to 768px */
+@media (max-width: 1366px) and (max-height: 768px) {
+  .header{
+    height: 3.5vw; /* Adjust height for smaller screens */
+  }
+
+  .top-bar{
+    height: .5vw;
+  }
+
+  .header-text,
+  .home-page {
+    font-size: 1rem;
+   } /* Responsive font size */
+
+  .header-buttons a {
+    padding: 1vh 2vh; /* Adjust padding */
+    font-size: 1rem; /* Increase font size */
+  }
+
+  .contact-icon,
+  .qm-icon {
+    width: 4vh; /* Larger icon size */
+  }
+
+  .disclaimer {
+    font-size: 0.8vw; /* Adjust disclaimer font size */
+  }
+
+  .home-page {
+    left: 48vw; /* Adjust position for smaller screens */
   }
 }
 
 /* Media Query for screens up to 720px */
-@media (max-height: 720px) {
+@media (max-width: 1280px) and (max-height: 720px) {
   .header{
     height: 3.5vw; /* Adjust height for smaller screens */
   }
@@ -266,6 +462,10 @@ body {
   .header-buttons a {
     padding: 1vh 2vh; /* Adjust padding */
     font-size: 1.5vw; /* Increase font size */
+  }
+
+  .header-buttons img{
+    margin-right: 5vw; /* Space between image and text */
   }
 
   .contact-icon,
@@ -289,15 +489,15 @@ body {
 /* General Styles */
 .container {
   width: 100%;
-  max-width: 45%;
-  margin: 10vh auto;
+  max-width: 43%;
+  margin: 10vh;
   padding: 0 clamp(15px, 5vw, 30px); /* Responsive horizontal padding */
   background-color: white;
   border: 3px solid #282828;
   border-radius: 3.5vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  position: fixed;
+  position: absolute;
 }
 
 .container p,
@@ -354,14 +554,17 @@ body {
   display: flex; /* Use flexbox to center items inside */
   align-items: center; /* Center items vertically */
   justify-content: center; /* Center items horizontally */
-  font-size: clamp(2rem, 3vh, 3.5rem); /* Responsive font size */
-  margin-left:30vmin;
+  margin-left:20vw;
 }
 
 /* Tips Images */
-.tips-header img {
-  height: clamp(5vh, 10%, 10vh); /* Responsive image height */
-  width: clamp(5vh, 10%, 10vh); /* Responsive image width */
+.tips-header .tip-image {
+  padding: 0;
+  margin-bottom: 0vh; /* Space from the left */
+  vertical-align: -.8vh;
+  margin-right: 0.5vw; /* Space between image and text */
+  height: auto; /* Responsive image height */
+  width: clamp(5vmin, 8%, 10vmax); /* Responsive image width */
 }
 
 .tips-container h1 {
@@ -376,7 +579,6 @@ body {
   width: 40%; /* Use full width of the container */
   font-size: 1.5vh; /* Responsive font size */
   color: white;
-  margin-bottom: 40vmax; /* Responsive margin */
   margin-right: 12vmax;
 }
 
@@ -384,7 +586,7 @@ body {
   font-family: 'Agrandir Wide';
 }
 
-.tip-section{
+.tip-section {
   margin-left: 0.5vw;
 }
 
@@ -451,9 +653,10 @@ body {
 }
 
 /* Media Queries */
-@media (max-width: 2560px) and (max-height: 1440px) {
+@media (min-width: 2560px) and (max-height: 1440px) {
   .container {
-    margin-left: clamp(80vh, 100vh, 120vh);
+    max-width: 47%;
+    margin-left: clamp(80vh, 107vh, 120vh);
     height: clamp(70vh, 80vh, 90vh);
     overflow-y: auto;
   }
@@ -496,12 +699,19 @@ body {
     left: clamp(50vh, 96vh, 115vh);
     top: clamp(50vh, 60vh, 65vh);
   }
-  
+
+  .tips-header h1{
+    font-size: 4rem; /* Responsive font size */
+    }
+
+  .tips .tip-desc{
+    font-size: 1.5rem;
+  }
 }
 
-@media (max-width:1920px) and (max-height: 1080px) {
+@media (min-width:1920px) and (max-height: 1080px) {
   .container {
-    margin-left: clamp(80vh, 103vh, 120vh);
+    margin-right: clamp(-100vw, -46vw, 120vw);
     height: clamp(70vh, 84vh, 90vh);
   }
 
@@ -520,37 +730,86 @@ body {
   }
 
   .line-h1{
-    top: clamp(30vh, 37vh, 37vh);
+    top: clamp(30vh, 34vh, 37vh);
   }
 
   .line-h2{
-    top: clamp(30vh, 60vh, 67vh);
+    top: clamp(30vh, 58vh, 67vh);
   }
 
   .line-vertical {
-    top: clamp(30vh, 48vh, 50vh);
+    top: clamp(30vh, 46vh, 50vh);
+    width: 57%;
   }
 
   .tips-container .glasses {
-    left: clamp(50vh, 92vh, 115vh);
-    top: clamp(10vh, 12vh, 16vh);
+    left: clamp(50vh, 94vh, 115vh);
+    top: clamp(10vh, 9vh, 16vh);
   }
 
   .tips-container .list {
-    left: clamp(50vh, 95vh, 115vh);
-    top: clamp(30vh, 39.5vh, 40vh); 
+    left: clamp(50vh, 96vh, 115vh);
+    top: clamp(30vh, 37vh, 40vh); 
   }
 
   .tips-container .board {
-    left: clamp(50vh, 98vh, 115vh);
-    top: clamp(50vh, 63vh, 65vh);
+    width: 15%;
+    left: clamp(50vh, 99vh, 115vh);
+    top: clamp(50vh, 62vh, 65vh);
+  }
+
+  .tips-header h1{
+    font-size: 3rem; /* Responsive font size */
+    }
+
+  .tips .tip-desc {
+    font-size: 1.37rem; /* Set to your desired font size */
   }
 }
 
-@media (min-width: 1280px) and (min-height:720p){
+@media (max-height:768px){
+  .container {
+    margin-right: clamp(-100vw, -46vw, 120vw);
+  }
 
-}
+  .container textarea {
+    height: clamp(10vh, 13vh, 24vh);
+  }
 
-@media (min-width: 1280px) and (max-width: 1920px) and (min-height: 720px) and (max-height: 1080px){
+  .container button{
+    font-size: .7rem;
+  }
 
+  .tips-container{
+    left: -30vw; /* Keep aligned to the right */
+  }
+
+  .tips .tip-desc{
+    margin-bottom: 8.8vh;
+  }
+
+  .tips .tip-desc, .tip-desc1{
+    font-size: .8rem;
+  }
+
+  .line-h1,
+  .line-h2{
+    width: 75%;
+  }
+
+  .tips-container .glasses {
+    left: clamp(50vh, 94vh, 115vh);
+    top: clamp(10vh, 9vh, 16vh);
+  }
+
+  .tips-container .list {
+    left: clamp(50vh, 96vh, 115vh);
+    top: clamp(30vh, 35vh, 40vh); 
+  }
+
+  .tips-container .board {
+    width: 15%;
+    left: clamp(50vh, 99vh, 115vh);
+    top: clamp(50vh, 60vh, 65vh);
+  }
 }

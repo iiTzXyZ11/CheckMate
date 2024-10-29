@@ -89,18 +89,25 @@
                 }
                 
                 /* Responsive styles based on screen height */
-                @media (max-height: 1080px) {
+                @media (max-height: 768px) {
+                    .custom-file-upload {
+                        font-size: .7rem;
+                        width: 93%;
+                        }
+                }  
+
+                @media (min-height: 1080px) {
                 .custom-file-upload {
                     font-size: 1.2vh;
                     width: 98%;
-                }
+                    }   
                 }
                 
                 @media (min-height: 1081px) {
                 .custom-file-upload {
                     font-size: 1vh;
                     width: 96%;
-                }
+                    }
                 }
                 
             </style>
@@ -110,18 +117,18 @@
     <div class='tips-container'>
         <div class='tips-header'>
             <h1>
-                <img src="static\css\images\tips.png" alt="Tips Image">
+                <img src="static\css\images\tips.png" alt="Tips Image" class="tip-image">
                 TIPS FOR ACCURACY
             </h1>
         </div>
         <div class="tips">
             <div class="tip-section" id="tiph1"> 
                     <h2>Provide a Clear Assignment Prompt</h2>
-                    <p style='font-family: Agrandir;'>Describe the main topic, focus areas, and any themes to address. This allows students to approach the topic in different ways while staying relevant.</p>
+                    <p style='font-family: Agrandir;' class='tip-desc'>Describe the main topic, focus areas, and any themes to address. This allows students to approach the topic in different ways while staying relevant.</p>
                     <h2>List Key Terms, Concepts, and Exceptions</h2>
-                    <p style='font-family: Agrandir;'>Include essential vocabulary and concepts without restricting language, allowing students to use varied expressions while remaining accurate to the topic.</p>
+                    <p style='font-family: Agrandir;' class='tip-desc'>Include essential vocabulary and concepts without restricting language, allowing students to use varied expressions while remaining accurate to the topic.</p>
                     <h2>Clarify Depth of Analysis Expected</h2>
-                    <p style='font-family: Agrandir;'>Specify if students should provide a high-level overview or a deeper analysis. This encourages students to explore different perspectives and levels of detail without straying off-topic.</p>
+                    <p style='font-family: Agrandir;' class='tip-desc1'>Specify if students should provide a high-level overview or a deeper analysis. This encourages students to explore different perspectives and levels of detail without straying off-topic.</p>
             </div>
         </div>
         
