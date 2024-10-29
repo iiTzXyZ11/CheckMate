@@ -295,8 +295,8 @@
     <img src="static\css\images\chessboard.png" alt="Chessboard Image" class="chessboard">
     <div class="top-bar"></div>
     <div class="header">
-        <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="Logo" class="header-logo">
         <div class="header-text">
+            <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="Logo" class="header-logo">
             CHECKMATE
         </div>
 
@@ -307,15 +307,14 @@
         <div class="header-buttons">
             <a href="{{ url_for('contact') }}">
                 <img src="{{ url_for('static', filename='css/images/contact.png') }}" class="contact-icon">
-                <img src="{{ url_for('static', filename='css/images/contact_white.png') }}" class="contact_white-icon">
                 Contact Us
             </a>
             <a href="https://www.youtube.com/watch?v=Oh9f3SV6xh8&list=RDOh9f3SV6xh8&start_radio=1" target="_blank">
                 <img src="{{ url_for('static', filename='css/images/question_mark.png') }}" class="qm-icon">
-                <img src="{{ url_for('static', filename='css/images/question_mark_white.png') }}" class="qm-white-icon">
                 How to Use
             </a>
         </div>
+        
     </div>
 </body>
 </html>
