@@ -1,20 +1,245 @@
-/* MOBILE DEVICES */
-/* Small Mobile */
-@media (max-width: 320px) {
-            
-}
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
-/* Medium Mobile */
-@media (max-width: 375px) {
-    /* Styles for typical smartphones */
-}
+@font-face {
+    font-family: 'Agrandir Wide';
+    src: url('..fonts/Agrandir-WideBlackItalic.woff2') format('woff2'),
+        url('../fonts/Agrandir-WideBlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+    }
 
-/* Large Mobile */
-@media (max-width: 425px) {
-    /* Styles for larger smartphones */
-}
+@font-face {
+    font-family: 'Agrandir';
+    src: url('../fonts/Agrandir-Regular.woff') format('woff'),
+        url('../fonts/Agrandir-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    }
 
-/* Small Tablets and Large Mobiles */
-@media (max-width: 768px) {
-    /* Styles for small tablets and large phones */
-}
+body {
+    font-family: 'Oswald';
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('background.jpg');
+    background-size: cover; /* Changed from cover to contain */
+    background-position: center center; /* Center image on both axes */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    }
+
+.header-bar {
+    background-color: transparent;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    }
+
+.container h2 {
+    margin-top: 20px;
+    }
+
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+    }
+
+.form-container,
+    .criteria-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    }
+
+.criteria-container {
+    margin-right: 20px;
+    }
+
+.criteria-container table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+
+.criteria-container th,
+.criteria-container td {
+    border: 2px solid black;
+    padding: 12px;
+    text-align: center;
+    font-size: 30px;
+    }
+
+.criteria-container th {
+    font-size: 25px;
+    }
+
+.criteria {
+    font-size: 36px;
+    color: #333;
+    padding: 40px;
+    margin: 0 auto;
+    background-color: #d9d9dd;
+    border: 2px solid #3b1a08;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    }
+
+    /* Button Styles */
+.button,
+.link-button,
+.container button[type="submit"],
+.small-button {
+    background-color: #ffffff;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Oswald';
+    margin: 5px 0;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition */
+    font-weight: bold;
+    }
+
+.button:hover,
+.link-button:hover,
+.container button[type="submit"]:hover,
+.small-button:hover {
+    background-color: black;
+    color: #fff;
+    border-color: black;
+    font-weight: bold;
+    }
+
+/* FRONT_PAGE.HTML */
+/* Shared styles */
+.logo {
+    max-width: 33%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    display: block;
+    position: fixed;
+    top: 15vh;
+    margin-left: 6vw;
+    }
+
+
+
+.text-container .subhead {
+    font-family: 'Agrandir Wide';
+    color: white;
+    font-size: 1.2em;
+    }
+
+.text-container .desc {
+    font-family: 'Agrandir';
+    max-width: 100vw;
+    text-align: justify;
+    line-height: 1vw;
+    margin-top: -1.5vh;
+    position:relative;
+    }
+
+.text-container {
+    flex: 1;
+    color: white;
+    text-align: left;
+    position: fixed;
+    left: 58vw;
+    }
+
+.text-container .head{
+    position: relative;
+    width: 28vw;
+    height:18vh;
+    display: flex;           /* Enables flexbox layout */
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    text-align: center;      /* Centers text within the container */
+    margin-bottom: 2vh;
+    }
+
+.head h1 {
+        font-family: 'Oswald';
+        color: black;
+        font-size: 4em;
+        font-style: italic;
+        transform: rotate(-5deg);
+        position: relative;
+        }
+
+.text-container a {
+        font-family: 'Oswald';
+        display: inline-block;
+        border: 4px solid white;
+        background-color: transparent;
+        color: white;
+        text-decoration: none;
+        font-size: 1vw;
+        font-weight: normal;
+        padding: .3vw 1vw;
+        transition: color 0.3s, text-decoration 0.3s, border-color 0.3s;
+        position: fixed;
+    }
+
+.text-container a:hover {
+        font-weight: bold;
+        color: black;
+        text-decoration: underline 1px black;
+        text-underline-offset: 6px;
+        background-color: white;
+        border-color: white;
+        text-decoration-thickness: 2px;
+        transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color 0.3s;
+    }
+
+.disclaimer {
+        font-family: 'Oswald';
+        font-size: 0.8em; 
+        color: white;
+        position: absolute; 
+        bottom: 0vh; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        max-width: 90%; 
+        text-align: center; 
+        padding: 5px 20px; 
+        white-space: nowrap; /* Prevents text wrapping */
+        background: black;
+        border: 4px solid white; 
+        border-radius: 20px; 
+        margin-bottom: 0vh;
+    }
+
+/* Medium Tablets (e.g., iPad, standard Android tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 1024px) {
+/* Styles for medium tablets */
+    .text-container {
+        top: 14.3vw;
+        }
+
+    .head .ribbon {
+        position: absolute;
+        max-width: 100%;
+        }
+
+
+    .desc{
+        width: 28vw;
+        font-size: 1.2em;
+        }
+
+    .logo {
+        max-width: 33%;
+        }
+
+    }
+
+
+/* Small Tablets or Large Phones (e.g., iPad Mini, Galaxy Tab) */
+@media (min-width: 600px) and (max-width: 768px) {
+/* Styles for smaller tablets and large phones */
+    }

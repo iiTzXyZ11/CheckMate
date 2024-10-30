@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CheckMate AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_style.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <style>
         body {
@@ -53,8 +54,10 @@
         <img src="{{ url_for('static', filename='css/images/artificial_intelligence.jpg') }}" alt="CheckMate Image" class="logo">
     </div>
     <div class="text-container">
-        <img src="{{ url_for('static', filename='css/images/ribbon.png') }}" alt="Ribbon" class="ribbon">
-        <h1>CheckMateAI</h1>
+        <div class="head">
+            <img src="{{ url_for('static', filename='css/images/ribbon.png') }}" alt="Ribbon" class="ribbon">
+            <h1>CheckMateAI</h1>
+        </div>
         <p class="subhead">The Ultimate Rook in Your Educational Arsenal</p>
         <p class="desc">CheckMate is an innovative tool that streamlines essay evaluation by using advanced AI technology for accurate grading and insightful feedback. With features like image-to-text conversion, it allows users to upload handwritten work for easy text extraction. Whether you're a student or educator, CheckMate enhances writing skills and simplifies the grading process.</p>
         <a href="{{ url_for('index') }}">Start Scanning Essays</a>
@@ -81,7 +84,7 @@
                 <img src="{{ url_for('static', filename='css/images/question_mark.png') }}" class="qm-icon">
                 How to Use
             </a>
-        </div>
+        </div-->
         
     </div>
 </body>
