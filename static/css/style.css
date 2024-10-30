@@ -136,7 +136,7 @@ body {
 
 .text-container .desc {
   font-family: 'Agrandir';
-  max-width: 100vw;
+  max-width: 100%;
   text-align: justify;
   line-height: 1vw;
   margin-top: -1.5vh;
@@ -201,7 +201,7 @@ body {
   font-size: 0.8em; 
   color: white;
   position: absolute; 
-  bottom: 0vh; 
+  bottom: 1vh; 
   left: 50%; 
   transform: translateX(-50%); 
   max-width: 90%; 
@@ -211,7 +211,7 @@ body {
   background: black;
   border: 4px solid white; 
   border-radius: 20px; 
-  margin-bottom: 0vh;
+  margin-bottom: 1vh;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR DESKTOP------------------------------------------------------------------------------------------------------------------------ */
@@ -235,7 +235,7 @@ body {
   .logo {
     max-width: 33%;
   }
-  
+
 }
 
 /* Media Query for Large Screens (1440px to 1920px) [Large Monitors] */
@@ -292,10 +292,6 @@ body {
   .logo {
     max-width: 32%;
   }
-
-  .disclaimer{
-    margin-bottom: -0vh;
-  }
 }
 
 /* Media Query for Standard Screens (1024px to 1280px) [Small Monitors / Laptops] */
@@ -327,9 +323,6 @@ body {
     max-width: 38%;
   }
 
-  .disclaimer{
-    margin-bottom: -0vh;
-  }
 }
 
 
@@ -395,6 +388,23 @@ body {
     bottom: -20vh; /* Align it at the bottom of the viewport */
     z-index: -1000;
     max-height: 40vh; /* Limit max height */
+  }
+
+  .disclaimer {
+    font-family: 'Oswald';
+    font-size: 0.6vw; 
+    color: white;
+    position: absolute; 
+    bottom: 1vh; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    max-width: 90%; 
+    text-align: center; 
+    padding: 5px 20px; 
+    white-space: nowrap; /* Prevents text wrapping */
+    background: black;
+    border: 4px solid white; 
+    border-radius: 20px; 
   }
 
   .header-buttons {
@@ -497,6 +507,23 @@ body {
     max-height: 40vh; /* Limit max height */
   }
 
+  .disclaimer {
+    font-family: 'Oswald';
+    font-size: 0.6vw; 
+    color: white;
+    position: absolute; 
+    bottom: 0vh; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    max-width: 90%; 
+    text-align: center; 
+    padding: 5px 20px; 
+    white-space: nowrap; /* Prevents text wrapping */
+    background: black;
+    border: 4px solid white; 
+    border-radius: 20px; 
+  }
+
   .header-buttons {
     margin-left: auto; /* Push to the right */
     display: flex; /* Flex container */
@@ -592,7 +619,7 @@ body {
     font-size: 0.6vw; 
     color: white;
     position: absolute; 
-    bottom: 1vh; 
+    bottom: 0vh; 
     left: 50%; 
     transform: translateX(-50%); 
     max-width: 90%; 
