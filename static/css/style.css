@@ -19,13 +19,13 @@
 }
 
 body {
+  display:flex;
+  margin: 0;
   font-family: 'Oswald';
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('background.jpg');
   background-size: cover; /* Changed from cover to contain */
-  background-position: center center; /* Center image on both axes */
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 
 .header-bar {
@@ -35,9 +35,6 @@ body {
   text-align: center;
 }
 
-.container h2 {
-  margin-top: 20px;
-}
 
 .button-container {
   text-align: center;
@@ -131,7 +128,7 @@ body {
 .text-container .subhead {
   font-family: 'Agrandir Wide';
   color: white;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 .text-container .desc {
@@ -395,7 +392,7 @@ body {
     font-size: 0.6vw; 
     color: white;
     position: absolute; 
-    bottom: 1vh; 
+    bottom: 0vh; 
     left: 50%; 
     transform: translateX(-50%); 
     max-width: 90%; 
@@ -458,7 +455,7 @@ body {
     left: 0;
     width: 100%;
     height: 3.3vw; /* Use vw for responsiveness */
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     justify-content: space-between;
@@ -798,335 +795,5 @@ body {
     color: black;
   }
 }
-
 /* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
 
-/* INDEX.HTML */
-/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1440p------------------------------------------------------------------------------------------------------------------------ */
-/* General Styles */
-.container {
-  width: 100%;
-  max-width: 43%;
-  margin: 10vh;
-  padding: 0 clamp(15px, 5vw, 30px); /* Responsive horizontal padding */
-  background-color: white;
-  border: 3px solid #282828;
-  border-radius: 3.5vh;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  position: absolute;
-}
-
-.container p,
-.container form {
-  margin: clamp(5px, 1vh, 10px) 0; /* Responsive margin */
-}
-
-.container textarea,
-.container button {
-  font-family: 'Oswald';
-  width: 100%;
-  height: auto;
-  padding: clamp(5px, 2vw, 10px); /* Responsive padding */
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-.container textarea {
-  border: 1px solid #ccc;
-  resize: vertical;
-  background-color: #ededed;
-}
-
-.container button {
-  border: none;
-  background-color: #007BFF;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.container button:hover {
-  background-color: #0056b3;
-}
-
-/* Tips Container */
-.tips-container {
-  width: 100%;
-  max-width: 60%; /* Align with .container max width */
-  margin: 10vh auto; /* Center with auto margins */
-  padding: 3vh 2vh; /* Responsive padding */
-  background-color: #151515;
-  border: 3px solid white;
-  border-radius: 3.5vh;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for uniformity */
-  position: relative; /* Changed to relative for better alignment */
-  display: flex;
-  flex-direction: column; /* Stack header and tips vertically */
-  align-items: center; /* Center items horizontally */
-}
-
-/* Tips Header */
-.tips-header {
-  display: flex; /* Use flexbox to center items inside */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
-  margin-left:20vw;
-}
-
-/* Tips Images */
-.tips-header .tip-image {
-  padding: 0;
-  margin-bottom: 0vh; /* Space from the left */
-  vertical-align: -.8vh;
-  margin-right: 0.5vw; /* Space between image and text */
-  height: auto; /* Responsive image height */
-  width: clamp(5vmin, 8%, 10vmax); /* Responsive image width */
-}
-
-.tips-container h1 {
-  display: inline-block;
-  font-weight: bold;
-  color: white;
-  margin: 0vmax;
-}
-
-/* Tips Text */
-.tips {
-  width: 40%; /* Use full width of the container */
-  font-size: 1.5vh; /* Responsive font size */
-  color: white;
-  margin-right: 12vmax;
-}
-
-.tips h2 {
-  font-family: 'Agrandir Wide';
-}
-
-.tip-section {
-  margin-left: 0.5vw;
-}
-
-
-/* Lines */
-.line-h1,
-.line-h2{
-  content: '';
-  display: block;
-  width: clamp(0%, 78%, 100%); /* Set the desired width of the underline */
-  height: 2px; /* Set the thickness of the underline */
-  background-color: white;
-  position: absolute; /* Position it relative to the heading */
-  z-index: 1000;
-  
-}
-
-.line-h1,
-.line-h2{
-  left: 12.5vw; /* Align to the left */
-}
-
-.line-h1 {
-  top: 34vh; /* Responsive position */
-}
-
-.line-h2 {
-  top: 56.5vh; /* Responsive position */
-}
-
-.line-vertical {
-  position: absolute; /* Position it relative to the heading */
-  width: clamp(0%, 54%, 100%); /* Set the desired width of the underline */
-  height: 2px; /* Set the thickness of the underline */
-  top: clamp(30vh, 46vh, 46vh); /* Responsive position */
-  left: clamp(10vw, 53vh, 56vh); /* Align to the left */
-  transform: rotate(90deg);
-  z-index: 1000;
-  background-color: white;
-}
-
-/* Images in Tips Container */
-.tips-container .glasses,
-.tips-container .list,
-.tips-container .board {
-  position: absolute;
-}
-
-.tips-container .glasses {
-  width: clamp(15vh, 20%, 25vh);
-
-}
-
-.tips-container .list {
-  width: clamp(15vh, 15%, 25vh);
-  left: clamp(50vh, 93vh, 115vh);
-  top: clamp(30vh, 36.5vh, 40vh);  
-}
-
-.tips-container .board {
-  width: clamp(15vh, 20%, 25vh);
-  left: clamp(50vh, 93vh, 115vh);
-  top: clamp(50vh, 52vh, 65vh);
-}
-
-/* Media Queries */
-@media (min-width: 2560px) and (max-height: 1440px) {
-  .container {
-    max-width: 47%;
-    margin-left: clamp(80vh, 107vh, 120vh);
-    height: clamp(70vh, 80vh, 90vh);
-    overflow-y: auto;
-  }
-
-  .container textarea {
-    height: clamp(20vh, 24vh, 30vh); /* Height adjusted for better visibility */
-  }
-
-  .tips-container {
-    height: clamp(70vh, 74vh, 80vh); /* Responsive height */
-    right: 31vmax; /* Keep aligned to the right */
-  }
-
-  .tip-section p {
-    font-size: clamp(1rem, 1.2vw, 1.5rem); /* Responsive scaling based on viewport width */
-    margin-bottom: 8vh; /* Space between heading and paragraph */
-  }
-
-  /* Images in Tips Container */
-  .tips-container .glasses,
-  .tips-container .list,
-  .tips-container .board {
-    position: absolute;
-  }
-
-  .tips-container .glasses {
-    width: clamp(15vh, 20%, 25vh);
-    left: clamp(50vh, 91vh, 115vh);
-    top: clamp(10vh, 11vh, 16vh);
-  }
-
-  .tips-container .list {
-    width: clamp(15vh, 15%, 25vh);
-    left: clamp(50vh, 93vh, 115vh);
-    top: clamp(30vh, 36.5vh, 40vh);  
-  }
-
-  .tips-container .board {
-    width: clamp(15vh, 14%, 25vh);
-    left: clamp(50vh, 96vh, 115vh);
-    top: clamp(50vh, 60vh, 65vh);
-  }
-
-  .tips-header h1{
-    font-size: 4rem; /* Responsive font size */
-    }
-
-  .tips .tip-desc{
-    font-size: 1.5rem;
-  }
-}
-
-@media (min-width:1920px) and (max-height: 1080px) {
-  .container {
-    margin-right: clamp(-100vw, -46vw, 120vw);
-    height: clamp(70vh, 84vh, 90vh);
-  }
-
-  .tips-container {
-    height: clamp(70vh, 78vh, 90vh); /* Responsive height */
-    right: 30vw; /* Keep aligned to the right */
-  }
-
-  .container textarea {
-    height: clamp(15vh, 18vh, 24vh);
-  }
-
-  .tip-section p {
-    font-size: clamp(1rem, 1.1vw, 1.5rem); /* Responsive scaling based on viewport width */
-    margin-bottom: 4vh; /* Space between heading and paragraph */
-  }
-
-  .line-h1{
-    top: clamp(30vh, 34vh, 37vh);
-  }
-
-  .line-h2{
-    top: clamp(30vh, 58vh, 67vh);
-  }
-
-  .line-vertical {
-    top: clamp(30vh, 46vh, 50vh);
-    width: 57%;
-  }
-
-  .tips-container .glasses {
-    left: clamp(50vh, 94vh, 115vh);
-    top: clamp(10vh, 9vh, 16vh);
-  }
-
-  .tips-container .list {
-    left: clamp(50vh, 96vh, 115vh);
-    top: clamp(30vh, 37vh, 40vh); 
-  }
-
-  .tips-container .board {
-    width: 15%;
-    left: clamp(50vh, 99vh, 115vh);
-    top: clamp(50vh, 62vh, 65vh);
-  }
-
-  .tips-header h1{
-    font-size: 3rem; /* Responsive font size */
-    }
-
-  .tips .tip-desc {
-    font-size: 1.37rem; /* Set to your desired font size */
-  }
-}
-
-@media (max-height:768px){
-  .container {
-    margin-right: clamp(-100vw, -46vw, 120vw);
-  }
-
-  .container textarea {
-    height: clamp(10vh, 13vh, 24vh);
-  }
-
-  .container button{
-    font-size: .7rem;
-  }
-
-  .tips-container{
-    left: -30vw; /* Keep aligned to the right */
-  }
-
-  .tips .tip-desc{
-    margin-bottom: 8.8vh;
-  }
-
-  .tips .tip-desc, .tip-desc1{
-    font-size: .8rem;
-  }
-
-  .line-h1,
-  .line-h2{
-    width: 75%;
-  }
-
-  .tips-container .glasses {
-    left: clamp(50vh, 94vh, 115vh);
-    top: clamp(10vh, 9vh, 16vh);
-  }
-
-  .tips-container .list {
-    left: clamp(50vh, 96vh, 115vh);
-    top: clamp(30vh, 35vh, 40vh); 
-  }
-
-  .tips-container .board {
-    width: 15%;
-    left: clamp(50vh, 99vh, 115vh);
-    top: clamp(50vh, 60vh, 65vh);
-  }
-}

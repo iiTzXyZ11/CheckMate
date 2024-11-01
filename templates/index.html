@@ -1,145 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CheckMate AI</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="E:/Text-Summarizer-and-Grader-1/static/css/style.css">
-    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CheckMate AI</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_test_style.css') }}">
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-text">
+                <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="CheckMate Logo">
+                CHECKMATE
+            </div>
     
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #1c1c1c;
-            margin: 0;
-            padding: 20px;
-            font-family: 'Oswald';
-            overflow-y: hidden;
-        }
-    </style>
+            <nav class="home-page">
+                Home Page 
+            </nav>
+    
+            <div class="header-buttons">
+                <a href="{{ url_for('contact') }}" class="header-link">
+                    <img src="{{ url_for('static', filename='css/images/contact.png') }}" class="contact-icon" alt="Contact Icon">
+                    Contact Us
+                </a>
+                <a href="https://www.youtube.com/watch?v=Oh9f3SV6xh8&list=RDOh9f3SV6xh8&start_radio=1" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="header-link">
+                    <img src="{{ url_for('static', filename='css/images/question_mark.png') }}" class="qm-icon" alt="Help Icon">
+                    How to Use
+                </a>
+            </div>
+        </header>
+        <div class="top-bar"></div>
+        <div class="content-wrapper">
+            
+            <div class="container">
 
-    <div class="header">
+                <div class="box">
+                    <h2>Student Output:</h2>
+                    <form action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data"> 
+                        <p>Enter the student's work below (you can either type the essay or upload an image):</p>
+                        <textarea name="essay" placeholder="Enter your essay here (optional)"></textarea>
+                        <p>Or upload an image of the handwritten work:</p>
+                        <label class="custom-file-upload">
+                            Choose a file
+                            <input type="file" name="image" accept="image/*" style="display: none;" />
+                        </label>
+                    </form>
+                </div>
+                <div class="box1">
+                    <h2 style="color: black">Context and Parameters:</h2>
+                    <form action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data"> 
+                        <p>Enter the context for your essay below (Provide background information, the main topic or question of your essay, and any specific guidelines that will help in assessing the essay):</p>
+                        <textarea name="context" placeholder="Enter context here" required></textarea>                      
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
         
-        <div class="header-text">
-            <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="Logo" class="header-logo">
-            CHECKMATE
-        </div>
-        <div class="home-page"> Submition Page </div>
-        <div class="header-buttons">
-            <a href="{{ url_for('contact') }}">
-                
-                Contact Us
-                <img src="{{ url_for('static', filename='css/images/contact.png') }}" class="contact-icon">
-            </a>
-            <a href="https://www.youtube.com/watch?v=Oh9f3SV6xh8&list=RDOh9f3SV6xh8&start_radio=1" target="_blank">
-                <img src="{{ url_for('static', filename='css/images/question_mark.png') }}" class="qm-icon">
-                How to Use
-            </a>
-        </div>
-    </div>
+            
 
-    <img src="static\css\images\chessboard.png" alt="Chessboard Image" class="chessboard">
-    <div class="top-bar"></div>
+            <div class="tips-wrapper">
+                <div class="tips-container">
+                    <div class="tips-header">
+                        <img src="static/css/images/tips.png" alt="Tips Image" loading="lazy">
+                        <h1>TIPS FOR ACCURACY</h1>
+                    </div>
+                
+                        <div class="tips-grid">
+                            <div class="tip1">
+                                <h2>Provide a Clear Assignment Prompt</h2>
+                                <p>Describe the main topic, focus areas, and any themes to address. This allows students to approach the topic in different ways while staying relevant.</p>
+                            </div>
 
-    <div class="container">
-        {% if error %}
-            <p class="error" style="color: red;">{{ error }}</p>
-        {% endif %}
-    
-        <h2 style="color: black; margin-bottom: -10px;">Context and Parameters:</h2>
-        <p>Enter the context for your essay below (Provide background information, the main topic or question of your essay, and any specific guidelines that will help in assessing the essay):</p>
-        <form action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data">
-            <textarea name="context" placeholder="Enter context here" required></textarea>
-            <h2 style="color: black; margin-bottom: -10px;">Student Output:</h2>
-            <p>Enter the student's work below (you can either type the essay or upload an image):</p>
-            <textarea name="essay" placeholder="Enter your essay here (optional)" ></textarea>
-            <p>Or upload an image of the handwritten work:</p>
-            <label class="custom-file-upload">
-                Choose a file
-                <input type="file" name="image" accept="image/*" style="display: none;" />
-            </label>
-            <button type="submit">Submit</button>
-            <style>
-                .custom-file-upload {
-                    padding: 10px 18px;
-                    border: 2px solid #000; /* Border color */
-                    border-radius: 10px;
-                    color: black; /* Text color */
-                    background-color: #fff; /* Background color */
-                    text-decoration: none;
-                    cursor: pointer;
-                    font-weight: bold;
-                    margin: 15px 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                    white-space: nowrap;
-                    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
-                }
-                
-                .custom-file-upload:hover {
-                background-color: black; /* Hover background color */
-                color: white; /* Hover text color */
-                border-color: transparent; /* Hover border color */
-                }
-                
-                /* Responsive styles based on screen height */
-                @media (max-height: 768px) {
-                    .custom-file-upload {
-                        font-size: .7rem;
-                        width: 93%;
-                        }
-                }  
+                            <div class="tip2">
+                                <img class="glasses" src="static/css/images/tips/Glasses.png" alt="Glasses Icon" loading="lazy">
+                            </div>
 
-                @media (min-height: 1080px) {
-                .custom-file-upload {
-                    font-size: 1.2vh;
-                    width: 98%;
-                    }   
-                }
-                
-                @media (min-height: 1081px) {
-                .custom-file-upload {
-                    font-size: 1vh;
-                    width: 96%;
-                    }
-                }
-                
-            </style>
-        </form>
-    </div>
+                            <div class="tip3">
+                                <h2>List Key Terms, Concepts, and Exceptions</h2>
+                                <p>Include essential vocabulary and concepts without restricting language, allowing students to use varied expressions while remaining accurate to the topic.</p-->
+                            </div>
 
-    <div class='tips-container'>
-        <div class='tips-header'>
-            <h1>
-                <img src="static\css\images\tips.png" alt="Tips Image" class="tip-image">
-                TIPS FOR ACCURACY
-            </h1>
-        </div>
-        <div class="tips">
-            <div class="tip-section" id="tiph1"> 
-                    <h2>Provide a Clear Assignment Prompt</h2>
-                    <p style='font-family: Agrandir;' class='tip-desc'>Describe the main topic, focus areas, and any themes to address. This allows students to approach the topic in different ways while staying relevant.</p>
-                    <h2>List Key Terms, Concepts, and Exceptions</h2>
-                    <p style='font-family: Agrandir;' class='tip-desc'>Include essential vocabulary and concepts without restricting language, allowing students to use varied expressions while remaining accurate to the topic.</p>
-                    <h2>Clarify Depth of Analysis Expected</h2>
-                    <p style='font-family: Agrandir;' class='tip-desc1'>Specify if students should provide a high-level overview or a deeper analysis. This encourages students to explore different perspectives and levels of detail without straying off-topic.</p>
+                            <div class="tip4">
+                                <img class="list" src="static/css/images/tips/List.png" alt="List Icon" loading="lazy">
+                            </div>
+
+                            <div class="tip5">
+                                <h2>Clarify Depth of Analysis Expected</h2>
+                                <p>Specify if students should provide a high-level overview or a deeper analysis. This encourages students to explore different perspectives and levels of detail without straying off-topic.</p-->
+                            </div>
+
+                            <div class="tip6">
+                                <img class="board" src="static/css/images/tips/Board.png" alt="Board Image" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
             </div>
         </div>
-        
-        <div class="line-h1"></div>
-        <div class="line-h2"></div> 
-        <div class="line-vertical"></div>
-
-        <img class="glasses" src="static\css\images\tips\Glasses.png">
-        <img class="list" src="static\css\images\tips\List.png">
-        <img class="board" src="static\css\images\tips\Board.png">
-    </div>
-</body>
+    </body>
 </html>
