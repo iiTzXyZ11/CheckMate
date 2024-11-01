@@ -7,9 +7,15 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_style.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_test_style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/test_style.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     </head>
     <body>
+
+        <img src="{{ url_for('static', filename='css/images/chessboard.png') }}" 
+        alt="Decorative Chessboard" 
+        class="chessboard">
+
         <header class="header">
             <div class="header-text">
                 <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="CheckMate Logo">
@@ -65,11 +71,7 @@
 
             <div class="tips-wrapper">
                 <div class="tips-container">
-                    <div class="tips-header">
-                        <img src="static/css/images/tips.png" alt="Tips Image" loading="lazy">
-                        <h1>TIPS FOR ACCURACY</h1>
-                    </div>
-                
+                    <h1>TIPS FOR ACCURACY</h1>
                         <div class="tips-grid">
                             <div class="tip1">
                                 <h2>Provide a Clear Assignment Prompt</h2>
@@ -82,7 +84,7 @@
 
                             <div class="tip3">
                                 <h2>List Key Terms, Concepts, and Exceptions</h2>
-                                <p>Include essential vocabulary and concepts without restricting language, allowing students to use varied expressions while remaining accurate to the topic.</p-->
+                                <p>Include essential vocabulary and concepts without restricting language, allowing students to use varied expressions while remaining accurate to the topic.</p>
                             </div>
 
                             <div class="tip4">
@@ -91,16 +93,15 @@
 
                             <div class="tip5">
                                 <h2>Clarify Depth of Analysis Expected</h2>
-                                <p>Specify if students should provide a high-level overview or a deeper analysis. This encourages students to explore different perspectives and levels of detail without straying off-topic.</p-->
+                                <p>Specify if students should provide a high-level overview or a deeper analysis. This encourages students to explore different perspectives and levels of detail without straying off-topic.</p>
                             </div>
 
                             <div class="tip6">
                                 <img class="board" src="static/css/images/tips/Board.png" alt="Board Image" loading="lazy">
-                            </div>
+                            </div-->
                         </div>
                     </div>
                 </div>
-        
             </div>
         </div>
     </body>
