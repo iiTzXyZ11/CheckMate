@@ -3,13 +3,87 @@
 <head>
     <title>Essay Scanner Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_style.css') }}">
 </head>
 <body>
-    <div class="header-bar">
-        <h1>Essay Scanner Results</h1>
-    </div>
+    <style>
+        body{
+            display:flex;
+            margin: 10rem 10rem 5rem 10rem;
+        }
 
-    <div class="container">
+        .results-container{
+            justify-content: center;
+            align-self: center;
+            max-width: 100%;
+            background: white;
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 15px;
+        }
+
+        .again-container {
+            background: transparent;
+            display: flex;
+            align-items: center; /* Align items vertically in the center */
+            justify-content: center; /* Center items horizontally */
+            width: 100%;
+            height: 50px; /* Example height; adjust as needed */
+        }
+        
+        .again-container button {
+            width: 200%; /* Fill the container width */
+            height: 100%; /* Fill the container height */
+            background-color: #ffffff;
+            border: 2px solid black;
+            border-radius: 10px;
+            color: black;
+            padding: 10px; /* Padding can be adjusted or removed */
+            text-decoration: none;
+            cursor: pointer;
+            font-family: 'Oswald';
+            margin: 5px 0; /* This margin might create extra space; consider adjusting it */
+            display: inline-block; /* This can stay, but if height is set to 100%, it may not be necessary */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition */
+            font-weight: bold;
+        }
+        
+
+
+    </style>
+
+    <img src="{{ url_for('static', filename='css/images/chessboard.png') }}" 
+    alt="Decorative Chessboard" 
+    class="chessboard">
+    <div class="top-bar"></div>
+
+    <header class="header">
+        
+        <div class="header-text">
+            <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="CheckMate Logo">
+            <span>CHECKMATE
+        </div>
+
+        <nav class="home-page">
+            Home Page 
+        </nav>
+
+        <div class="header-buttons">
+            <a href="{{ url_for('contact') }}" class="header-link">
+                <img src="{{ url_for('static', filename='css/images/contact.png') }}" class="contact-icon" alt="Contact Icon">
+                Contact Us
+            </a>
+            <a href="https://www.youtube.com/watch?v=Oh9f3SV6xh8&list=RDOh9f3SV6xh8&start_radio=1" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="header-link">
+                <img src="{{ url_for('static', filename='css/images/question_mark.png') }}" class="qm-icon" alt="Help Icon">
+                How to Use
+            </a>
+        </div>
+    </header>
+
+    <div class="results-container">
         <h2>Original Text:</h2>
         <p>{{ essay }}</p>
 
@@ -26,7 +100,7 @@
             {% endfor %}
         </ul>
 
-        <div class="button-container">
+        <div class="again-container">
             <a href="/" class="button">Try Again</a>
         </div>
     </div>

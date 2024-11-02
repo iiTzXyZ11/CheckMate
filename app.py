@@ -1,5 +1,5 @@
 import os  # Standard library
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, request, session
 from g4f.client import Client  # GPT-based client
 from g4f.Provider.GeminiPro import GeminiPro
 
@@ -15,11 +15,11 @@ image_to_text_client = Client(api_key="AIzaSyDKnjQPE-x6cJGDbsjX3lBGa5V3tp0WArQ",
 # Function to convert image to text using the image-to-text model
 def image_to_text(image_file):
     try:
-        print(f"Received image: {image_file.filename}")
+        print(f"Received the image: {image_file.filename}")
         
         response = image_to_text_client.chat.completions.create(
-            model="gemini-1.5-flash",
-            messages=[{"role": "user", "content": "read the text here"}],
+            model="gemini-1.5-pro-latest",
+            messages=[{"role": "user", "content": "extract the text from this image"}],
             image=image_file  # Ensure this is correct for your API
         )
 
@@ -35,21 +35,25 @@ def image_to_text(image_file):
 
 # Function to summarize text in Filipino using GPT
 def generate_summary(text):
-    if len(text.split()) < 200:
+    if len(text.split()) < 150:
         return "Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita."
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=[{"role": "user", "content": f"Summarize this text in Filipino (make sure to keep the main points in the text):\n\n{text}"}],
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": f"Summarize this text in Filipino (make sure to keep the main points and ideas in the text.):\n\n{text}"}],
         )
 
         if not response.choices:  # type: ignore
+            print("No choices in response for summary.")
             return "No summary could be generated."
 
-        return response.choices[0].message.content.strip() or "No summary could be generated."  # type: ignore
+        summary_content = response.choices[0].message.content.strip() # type: ignore
+        print(f"Generated summary: {summary_content}")  # Debug print
+        return summary_content or "No summary could be generated."
 
     except Exception as e:
+        print(f"Error during summary generation: {e}")  # Log the error
         return f"An error occurred during summarization: {str(e)}"
 
 # Grade essay functionality
@@ -70,7 +74,7 @@ def grade_essay(essay_text, context_text):
         detailed_breakdown = criterion['detailed_breakdown']
 
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4",
             messages=[{"role": "user",
                         "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. (Do not be too strict when grading. Make considerations so that you wont be too strict. and make it possible to achieve a perfect score if it deserves it, but stick to the context and criteria. Respond in Filipino. And always review your grading) "
                                     f"Use the following context to help inform your grading:\n\n{context_text}\n\n"
@@ -78,12 +82,15 @@ def grade_essay(essay_text, context_text):
                                     f"Essay:\n{truncated_essay}\n\n"
                                     f"Respond in this format: Score: [numeric value]/{criterion['points_possible']} Justification: [justification (20 words max)]"}],
         )
+        
 
         if not hasattr(response, 'choices') or len(response.choices) == 0:  # type: ignore
             return f"Invalid response received for criterion '{criterion['name']}'. No choices were found."
 
         raw_grade = response.choices[0].message.content if response.choices[0].message.content is not None else ""  # type: ignore
         raw_grade = raw_grade.strip()
+        
+        print(raw_grade)
 
         if "Score:" in raw_grade:
             try:
@@ -153,11 +160,11 @@ def index():
         # Check if the essay has at least 200 words
         if len(essay.split()) < 200:
             return render_template('index.html', essay=essay,
-                                error="Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita.")
+                                    error="Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita.")
 
         if not context.strip():  # Check if context is empty or just whitespace
             return render_template('index.html', essay=essay,
-                                error="Error: Please provide context for grading.")
+                                    error="Error: Please provide context for grading.")
 
         return redirect(url_for('set_criteria'))  # Redirect to set_criteria
 
@@ -182,35 +189,42 @@ def process_essay():
 @app.route('/set_criteria', methods=['GET', 'POST'])
 def set_criteria():
     if request.method == 'POST':
+        # Retrieve the criterion details from the form
         criterion_name = request.form['criterion_name']
-        weight = float(request.form['weight']) / 100  # Convert whole number to decimal (e.g., 50 becomes 0.5)
+        weight = float(request.form['weight']) / 100  # Convert to fraction
         points_possible = float(request.form['points_possible'])
         detailed_breakdown = request.form['detailed_breakdown']
 
+        # Create a new criterion entry
         new_criterion = {
             'name': criterion_name,
-            'weight': weight,  # Store as a decimal for backend processing
+            'weight': weight,
             'points_possible': points_possible,
             'detailed_breakdown': detailed_breakdown
         }
 
-        # Store criteria in session
+        # Retrieve existing criteria from the session, or initialize if none exist
         if 'criteria' not in session:
             session['criteria'] = []
-        session['criteria'].append(new_criterion)
+        session['criteria'].append(new_criterion)  # Add the new criterion
+        session.modified = True  # Mark the session as modified
 
-        # Calculate total points possible
-        session['total_points_possible'] = session.get('total_points_possible', 0) + points_possible
+        # Recalculate total points possible
+        session['total_points_possible'] = sum(criterion['points_possible'] for criterion in session['criteria'])
 
-        return redirect(url_for('set_criteria'))  # Redirect to the same page to add more criteria
+        return redirect(url_for('set_criteria'))  # Redirect to the same page to display updated criteria
 
-    return render_template('set_criteria.html')  # Render the set criteria page
+    # Load existing criteria for the GET request
+    criteria = session.get('criteria', [])
+    total_points_possible = session.get('total_points_possible', 0)
+
+    return render_template('set_criteria.html', criteria=criteria, total_points_possible=total_points_possible)
+
 
 # New route for 'Contact Us'
 @app.route('/contact')  # Define the contact route
 def contact():
     return redirect("https://www.facebook.com/profile.php?id=61567870400304")  # Replace with your actual Facebook page URL
-
 
 # New route for 'How to Use'
 @app.route('/how-to-use', methods=['GET'])
