@@ -7,12 +7,12 @@
 </head>
 <body>
     <style>
-        body{
-            display:flex;
+        body {
+            display: flex;
             margin: 10rem 10rem 5rem 10rem;
         }
 
-        .results-container{
+        .results-container {
             justify-content: center;
             align-self: center;
             max-width: 100%;
@@ -25,31 +25,28 @@
         .again-container {
             background: transparent;
             display: flex;
-            align-items: center; /* Align items vertically in the center */
-            justify-content: center; /* Center items horizontally */
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            height: 50px; /* Example height; adjust as needed */
+            height: 50px;
         }
         
         .again-container button {
-            width: 200%; /* Fill the container width */
-            height: 100%; /* Fill the container height */
+            width: 200%;
+            height: 100%;
             background-color: #ffffff;
             border: 2px solid black;
             border-radius: 10px;
             color: black;
-            padding: 10px; /* Padding can be adjusted or removed */
+            padding: 10px;
             text-decoration: none;
             cursor: pointer;
             font-family: 'Oswald';
-            margin: 5px 0; /* This margin might create extra space; consider adjusting it */
-            display: inline-block; /* This can stay, but if height is set to 100%, it may not be necessary */
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition */
+            margin: 5px 0;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
             font-weight: bold;
         }
-        
-
-
     </style>
 
     <img src="{{ url_for('static', filename='css/images/chessboard.png') }}" 
@@ -58,10 +55,9 @@
     <div class="top-bar"></div>
 
     <header class="header">
-        
         <div class="header-text">
             <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="CheckMate Logo">
-            <span>CHECKMATE
+            <span>CHECKMATE</span>
         </div>
 
         <nav class="home-page">
@@ -85,23 +81,23 @@
 
     <div class="results-container">
         <h2>Original Text:</h2>
-        <p>{{ essay }}</p>
+        <p>{{ essay }}</p> <!-- Display the original essay -->
 
         <h2>Summary:</h2>
-        <p>{{ summary }}</p>  <!-- Display the summary of the essay -->
+        <p>{{ summary }}</p> <!-- Display the summary of the essay -->
 
         <h2>Grade:</h2>
-        <p>{{ grade.split('\n')[0] }}</p>
+        <p>{{ grade.split('\n')[0] }}</p> <!-- Display the first line as the grade -->
 
         <h2>Justifications:</h2>
         <ul>
             {% for justification in grade.split('\n')[1:] %}
-                <li>{{ justification }}</li>
+                <li>{{ justification }}</li> <!-- List the justifications (if any) -->
             {% endfor %}
         </ul>
 
         <div class="again-container">
-            <a href="/" class="button">Try Again</a>
+            <a href="/" class="button">Try Again</a> <!-- Button to restart the process -->
         </div>
     </div>
 </body>

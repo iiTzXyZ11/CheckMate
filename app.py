@@ -8,11 +8,20 @@ app.secret_key = os.urandom(24)  # Generate a random secret key
 
 # Initialize the GPT client for text generation and grading
 client = Client()
-
-# Initialize a separate client for image-to-text conversion
 image_to_text_client = Client(api_key="AIzaSyDKnjQPE-x6cJGDbsjX3lBGa5V3tp0WArQ", provider=GeminiPro)
 
-# Function to convert image to text using the image-to-text model
+# Model router function to select the appropriate model
+def model_router(task_type, text):
+    # Determine model based on task type and length of text
+    if task_type == "summary" and len(text.split()) > 500:
+        return "gpt-4"
+    elif task_type == "summary" and len(text.split()) <= 500:
+        return "gpt-3.5-turbo"
+    elif task_type == "grading":
+        return "gpt-4"
+    return "gpt-3.5-turbo"  # Default fallback model
+
+# Function to convert image to text
 def image_to_text(image_file):
     try:
         print(f"Received the image: {image_file.filename}")
@@ -20,46 +29,48 @@ def image_to_text(image_file):
         response = image_to_text_client.chat.completions.create(
             model="gemini-1.5-pro-latest",
             messages=[{"role": "user", "content": "extract the text from this image"}],
-            image=image_file  # Ensure this is correct for your API
+            image=image_file
         )
-
-        if hasattr(response, 'choices') and len(response.choices) > 0:  # type: ignore
-            content = response.choices[0].message.content  # type: ignore
-            print(f"Extracted content: {content}")  # Log the extracted content
+        
+        if hasattr(response, 'choices') and len(response.choices) > 0: # type: ignore
+            content = response.choices[0].message.content # type: ignore
+            print(f"Extracted content: {content}")
             return content.strip() if content else "No text could be extracted."
         return "No text could be extracted."
     
     except Exception as e:
-        print(f"Error during image processing: {e}")  # Log the error
+        print(f"Error during image processing: {e}")
         return f"An error occurred during image processing: {str(e)}"
 
-# Function to summarize text in Filipino using GPT
+# Function to summarize text in Filipino
 def generate_summary(text):
     if len(text.split()) < 150:
-        return "Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita."
+        return "Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 150 salita."
 
     try:
+        model = model_router("summary", text)
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": f"Summarize this text in Filipino (make sure to keep the main points and ideas in the text.):\n\n{text}"}],
+            model=model,
+            messages=[{"role": "user", "content": f"Summarize this text in Filipino:\n\n{text}",}]
+            
         )
 
-        if not response.choices:  # type: ignore
+        if not response.choices: # type: ignore
             print("No choices in response for summary.")
             return "No summary could be generated."
 
         summary_content = response.choices[0].message.content.strip() # type: ignore
-        print(f"Generated summary: {summary_content}")  # Debug print
+        print(f"Generated summary: {summary_content}")
         return summary_content or "No summary could be generated."
 
     except Exception as e:
-        print(f"Error during summary generation: {e}")  # Log the error
+        print(f"Error during summary generation: {e}")
         return f"An error occurred during summarization: {str(e)}"
 
-# Grade essay functionality
+# Grade essay function
 def grade_essay(essay_text, context_text):
-    if len(essay_text.split()) < 200:
-        return "Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita."
+    if len(essay_text.split()) < 150:
+        return "Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 150 salita."
 
     criteria = session.get('criteria', [])
     if not criteria:
@@ -69,47 +80,60 @@ def grade_essay(essay_text, context_text):
     total_points_received = 0
     justifications = {}
 
+    # Collect grades per criterion
+    grades_per_criterion = []
+
     for criterion in criteria:
         truncated_essay = essay_text[:1000]
         detailed_breakdown = criterion['detailed_breakdown']
 
+        # Modify the prompt to ask the AI for a grade per criterion
         response = client.chat.completions.create(
             model="gpt-4",
-            messages=[{"role": "user",
-                        "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. (Do not be too strict when grading. Make considerations so that you wont be too strict. and make it possible to achieve a perfect score if it deserves it, but stick to the context and criteria. Respond in Filipino. And always review your grading) "
-                                    f"Use the following context to help inform your grading:\n\n{context_text}\n\n"
-                                    f"Here is the detailed breakdown for this criterion:\n\n{detailed_breakdown}\n\n"
-                                    f"Essay:\n{truncated_essay}\n\n"
-                                    f"Respond in this format: Score: [numeric value]/{criterion['points_possible']} Justification: [justification (20 words max)]"}],
+            messages=[{
+                "role": "user",
+                "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. "
+                           f"Do not be too strict when grading. Respond in Filipino. And always review your grading. "
+                           f"Consider the following detailed breakdown:\n{detailed_breakdown}\n"
+                           f"Essay:\n{truncated_essay}\n\n"
+                           f"Use the context below to inform your grading:\n\n{context_text}\n\n"
+                           f"Provide the grade for this criterion in the following format: "
+                           f"Grade: [numeric value]/{criterion['points_possible']} Justification: [brief justification (max 20 words)]."
+            }]  
         )
-        
 
-        if not hasattr(response, 'choices') or len(response.choices) == 0:  # type: ignore
+        if not hasattr(response, 'choices') or len(response.choices) == 0: # type: ignore
             return f"Invalid response received for criterion '{criterion['name']}'. No choices were found."
 
-        raw_grade = response.choices[0].message.content if response.choices[0].message.content is not None else ""  # type: ignore
-        raw_grade = raw_grade.strip()
-        
-        print(raw_grade)
+        raw_grade = response.choices[0].message.content.strip()  # type: ignore
+        print(f"Raw grade for {criterion['name']}: {raw_grade}")  # Debug print
 
-        if "Score:" in raw_grade:
-            try:
-                score_part = raw_grade.split("Score:")[1].split("/")[0].strip()
-                points_received = float(score_part)
-                justification = raw_grade.split("Justification:")[1].strip() if "Justification:" in raw_grade else "No justification provided."
-                
-                justifications[criterion['name']] = justification
-                total_points_received += points_received
-            except (ValueError, IndexError) as e:
-                print(f"Error while parsing: {e}")
-                return f"Invalid grade format received: {raw_grade}"
-        else:
-            return f"Invalid grade format received: {raw_grade}"
+        if "Grade:" not in raw_grade or "Justification:" not in raw_grade:
+            return f"Invalid grade format received for criterion '{criterion['name']}'. Expected 'Grade: [score]/[total] Justification: [text]'"
+
+        try:
+            # Extract the grade and justification from the raw response
+            grade_part = raw_grade.split("Grade:")[1].split("Justification:")[0].strip()
+            justification_part = raw_grade.split("Justification:")[1].strip()
+
+            # Extract the numeric grade (before the slash)
+            points_received = float(grade_part.split("/")[0].strip())
+
+            # Save justification
+            justification = justification_part if justification_part else "No justification provided."
+            justifications[criterion['name']] = justification
+            total_points_received += points_received
+
+            # Save the grade per criterion
+            grades_per_criterion.append(f"Criterion: {criterion['name']} - Grade: {points_received}/{criterion['points_possible']} - Justification: {justification}")
+        except (ValueError, IndexError) as e:
+            print(f"Error while parsing grade for {criterion['name']}: {e}")
+            return f"Error parsing grade for criterion '{criterion['name']}': {str(e)}"
 
     if total_points_possible == 0:
         return "No valid criteria to grade the essay."
 
-    # Calculate percentage and letter grade
+    # Calculate total percentage and letter grade
     percentage = (total_points_received / total_points_possible) * 100
     letter_grade = (
         "A+" if percentage >= 98 else
@@ -123,7 +147,8 @@ def grade_essay(essay_text, context_text):
         "D" if percentage >= 75 else "F"
     )
 
-    justification_summary = "\n".join([f"{criterion['name']}: {justifications[criterion['name']]}" for criterion in criteria if criterion['name'] in justifications])
+    # Format the final output including grades per criterion
+    justification_summary = "\n".join(grades_per_criterion)
 
     return (f"Draft Grade: {letter_grade}\n"
             f"Draft Score: {total_points_received}/{total_points_possible}\n\n"
@@ -157,10 +182,10 @@ def index():
         # Store the original text in the session
         session['original_text'] = essay  
 
-        # Check if the essay has at least 200 words
-        if len(essay.split()) < 200:
+        # Check if the essay has at least 150 words
+        if len(essay.split()) < 150:
             return render_template('index.html', essay=essay,
-                                    error="Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 200 salita.")
+                                    error="Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 150 salita.")
 
         if not context.strip():  # Check if context is empty or just whitespace
             return render_template('index.html', essay=essay,
@@ -219,6 +244,12 @@ def set_criteria():
     total_points_possible = session.get('total_points_possible', 0)
 
     return render_template('set_criteria.html', criteria=criteria, total_points_possible=total_points_possible)
+
+@app.route('/clear_session', methods=['POST'])
+def clear_session():
+    session.pop('criteria', None)  # Remove the criteria data from the session
+    session.pop('total_points_possible', None)  # Remove any other session data if needed
+    return redirect(url_for('set_criteria'))  # Redirect to the set criteria page
 
 
 # New route for 'Contact Us'
