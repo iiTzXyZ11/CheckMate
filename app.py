@@ -2,23 +2,24 @@ import os  # Standard library
 from flask import Flask, render_template, redirect, url_for, request, session
 from g4f.client import Client  # GPT-based client
 from g4f.Provider.GeminiPro import GeminiPro
+from g4f.Provider.Liaobots import Liaobots
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Generate a random secret key
 
 # Initialize the GPT client for text generation and grading
-client = Client()
+client = Client(provider=Liaobots)
 image_to_text_client = Client(api_key="AIzaSyDKnjQPE-x6cJGDbsjX3lBGa5V3tp0WArQ", provider=GeminiPro)
 
 # Model router function to select the appropriate model
 def model_router(task_type, text):
     # Determine model based on task type and length of text
     if task_type == "summary" and len(text.split()) > 500:
-        return "gpt-4"
+        return "gpt-4o"
     elif task_type == "summary" and len(text.split()) <= 500:
         return "gpt-3.5-turbo"
     elif task_type == "grading":
-        return "gpt-4"
+        return "gpt-4o"
     return "gpt-3.5-turbo"  # Default fallback model
 
 # Function to convert image to text
@@ -89,7 +90,7 @@ def grade_essay(essay_text, context_text):
 
         # Modify the prompt to ask the AI for a grade per criterion
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[{
                 "role": "user",
                 "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. "
