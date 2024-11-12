@@ -1,8 +1,9 @@
 import os  # Standard library
+import re
 from flask import Flask, render_template, redirect, url_for, request, session
 from g4f.client import Client  # GPT-based client
-from g4f.Provider.GeminiPro import GeminiPro
-from g4f.Provider.Liaobots import Liaobots
+from g4f.Provider import GeminiPro, Liaobots
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Generate a random secret key
@@ -70,69 +71,71 @@ def generate_summary(text):
 
 # Grade essay function
 def grade_essay(essay_text, context_text):
+    # Check essay length once, early return if too short
     if len(essay_text.split()) < 150:
         return "Error: Ang input na teksto ay dapat magkaroon ng hindi bababa sa 150 salita."
 
+    # Retrieve criteria and total points
     criteria = session.get('criteria', [])
     if not criteria:
         return "No criteria set for grading."
 
     total_points_possible = session.get('total_points_possible', 0)
+    if total_points_possible == 0:
+        return "No valid criteria to grade the essay."
+
     total_points_received = 0
     justifications = {}
 
     # Collect grades per criterion
     grades_per_criterion = []
+    
+    # Compile the regular expression pattern for grade and justification extraction
+    grade_pattern = re.compile(r"Grade:\s*(\d+(\.\d+)?)\/(\d+)")
+    justification_pattern = re.compile(r"Justification:\s*(.*)")
 
     for criterion in criteria:
-        truncated_essay = essay_text[:1000]
-        detailed_breakdown = criterion['detailed_breakdown']
+        truncated_essay = essay_text[:1000]  # Limit essay length for context
 
-        # Modify the prompt to ask the AI for a grade per criterion
+        # Modify the prompt for grading
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[{
                 "role": "user",
-                "content": f"Grade the following essay based on the criterion '{criterion['name']}' out of {criterion['points_possible']} points. "
-                           f"Do not be too strict when grading. Respond in Filipino. And always review your grading. "
-                           f"Consider the following detailed breakdown:\n{detailed_breakdown}\n"
-                           f"Essay:\n{truncated_essay}\n\n"
-                           f"Use the context below to inform your grading:\n\n{context_text}\n\n"
-                           f"Provide the grade for this criterion in the following format: "
-                           f"Grade: [numeric value]/{criterion['points_possible']} Justification: [brief justification (max 20 words)]."
-            }]  
+                "content": (f"Grade the following essay based on the criterion '{criterion['name']}' out of "
+                            f"{criterion['points_possible']} points. "
+                            "Do not be too strict when grading. Consider the context and criteria. "
+                            f"Essay:\n{truncated_essay}\n\n"
+                            f"Use the context below to inform your grading:\n\n{context_text}\n\n"
+                            f"Provide the grade for this criterion in the following format: "
+                            f"Grade: [numeric value]/{criterion['points_possible']} Justification: [brief justification (max 20 words)].")
+            }]
         )
 
-        if not hasattr(response, 'choices') or len(response.choices) == 0: # type: ignore
+        # Validate response
+        if not hasattr(response, 'choices') or len(response.choices) == 0:  # type: ignore
             return f"Invalid response received for criterion '{criterion['name']}'. No choices were found."
 
         raw_grade = response.choices[0].message.content.strip()  # type: ignore
         print(f"Raw grade for {criterion['name']}: {raw_grade}")  # Debug print
 
-        if "Grade:" not in raw_grade or "Justification:" not in raw_grade:
+        # Extract grade and justification using regex
+        grade_match = grade_pattern.search(raw_grade)
+        justification_match = justification_pattern.search(raw_grade)
+
+        if not grade_match or not justification_match:
             return f"Invalid grade format received for criterion '{criterion['name']}'. Expected 'Grade: [score]/[total] Justification: [text]'"
 
-        try:
-            # Extract the grade and justification from the raw response
-            grade_part = raw_grade.split("Grade:")[1].split("Justification:")[0].strip()
-            justification_part = raw_grade.split("Justification:")[1].strip()
+        # Parse the grade and justification
+        points_received = float(grade_match.group(1))
+        justification = justification_match.group(1) if justification_match else "No justification provided."
 
-            # Extract the numeric grade (before the slash)
-            points_received = float(grade_part.split("/")[0].strip())
+        # Save the grade and justification
+        justifications[criterion['name']] = justification
+        total_points_received += points_received
 
-            # Save justification
-            justification = justification_part if justification_part else "No justification provided."
-            justifications[criterion['name']] = justification
-            total_points_received += points_received
-
-            # Save the grade per criterion
-            grades_per_criterion.append(f"Criterion: {criterion['name']} - Grade: {points_received}/{criterion['points_possible']} - Justification: {justification}")
-        except (ValueError, IndexError) as e:
-            print(f"Error while parsing grade for {criterion['name']}: {e}")
-            return f"Error parsing grade for criterion '{criterion['name']}': {str(e)}"
-
-    if total_points_possible == 0:
-        return "No valid criteria to grade the essay."
+        # Save the grade per criterion
+        grades_per_criterion.append(f"Criterion: {criterion['name']} - Grade: {points_received}/{criterion['points_possible']} - Justification: {justification}")
 
     # Calculate total percentage and letter grade
     percentage = (total_points_received / total_points_possible) * 100
