@@ -1,6 +1,5 @@
 import os  # Standard library
 import re
-import platform  # Added to check platform type
 from flask import Flask, render_template, redirect, url_for, request, session
 from g4f.client import Client  # GPT-based client
 from g4f.Provider import GeminiPro
