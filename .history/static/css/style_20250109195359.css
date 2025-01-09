@@ -390,7 +390,7 @@ body {
   }
 
   .title h1{
-    margin-top: clamp(9rem, 15vw, 23rem);
+    margin-top: clamp(9rem, 15vw, 20rem);
     font-size: clamp(1rem, 2.5vw, 3rem);
   }
 
@@ -404,7 +404,7 @@ body {
   }
 
   .stuff a{
-    margin-top: 3rem;
+    margin-top: 0rem;
     font-size: clamp(0.5rem, 1vh, 1rem);
   }
 
