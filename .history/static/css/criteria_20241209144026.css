@@ -1,0 +1,94 @@
+@media (min-width:300px) {
+    .criteria-container {
+        background: white;
+        border: 2px solid black;
+        border-radius: 20px;
+        margin: clamp(.5rem, 2vw, 3rem);
+        padding:2em;
+        margin-top: clamp(2rem, 2vw, 3rem);
+        height: clamp(80vh, -2vw, 100vh);
+    }
+
+    .form-container {
+        margin: 0;
+        border-collapse: collapse;
+    }
+
+    .form-container h2 {
+        margin: 0px;
+        font-size: clamp(1.3rem,1.5vh,2rem);
+    }
+
+    .form-container h3 {
+        margin: 0px;
+        font-size: clamp(1rem,1.5vh,2rem);
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px; /* Ensure space between label and input */
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        width: 99%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    .custom-textarea {
+        height: clamp(10vh, 5vh, 100vh); /* Adjusts for responsiveness */
+        resize: vertical;
+    }
+
+    button {
+        width: 100%;
+        background-color: #ffffff;
+        border: 2px solid black;
+        border-radius: 10px;
+        color: black;
+        padding: 10px 20px;
+        text-decoration: none;
+        cursor: pointer;
+        font-family: 'Oswald';
+        margin: 5px 0;
+        display: inline-block;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        font-weight: bold;
+        font-size: clamp(0.5rem,1.5vh,2rem);
+    }
+
+    button:hover {
+        background-color: black;
+        color: #fff;
+        border-color: black;
+        font-weight: bold;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .criteria-table {
+        width: 100%;
+        margin-top: 0px;
+        border: 2px solid black;
+    }
+
+    .criteria-table th,
+    .criteria-table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+        font-size: clamp(0.6rem,1.5vh,2rem);
+    }
+
+    .criteria-table th {
+        background-color: #f2f2f2;
+    }
+}

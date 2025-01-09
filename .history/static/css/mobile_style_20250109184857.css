@@ -1,0 +1,828 @@
+
+/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR PORTRAIT------------------------------------------------------------------------------------------------------------------------ */
+/* Web Headers, chessboard and disclaimers on all HTMLs */
+/* Large Tablets (e.g., iPad Pro in portrait mode) */
+@media (orientation: portrait) and (min-width: 1024px) and (max-width: 1280px) {
+    /* Styles for large tablets */
+  
+
+    .chessboard {
+        width: 100vw; /* Full viewport width */
+        height: auto; /* Scale proportionally */
+        position: fixed;
+        left: 0;
+        bottom: -1vh; /* Align it at the bottom of the viewport */
+        z-index: -1000;
+        max-height: 40vh; /* Limit max height */
+    }
+
+    .disclaimer {
+        font-size: 0.6em;
+    }
+
+    .logo {
+        top: 6vh;
+        max-width: 55%;
+        left: 20vw;
+    }
+
+    .text-container {
+        display: flex; /* Enable flexbox */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        top: 37vh; /* Adjust vertical position */
+        left: 52%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust for the width of the container */
+        width: 85%; /* Container width */
+        position: absolute; /* Allows for positioning using top and left */
+        height: 50vh;
+    }
+
+    .head h1 {
+        font-size: 2.5em;
+        bottom: 0.2em;
+    }
+
+    .head .ribbon {
+        position: absolute;
+        max-width: 150%;
+    }
+
+    .text-container .subhead {
+        margin-top: -4vh;
+        margin-bottom: 2vh;
+        font-size: 2em;
+    }
+
+    .text-container .desc {
+        width: 100%;
+        font-size: 1.3em;
+        line-height: normal;
+    }
+    
+    .text-container a {
+        margin-top: 1vh;
+        position: relative;
+        font-size: 2em;
+    }
+}
+
+/* Medium Tablets (e.g., iPad, standard Android tablets in portrait mode) */
+@media (orientation: portrait) and (min-width: 768px) and (max-width: 1024px) {  
+    /* Styles for medium tablets */
+    .header,
+    .top-bar {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5vh; /* Use vw for responsiveness */
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .top-bar {
+        top: 6vh;
+        height: 0.5vh; /* Maintain fixed height */
+    }
+
+    .home-page {
+        position: fixed; /* Center horizontally */
+        left: 36.8vw; /* Adjust left for horizontal centering */
+        text-decoration: underline;
+        text-underline-offset: 0.5vh;
+        text-decoration-thickness: 0.08em;
+        top: 1vh;
+    }
+
+    .header-text,
+    .home-page {
+        font-family: 'Oswald';
+        color: black;
+        font-size: 1.2em; /* Responsive font size */
+        text-align: center;
+    }
+        
+    .header-text img {
+        padding: 0;
+        width: 10%; /* Responsive width */
+        max-width: 100%; /* Prevent logo from becoming too large */
+        margin-left: -15vw; /* Space from the left */
+        vertical-align: -0.8vh;
+        margin-right: 0.5vw; /* Space between image and text */
+    }
+
+    .header-buttons {
+        margin-left: auto; /* Push to the right */
+        display: flex; /* Flex container */
+        align-items: center; /* Center vertically */
+        margin-right: 1.3vw; /* Space from the right */
+        font-size: 1.2em;
+    }
+    
+    .header-buttons a {
+        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Oswald';
+        color: black;
+        text-decoration: none; /* Remove underline from links */
+        padding: 0.8vh 1.5vh; /* Add padding */
+        border: 1px solid transparent; /* Optional border for button */
+        border-radius: 1vh;
+        display: flex; /* Align icon and text */
+        align-items: center; /* Center vertically */
+    }
+    
+    .header-buttons a:hover {
+        background-color: black; /* Hover background */
+        color: white; /* Hover text color */
+    }
+    
+    .contact-icon,
+    .qm-icon {
+        width: 3vh; /* Consistent size */
+        height: auto; /* Maintain aspect ratio */
+        margin-right: 1vw; /* Space between icon and text */
+    }
+    
+    .contact-icon {
+        color: black;
+    }
+    
+    .qm-icon {
+        color: black;
+    }
+
+    .chessboard {
+        width: 100vw; /* Full viewport width */
+        height: auto; /* Scale proportionally */
+        position: fixed;
+        left: 0;
+        bottom: 0vh; /* Align it at the bottom of the viewport */
+        z-index: -1000;
+        max-height: 40vh; /* Limit max height */
+    }
+
+    .disclaimer {
+        font-size: 0.6em;
+    }
+
+    .logo {
+        max-width: 50%;
+        left: 20vw;
+    }
+
+    .text-container {
+        display: flex; /* Enable flexbox */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        top: 34vh; /* Adjust vertical position */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust for the width of the container */
+        width: 85%; /* Container width */
+        position: absolute; /* Allows for positioning using top and left */
+        height: 50vh;
+    }
+
+    .head h1 {
+        font-size: 1em;
+        bottom: 0.2em;
+    }
+
+    .head .ribbon {
+        position: absolute;
+        max-width: 150%;
+    }
+
+    .text-container .subhead {
+        margin-top: -4vh;
+        margin-bottom: 2vh;
+        font-size: 1.5em;
+    }
+
+    .text-container .desc {
+        width: 100%;
+        font-size: 1em;
+        line-height: normal;
+    }
+    
+    .text-container a {
+        margin-top: 1vh;
+        position: relative;
+        font-size: 2em;
+    }
+}
+
+/* Extra Large Smartphones */
+@media (min-width: 600px) and (max-width: 768px) {
+    /* Styles for extra large smartphones */
+    .header,
+    .top-bar {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 5vh; /* Use vw for responsiveness */
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        justify-content: space-between;
+        margin:0;
+        }
+
+    .top-bar {
+        top: 6vh;
+        height: .5vh; /* Maintain fixed height */
+        }
+
+    .home-page {
+        position: fixed; /* Center horizontally */
+        left: 35vw; /* Adjust left for horizontal centering */
+        text-decoration: underline;
+        text-underline-offset: 0.5vh;
+        text-decoration-thickness: .08em;
+        top: 1vh;
+        }
+
+    .header-text,
+    .home-page {
+        font-family: 'Oswald';
+        color: black;
+        font-size: 1.3em; /* Responsive font size */
+        text-align: center;
+        }
+        
+    .header-text img {
+        padding: 0;
+        width: 10%; /* Responsive width */
+        max-width: 100%; /* Prevent logo from becoming too large */
+        margin-left: -18vw; /* Space from the left */
+        vertical-align: -0.8vh;
+        margin-right: 0.5vw; /* Space between image and text */
+        }
+    .header-buttons {
+        position: relative;
+        margin-left: auto; /* Push to the right */
+        display: flex; /* Flex container */
+        align-items: center; /* Center vertically */
+        font-size: 1em;
+        white-space: nowrap;
+        right: 0vw;
+        }
+
+    .header-buttons a {
+        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Oswald';
+        color: black;
+        text-decoration: none; /* Remove underline from links */
+        padding: 0.8vh 1.5vh; /* Add padding */
+        border: 1px solid transparent; /* Optional border for button */
+        border-radius: 1vh;
+        display: flex; /* Align icon and text */
+        align-items: center; /* Center vertically */
+        }
+
+    .header-buttons a:hover {
+        background-color: black; /* Hover background */
+        color: white; /* Hover text color */
+        }
+
+    .contact-icon,
+    .qm-icon {
+        width: 2vh; /* Consistent size */
+        height: auto; /* Maintain aspect ratio */
+        margin-right: 1vw; /* Space between icon and text */
+        }
+
+    .contact-icon {
+        color: black;
+        }
+
+    .qm-icon {
+        color: black;
+        }
+
+    .chessboard {
+        width: 150%; /* Full viewport width */
+        height: auto; /* Scale proportionally */
+        position: fixed;
+        left: -40%;
+        bottom: -13vh; /* Align it at the bottom of the viewport */
+        z-index: -1000;
+        max-height: 40vh; /* Limit max height */
+        }
+
+    .disclaimer{
+        font-size: .66em;
+        }
+
+    .logo {
+        top: 10vh;
+        max-width: 80%;
+        left: 6vw;
+        }
+
+    .text-container {
+        display: flex; /* Enable flexbox */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        top: 40vh; /* Adjust vertical position */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust for the width of the container */
+        width: 78%; /* Container width */
+        position: absolute; /* Allows for positioning using top and left */
+        height: auto;
+        }
+
+    .head h1 {
+        font-size: 2em;
+        bottom: 0.2em;
+        }
+
+    .head .ribbon {
+        position: absolute;
+        max-width: 200%;
+        }
+
+    .text-container .subhead{
+        margin-top: -4vh;
+        margin-bottom: 3vh;
+        font-size: 1em;
+        }
+
+    .text-container .desc{
+        width: 100%;
+        font-size: 1em;
+        line-height:normal;
+        }
+    
+    .text-container a{
+        padding: 1vh;
+        margin-top: 1vh;
+        position: relative;
+        font-size: 1.5em;
+        }
+    }
+
+/* Large Smartphones (e.g., iPhone Pro Max, Pixel XL, Galaxy Note) */
+@media (orientation: portrait) and (min-width: 480px) and (max-width: 600px) {
+    .header,
+    .top-bar {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 5vh; /* Use vw for responsiveness */
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        justify-content: space-between;
+        margin:0;
+        }
+
+    .top-bar {
+        top: 6vh;
+        height: .5vh; /* Maintain fixed height */
+        }
+
+    .home-page {
+        position: fixed; /* Center horizontally */
+        left: 35vw; /* Adjust left for horizontal centering */
+        text-decoration: underline;
+        text-underline-offset: 0.5vh;
+        text-decoration-thickness: .08em;
+        top: 1vh;
+        }
+
+    .header-text,
+    .home-page {
+        font-family: 'Oswald';
+        color: black;
+        font-size: 1.3em; /* Responsive font size */
+        text-align: center;
+        }
+        
+    .header-text img {
+        padding: 0;
+        width: 10%; /* Responsive width */
+        max-width: 100%; /* Prevent logo from becoming too large */
+        margin-left: -25vw; /* Space from the left */
+        vertical-align: -0.8vh;
+        margin-right: 0.5vw; /* Space between image and text */
+        }
+    .header-buttons {
+        position: relative;
+        margin-left: auto; /* Push to the right */
+        display: flex; /* Flex container */
+        align-items: center; /* Center vertically */
+        font-size: 1em;
+        white-space: nowrap;
+        right: 0vw;
+        }
+
+    .header-buttons a {
+        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Oswald';
+        color: black;
+        text-decoration: none; /* Remove underline from links */
+        padding: 0.8vh 1.5vh; /* Add padding */
+        border: 1px solid transparent; /* Optional border for button */
+        border-radius: 1vh;
+        display: flex; /* Align icon and text */
+        align-items: center; /* Center vertically */
+        }
+
+    .header-buttons a:hover {
+        background-color: black; /* Hover background */
+        color: white; /* Hover text color */
+        }
+
+    .contact-icon,
+    .qm-icon {
+        width: 2vh; /* Consistent size */
+        height: auto; /* Maintain aspect ratio */
+        margin-right: 1vw; /* Space between icon and text */
+        }
+
+    .contact-icon {
+        color: black;
+        }
+
+    .qm-icon {
+        color: black;
+        }
+
+    .chessboard {
+        width: 150%; /* Full viewport width */
+        height: auto; /* Scale proportionally */
+        position: fixed;
+        left: -40%;
+        bottom: -13vh; /* Align it at the bottom of the viewport */
+        z-index: -1000;
+        max-height: 40vh; /* Limit max height */
+        }
+
+    .disclaimer{
+        font-size: .66em;
+        }
+
+    .logo {
+        top: 10vh;
+        max-width: 80%;
+        left: 6vw;
+        }
+
+    .text-container {
+        display: flex; /* Enable flexbox */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        top: 40vh; /* Adjust vertical position */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust for the width of the container */
+        width: 78%; /* Container width */
+        position: absolute; /* Allows for positioning using top and left */
+        height: auto;
+        }
+
+    .head h1 {
+        font-size: 2em;
+        bottom: 0.2em;
+        }
+
+    .head .ribbon {
+        position: absolute;
+        max-width: 200%;
+        }
+
+    .text-container .subhead{
+        margin-top: -4vh;
+        margin-bottom: 3vh;
+        font-size: 1em;
+        }
+
+    .text-container .desc{
+        width: 100%;
+        font-size: 1em;
+        line-height:normal;
+        }
+    
+    .text-container a{
+        padding: 1vh;
+        margin-top: 1vh;
+        position: relative;
+        font-size: 1.5em;
+        }
+    }
+
+  /* Medium Smartphones (e.g., most iPhones, Galaxy, Pixel models) */
+@media (orientation: portrait) and (min-width: 360px) and (max-width: 480px) {
+    /* Styles for medium smartphones */
+    .header,
+    .top-bar {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 5vh; /* Use vw for responsiveness */
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        justify-content: space-between;
+        margin:0;
+        }
+
+    .top-bar {
+        top: 6vh;
+        height: .5vh; /* Maintain fixed height */
+        }
+
+    .home-page {
+        position: fixed; /* Center horizontally */
+        left: 35vw; /* Adjust left for horizontal centering */
+        text-decoration: underline;
+        text-underline-offset: 0.5vh;
+        text-decoration-thickness: .08em;
+        top: 0.9vh;
+        }
+
+    .header-text,
+    .home-page {
+        font-family: 'Oswald';
+        color: black;
+        font-size: 0.8em; /* Responsive font size */
+        text-align: center;
+        }
+        
+    .header-text img {
+        padding: 0;
+        width: 10%; /* Responsive width */
+        max-width: 100%; /* Prevent logo from becoming too large */
+        margin-left: -20vw; /* Space from the left */
+        vertical-align: -.8vh;
+        margin-right: 0.5vw; /* Space between image and text */
+        }
+    .header-buttons {
+        position: relative;
+        margin-left: auto; /* Push to the right */
+        display: flex; /* Flex container */
+        align-items: center; /* Center vertically */
+        font-size: 0.8em;
+        white-space: nowrap;
+        right: 0vw;
+        }
+
+    .header-buttons a {
+        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Oswald';
+        color: black;
+        text-decoration: none; /* Remove underline from links */
+        padding: 0.8vh 1.5vh; /* Add padding */
+        border: 1px solid transparent; /* Optional border for button */
+        border-radius: 1vh;
+        display: flex; /* Align icon and text */
+        align-items: center; /* Center vertically */
+        }
+
+    .header-buttons a:hover {
+        background-color: black; /* Hover background */
+        color: white; /* Hover text color */
+        }
+
+    .contact-icon,
+    .qm-icon {
+        width: 2vh; /* Consistent size */
+        height: auto; /* Maintain aspect ratio */
+        margin-right: 1vw; /* Space between icon and text */
+        }
+
+    .contact-icon {
+        color: black;
+        }
+
+    .qm-icon {
+        color: black;
+        }
+
+    .chessboard {
+        width: 150%; /* Full viewport width */
+        height: auto; /* Scale proportionally */
+        position: fixed;
+        left: -40%;
+        bottom: -10vh; /* Align it at the bottom of the viewport */
+        z-index: -1000;
+        max-height: 40vh; /* Limit max height */
+        }
+
+    .disclaimer{
+        font-size: 0.4em;
+        }
+
+    .logo {
+        max-width: 50%;
+        left: 20vw;
+        }
+
+    .text-container {
+        display: flex; /* Enable flexbox */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        top: 34vh; /* Adjust vertical position */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust for the width of the container */
+        width: 85%; /* Container width */
+        position: absolute; /* Allows for positioning using top and left */
+        height: 50vh;
+        }
+
+    .head h1 {
+        font-size: 1em;
+        bottom: 0.2em;
+        }
+
+    .head .ribbon {
+        position: absolute;
+        max-width: 150%;
+
+        }
+
+    .text-container .subhead{
+        margin-top: -6vh;
+        margin-bottom: 3vh;
+        font-size: .65em;
+        }
+
+    .text-container .desc{
+        width: 100%;
+        font-size: 0.63em;
+        line-height:normal;
+    }
+    
+    .text-container a{
+        margin-top: 2vh;
+        position: relative;
+        font-size: 1em;
+        }
+    }
+
+  /* Small Smartphones (e.g., older or smaller models) */
+@media (orientation: portrait) and (max-width: 360px) {
+    /* Styles for small smartphones */
+    .header,
+    .top-bar {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 5vh; /* Use vw for responsiveness */
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        justify-content: space-between;
+        margin:0;
+        }
+
+    .top-bar {
+        top: 6vh;
+        height: .5vh; /* Maintain fixed height */
+        }
+
+    .home-page {
+        position: fixed; /* Center horizontally */
+        left: 35vw; /* Adjust left for horizontal centering */
+        text-decoration: underline;
+        text-underline-offset: 0.5vh;
+        text-decoration-thickness: .08em;
+        top: 0.9vh;
+        }
+
+    .header-text,
+    .home-page {
+        font-family: 'Oswald';
+        color: black;
+        font-size: 0.8em; /* Responsive font size */
+        text-align: center;
+        }
+        
+    .header-text img {
+        padding: 0;
+        width: 10%; /* Responsive width */
+        max-width: 100%; /* Prevent logo from becoming too large */
+        margin-left: -20vw; /* Space from the left */
+        vertical-align: -.8vh;
+        margin-right: 0.5vw; /* Space between image and text */
+        }
+    .header-buttons {
+        position: relative;
+        margin-left: auto; /* Push to the right */
+        display: flex; /* Flex container */
+        align-items: center; /* Center vertically */
+        font-size: 0.8em;
+        white-space: nowrap;
+        right: 0vw;
+        }
+
+    .header-buttons a {
+        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Oswald';
+        color: black;
+        text-decoration: none; /* Remove underline from links */
+        padding: 0.8vh 1.5vh; /* Add padding */
+        border: 1px solid transparent; /* Optional border for button */
+        border-radius: 1vh;
+        display: flex; /* Align icon and text */
+        align-items: center; /* Center vertically */
+        }
+
+    .header-buttons a:hover {
+        background-color: black; /* Hover background */
+        color: white; /* Hover text color */
+        }
+
+    .contact-icon,
+    .qm-icon {
+        width: 2vh; /* Consistent size */
+        height: auto; /* Maintain aspect ratio */
+        margin-right: 1vw; /* Space between icon and text */
+        }
+
+    .contact-icon {
+        color: black;
+        }
+
+    .qm-icon {
+        color: black;
+        }
+
+    .chessboard {
+        width: 150%; /* Full viewport width */
+        height: auto; /* Scale proportionally */
+        position: fixed;
+        left: -40%;
+        bottom: -10vh; /* Align it at the bottom of the viewport */
+        z-index: -1000;
+        max-height: 40vh; /* Limit max height */
+        }
+
+    .disclaimer{
+        font-size: 0.4em;
+        }
+
+    .logo {
+        max-width: 50%;
+        left: 20vw;
+        }
+
+    .text-container {
+        display: flex; /* Enable flexbox */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        top: 34vh; /* Adjust vertical position */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust for the width of the container */
+        width: 85%; /* Container width */
+        position: absolute; /* Allows for positioning using top and left */
+        height: 50vh;
+        }
+
+    .head h1 {
+        font-size: 1em;
+        bottom: 0.2em;
+        }
+
+    .head .ribbon {
+        position: absolute;
+        max-width: 150%;
+
+        }
+
+    .text-container .subhead{
+        margin-top: -6vh;
+        margin-bottom: 3vh;
+        font-size: .65em;
+        }
+
+    .text-container .desc{
+        width: 100%;
+        font-size: 0.63em;
+        line-height:normal;
+        }
+    
+    .text-container a{
+        margin-top: 2vh;
+        position: relative;
+        font-size: 1em;
+        }
+    }
+/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */

@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+@font-face {
+  font-family: 'Agrandir Wide';
+  src: url('..fonts/Agrandir-WideBlackItalic.woff2') format('woff2'),
+      url('../fonts/Agrandir-WideBlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Agrandir';
+  src: url('../fonts/Agrandir-Regular.woff') format('woff'),
+      url('../fonts/Agrandir-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  gap: 0rem;
+  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+  margin: 0;
+  font-family: 'Oswald';
+  background-image: url('background.jpg');
+  background-size: cover;
+
+  overflow-x: hidden;
+}
+
+.top-bar{
+  position: absolute;
+  background-color: white;
+  top:clamp(1rem, 80vh, 4.8rem);
+  height: 0.5vh;
+  width: 100%;
+  margin:0;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center; /* Allow items to align themselves */
+  background-color: white;
+  z-index: 1000;
+  padding: 8px;
+  height:fit-content
+}
+
+.header-text {
+  display: flex; /* Make it a flex container */
+  align-items: center; /* Center content vertically */
+  background: transparent;
+  font-size: clamp(1.4rem,80%,2rem);
+}
+
+.header-text p {
+  margin: 0
+}
+
+.header-text img {
+  display: block; /* Ensures the image respects width settings */
+  width: clamp(1.5rem,80%, 2rem); /* Optional: Prevents the image from exceeding a specific size */
+  height: auto; /* Maintains the aspect ratio */
+  margin-left: 3vw; /* Space from the left */
+  margin-right: 1rem; /* Space between image and text */
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.header-buttons {
+  background: transparent;
+  gap: 3vw;
+  display: flex; /* Flex container for its own children */
+  align-items: center; /* Center its own children vertically */
+  font-size: clamp(0.6rem,2vw,1rem);
+  margin-left: auto;
+  margin-right: 1rem;
+
+}
+
+.header-buttons a {
+  transition: border-color 0.3s;
+  font-family: 'Oswald';
+  color: black;
+  text-decoration: none; /* Remove underline from links */
+  padding: 0.8vh 1.5vh; /* Add padding */
+  border: 2px solid transparent; /* Optional border for button */
+  display: flex; /* Align icon and text */
+  align-items: center; /* Center vertically */
+  padding: 5px;
+}
+
+.header-buttons a:hover {
+  border-color: black; /* Hover background */
+}
+
+.main{
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-auto-rows: min-content;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  color:#ffffff;
+  align-items: center;
+}
+
+.top {
+  display: grid;
+  grid-template-rows: 0.3fr 0.3fr;
+  padding: 0vh 2vw;
+  background: transparent;
+}
+
+.head img {
+  display:flex;
+  width:clamp(10rem, 40vw, 50rem); /* Set desired width */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center horizontally within its parent */
+  background-color: transparent;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: orange;
+}
+
+.title {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Ensure the text itself is aligned */
+  background: transparent;
+  background-image: url('images/ribbon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: clamp(9rem, 28vw, 24rem);
+  height: clamp(7.5vh, 13vw, 100vh); /* Ensure sufficient height */
+}
+
+.head h2{
+  margin:0;
+  background: transparent;
+  text-align: center;
+}
+
+.title h1 {
+  margin-bottom: clamp(1rem,4vw, 100rem); /* Remove default margins */
+  color: black;
+  transform: rotate(355deg); /* Keep the rotation */
+  font-size: clamp(1rem, 5vw, 45px); /* Ensure font scales appropriately */
+}
+
+.head h2{
+  font-size: large;
+  margin-bottom: 0.5rem;
+}
+
+.top a{
+  margin-top: 1rem;
+  display: block;
+  align-self: center;
+  justify-self: center;
+  border: 4px solid white;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  font-size: clamp(1rem, 4vw - 2rem, 3rem);
+  padding: .3vw 1vw;
+  transition: color 0.3s, text-decoration 0.3s, border-color 0.3s;
+  width: fit-content;
+}
+
+.top a:hover {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline 1px black;
+  text-underline-offset: 6px;
+  background-color: white;
+  border-color: white;
+  text-decoration-thickness: 2px;
+  transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.top .desc {
+  margin:0;
+  background: transparent;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(10px, 3vw, 20px);
+}
+
+.bottom {
+  display: flex; /* Enable flexbox on the parent container */
+  flex-direction: column; /* Ensure the flex direction is vertical */
+  justify-content: flex-end; /* Align items at the bottom */
+  background: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+.chessboard {
+  width: 100%; /* Full viewport width */
+  height: 100%; /* Scale proportionally */
+}
+
+.disclaimer {
+  position: absolute; /* Allows the disclaimer to be positioned over the chessboard */
+  bottom: 0; /* Aligns the disclaimer at the bottom of the parent container */
+  color: white;
+  background: black;
+  border: 4px solid white; 
+  border-radius: 1rem; 
+  font-family: 'Oswald';
+  font-size: clamp(0.5rem,2vw,0.8rem);
+  align-self: center;
+  text-align: center;
+  padding: 5px;
+  width: auto;
+}
+
+.header-bar {
+  background-color: transparent;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+
+.button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form-container,
+.criteria-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.criteria-container {
+  margin-right: 20px;
+}
+
+.criteria-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.criteria-container th,
+.criteria-container td {
+  border: 2px solid black;
+  padding: 12px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.criteria-container th {
+  font-size: 25px;
+}
+
+.criteria {
+  font-size: 36px;
+  color: #333;
+  padding: 40px;
+  margin: 0 auto;
+  background-color: #d9d9dd;
+  border: 2px solid #3b1a08;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Button Styles */
+.button,
+.link-button,
+.container button[type="submit"],
+.small-button {
+  background-color: #ffffff;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Oswald';
+  margin: 5px 0;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition */
+  font-weight: bold;
+}
+
+.button:hover,
+.link-button:hover,
+.container button[type="submit"]:hover,
+.small-button:hover {
+  background-color: black;
+  color: #fff;
+  border-color: black;
+  font-weight: bold;
+}
+
+/* FRONT_PAGE.HTML */
+/* Shared styles */
+
+.desc{
+  width: 28vw;
+  font-size: 1.2em;
+}
+
+.contact-icon,
+.qm-icon {
+  width: 3vh; /* Consistent size */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 1vh; /* Space between icon and text */
+}
+
+.contact-icon {
+  color: black;
+}
+
+.qm-icon {
+  color: black;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  width: 80%;
+  justify-self: center; /* Centers items horizontally */
+  background: white;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 15px;
+  margin-top: 10vh;
+  font-size: clamp(10px, 3vw, 20px);
+}
+
+.results-container h2{
+  font-size: clamp(1rem, 5vw, 45px); 
+}
+
+
+@media only screen and (min-width: 769px){
+  .main{
+    gap:0;
+  }
+
+  .top {
+    padding: 0;
+    background: transparent;
+  }
+
+  .head{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .head img{
+    background-color: transparent;
+    margin: 0;
+  }
+
+  .title{
+    margin-top: 10vh;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    background-position: center;
+  }
+
+  .title h1{
+    margin-bottom: clamp(1rem, 3vw, 2.5rem);
+  }
+}
