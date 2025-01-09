@@ -5,7 +5,7 @@ from g4f.client import Client  # GPT-based client
 from g4f.Provider import GeminiPro
 from dotenv import load_dotenv
 
-load_dotenv()
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Generate a random secret key
