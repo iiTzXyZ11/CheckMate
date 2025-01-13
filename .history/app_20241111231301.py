@@ -1,13 +1,14 @@
 import os  # Standard library
 from flask import Flask, render_template, redirect, url_for, request, session
 from g4f.client import Client  # GPT-based client
-from g4f.Provider import GeminiPro
+from g4f.Provider.GeminiPro import GeminiPro
+from g4f.Provider.Liaobots import Liaobots
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Generate a random secret key
 
 # Initialize the GPT client for text generation and grading
-client = Client()
+client = Client(provider=Liaobots)
 image_to_text_client = Client(api_key="AIzaSyDKnjQPE-x6cJGDbsjX3lBGa5V3tp0WArQ", provider=GeminiPro)
 
 # Model router function to select the appropriate model

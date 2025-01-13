@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Generate a random secret key
 
 # Initialize the GPT client for text generation and grading
-client = Client()
+client = Client(provider=Liaobots)
 image_to_text_client = Client(api_key="AIzaSyDKnjQPE-x6cJGDbsjX3lBGa5V3tp0WArQ", provider=GeminiPro)
 
 # Model router function to select the appropriate model
