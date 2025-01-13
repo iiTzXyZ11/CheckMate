@@ -5,26 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CheckMate AI</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_style.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_test_style.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/test_style.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     </head>
     <body>
-
-        <img src="{{ url_for('static', filename='css/images/chessboard.png') }}" 
-        alt="Decorative Chessboard" 
-        class="chessboard">
-
         <header class="header">
             <div class="header-text">
                 <img src="{{ url_for('static', filename='css/images/logo_black.jpg') }}" alt="CheckMate Logo">
-                CHECKMATE
+                <p>CHECKMATE</p>
             </div>
-    
-            <nav class="home-page">
-                Home Page 
-            </nav>
     
             <div class="header-buttons">
                 <a href="{{ url_for('contact') }}" class="header-link">
@@ -41,6 +31,7 @@
             </div>
         </header>
         <div class="top-bar"></div>
+    
         <div class="content-wrapper">
             
             <div class="container">

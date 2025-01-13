@@ -1,12 +1,12 @@
 @media (min-width:300px) {
     .criteria-container {
-        display: flex;
-        width: 100%;
         background: white;
         border: 2px solid black;
         border-radius: 20px;
-        margin: 0;
-        padding:3em;
+        margin: clamp(.5rem, 2vw, 3rem);
+        padding:2em;
+        margin-top: clamp(2rem, 2vw, 3rem);
+        height: fit-content;
     }
 
     .form-container {

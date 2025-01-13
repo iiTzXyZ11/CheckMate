@@ -19,13 +19,208 @@
 }
 
 body {
-  display:flex;
+  gap: 0rem;
+  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
   margin: 0;
   font-family: 'Oswald';
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('background.jpg');
-  background-size: cover; /* Changed from cover to contain */
+  background-image: url('background.jpg');
+  background-size: cover;
+
+  overflow-x: hidden;
+}
+
+.top-bar{
+  position: absolute;
+  background-color: white;
+  top:clamp(4.1rem, 25vw, 4.7rem);
+  height: 0.5vh;
+  width: 100%;
+  margin:0;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center; /* Allow items to align themselves */
+  background-color: white;
+  z-index: 1000;
+  padding: 8px;
+  height:fit-content;
+}
+
+.header-text {
+  display: flex; /* Make it a flex container */
+  align-items: center; /* Center content vertically */
+  background: transparent;
+  font-size: clamp(0.4rem,3vh,1rem);
+}
+
+.header-text p {
+  margin: 0
+}
+
+.header-text img {
+  display: block; /* Ensures the image respects width settings */
+  width: clamp(1.5rem,3vh, 2rem); /* Optional: Prevents the image from exceeding a specific size */
+  height: auto; /* Maintains the aspect ratio */
+  margin-left: 3vw; /* Space from the left */
+  margin-right: 1rem; /* Space between image and text */
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+.header-buttons {
+  background: transparent;
+  gap: 3vw;
+  display: flex; /* Flex container for its own children */
+  align-items: center; /* Center its own children vertically */
+  font-size: clamp(0.4rem,3vh,0.9rem);
+  margin-left: auto;
+  margin-right: 1rem;
+
+}
+
+.header-buttons a {
+  transition: border-color 0.3s;
+  font-family: 'Oswald';
+  color: black;
+  text-decoration: none; /* Remove underline from links */
+  padding: 0.8vh 1.5vh; /* Add padding */
+  border: 2px solid transparent; /* Optional border for button */
+  display: flex; /* Align icon and text */
+  align-items: center; /* Center vertically */
+  padding: 5px;
+}
+
+.header-buttons a:hover {
+  border-color: black; /* Hover background */
+}
+
+.main{
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  width: 100%;
+  height: 100vh;
+  color:#ffffff;
+  align-items: center;
+}
+
+.top {
+  margin:0;
+  display: grid;
+  grid-template-rows: 0.3fr 0.3fr;
+  padding: 0vh 2vw;
+  background: transparent;
+}
+
+.head img {
+  display:flex;
+  width:clamp(10rem, 40vw, 50rem); /* Set desired width */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center horizontally within its parent */
+  background-color: transparent;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: transparent;
+}
+
+.title {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Ensure the text itself is aligned */
+  background: transparent;
+  background-image: url('images/ribbon.png');
+  background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size: clamp(9rem, 28vw, 24rem);
+  height: clamp(7.5vh, 13vw, 100vh); /* Ensure sufficient height */
+}
+
+.head h2{
+  margin:0;
+  background: transparent;
+  text-align: center;
+}
+
+.title h1 {
+  margin-bottom: clamp(1rem,4vw, 100rem); /* Remove default margins */
+  color: black;
+  transform: rotate(355deg); /* Keep the rotation */
+  font-size: clamp(1rem, 5vw, 25px); /* Ensure font scales appropriately */
+}
+
+.head h2{
+  font-size: large;
+  margin-bottom: 0.5rem;
+}
+
+.top a{
+  margin-top: 1rem;
+  display: block;
+  align-self: center;
+  justify-self: center;
+  border: 4px solid white;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: .3vw 1vw;
+  transition: color 0.3s, text-decoration 0.3s, border-color 0.3s;
+  width: fit-content;
+}
+
+.top a:hover {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline 1px black;
+  text-underline-offset: 6px;
+  background-color: white;
+  border-color: white;
+  text-decoration-thickness: 2px;
+  transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.top .desc {
+  margin:0;
+  background: transparent;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(10px, 3vw, 20px);
+}
+
+.bottom {
+  display: flex; /* Enable flexbox on the parent container */
+  flex-direction: column; /* Ensure the flex direction is vertical */
+  justify-content: flex-end; /* Align items at the bottom */
+  background: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+.chessboard {
+  width: 100%; /* Full viewport width */
+  height: 100%; /* Scale proportionally */
+}
+
+.disclaimer {
+  position: absolute; /* Allows the disclaimer to be positioned over the chessboard */
+  bottom: 0; /* Aligns the disclaimer at the bottom of the parent container */
+  color: white;
+  background: black;
+  border: 4px solid white; 
+  border-radius: 1rem; 
+  font-family: 'Oswald';
+  font-size: clamp(0.5rem,2vw,0.8rem);
+  align-self: center;
+  text-align: center;
+  padding: 5px;
+  width: auto;
 }
 
 .header-bar {
@@ -112,687 +307,105 @@ body {
 
 /* FRONT_PAGE.HTML */
 /* Shared styles */
-.logo {
-  max-width: 33%;
-  height: auto;
-  pointer-events: none;
-  user-select: none;
-  display: block;
-  position: fixed;
-  top: 15vh;
-  margin-left: 6vw;
-}
 
-
-
-.text-container .subhead {
-  font-family: 'Agrandir Wide';
-  color: white;
-  font-size: 1.2rem;
-}
-
-.text-container .desc {
-  font-family: 'Agrandir';
-  max-width: 100%;
-  text-align: justify;
-  line-height: 1vw;
-  margin-top: -1.5vh;
-  position:relative;
-}
-
-.text-container {
-  flex: 1;
-  color: white;
-  text-align: left;
-  position: fixed;
-  left: 58vw;
-}
-
-.text-container .head{
-  position: relative;
+.desc{
   width: 28vw;
-  height:18vh;
-  display: flex;           /* Enables flexbox layout */
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */
-  text-align: center;      /* Centers text within the container */
-  margin-bottom: 2vh;
+  font-size: 1.2em;
 }
 
-.head h1 {
-  font-family: 'Oswald';
+.contact-icon,
+.qm-icon {
+  width: 3vh; /* Consistent size */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 1vh; /* Space between icon and text */
+}
+
+.contact-icon {
   color: black;
-  font-size: 4em;
-  font-style: italic;
-  transform: rotate(-5deg);
-  position: relative;
 }
 
-.text-container a {
-  font-family: 'Oswald';
-  display: inline-block;
-  border: 4px solid white;
-  background-color: transparent;
-  color: white;
-  text-decoration: none;
-  font-size: 1vw;
-  font-weight: normal;
-  padding: .3vw 1vw;
-  transition: color 0.3s, text-decoration 0.3s, border-color 0.3s;
-  position: fixed;
-}
-
-.text-container a:hover {
-  font-weight: bold;
+.qm-icon {
   color: black;
-  text-decoration: underline 1px black;
-  text-underline-offset: 6px;
-  background-color: white;
-  border-color: white;
-  text-decoration-thickness: 2px;
-  transition: color 0.3s, text-decoration 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
-.disclaimer {
-  font-family: 'Oswald';
-  font-size: 0.8em; 
-  color: white;
-  position: absolute; 
-  bottom: 1vh; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  max-width: 90%; 
-  text-align: center; 
-  padding: 5px 20px; 
-  white-space: nowrap; /* Prevents text wrapping */
-  background: black;
-  border: 4px solid white; 
-  border-radius: 20px; 
-  margin-bottom: 1vh;
+.results-container {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  width: 80%;
+  justify-self: center; /* Centers items horizontally */
+  background: white;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 15px;
+  margin-top: 10vh;
+  font-size: clamp(10px, 3vw, 20px);
 }
 
-/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR DESKTOP------------------------------------------------------------------------------------------------------------------------ */
-/* Media Query for large screens (1920px to 2560px) [Widescreen Monitors] */
-@media (min-width: 1920px) and (max-width: 2900px) {
-  .text-container {
-      top: 14.3vw;
-  }
-
-  .head .ribbon {
-    position: absolute;
-    max-width: 100%;
-  }
-
-
-  .desc{
-    width: 28vw;
-    font-size: 1.2em;
-  }
-
-  .logo {
-    max-width: 33%;
-  }
-
+.results-container h2{
+  font-size: clamp(1rem, 5vw, 45px); 
 }
 
-/* Media Query for Large Screens (1440px to 1920px) [Large Monitors] */
-@media (min-width: 1440px) and (max-width: 1920px){
-  .text-container {
-    top: 14.3vw;
-  }
-
-  .head .ribbon {
-    position: absolute;
-    max-width: 100%;
-  }
-
-  .head h1 {
-    font-size: 3em;
-  }
-
-  .desc{
-    width: 28vw;
-    font-size: 1.2em;
-  }
-
-  .logo {
-    max-width: 33%;
-  }
-
+.desktop{
+  display:none;
 }
 
-
-/* Media Query for Standard Screens (1280px to 1440px) [Standard Monitors] */
-@media (min-width: 1280px) and (max-width: 1440px) {
-  .text-container {
-    top: 30vh;
+@media only screen and (min-width: 720px){
+  #mobile{
+    display:none;
   }
 
-  .head h1{
-    font-size:2.5em;
+  .desktop{
+    display:contents;
   }
 
-  .head .ribbon {
-    position: absolute;
-    max-width: 100%;
+  .top-bar{
+    top:clamp(3.1rem, 8vh, 3.8rem);
   }
 
-  .text-container .subhead{
-    font-size: .8em;
+  .bottom .chessboard{
+    display: none;
   }
 
-  .desc{
-    width: 28vw;
-    font-size: .7em;
+  .disclaimer{
+    border:  solid white; 
+    font-size: clamp(0.4rem,0.7vw,0.8rem);
   }
 
-  .logo {
-    max-width: 32%;
-  }
-}
-
-/* Media Query for Standard Screens (1024px to 1280px) [Small Monitors / Laptops] */
-@media (min-width: 1024px) and (max-width: 1280px){
-  .text-container {
-    top: 30vh;
+  .head{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .head h1{
-    font-size:2.5em;
-    bottom: .5vh;
+  .desktop .head img{
+    align-self: left;
+    margin: 0 auto;
+    margin-top: 9%;
+    width:clamp(5rem, 25vw, 50rem); /* Set desired width */
   }
 
-  .head .ribbon {
-    position: absolute;
-    max-width: 100%;
+  .title{
+    display:flex;
+    flex-direction: column;
+    margin-top: clamp(1rem, 8vh, 9rem);
   }
 
-  .text-container .subhead{
-    font-size: .8em;
+  .title h1{
+    margin-top: clamp(9rem, 15vw, 23rem);
+    font-size: clamp(1rem, 2.5vw, 3rem);
   }
 
-  .desc{
-    width: 28vw;
-    font-size: .7em;
+  .title h2{
+    margin:0;
+    font-size: clamp(9px, 2vw, 100px); 
   }
 
-  .logo {
-    max-width: 38%;
+  .title .desc{
+    font-size: clamp(9px, 1vw, 100px); 
+  }
+
+  .stuff a{
+    margin-top: 3rem;
+    font-size: clamp(0.5rem, 1vh, 1rem);
   }
 
 }
-
-
-/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
-
-
-/* Web Headers, chessboard and disclaimers on all HTMLs */
-/* ------------------------------------------------------------------------------------------------------------------------THIS IS FOR 1440p------------------------------------------------------------------------------------------------------------------------ */
-/* Media Query for large screens (1920px to 2560px) [Widescreen Monitors] */
-@media (min-width: 1920px) and (max-width: 2900px)  {
-  .header,
-  .top-bar {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    width: 100%;
-    height: 3.3vw; /* Use vw for responsiveness */
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    justify-content: space-between;
-  }
-
-  .header {
-    top: 0;
-  }
-
-  .top-bar {
-    top: 3.9vw;
-    height: 7px; /* Maintain fixed height */
-  }
-
-  .header-text img {
-    padding: 0;
-    width: 19%; /* Responsive width */
-    max-width: 1.8vw; /* Prevent logo from becoming too large */
-    margin-left: 3vw; /* Space from the left */
-    vertical-align: -.8vh;
-    margin-right: 0.5vw; /* Space between image and text */
-  }
-
-  .header-text,
-  .home-page {
-    font-family: 'Oswald';
-    color: black;
-    font-size: 2em; /* Responsive font size */
-    text-align: center;
-  }
-
-  .home-page {
-    position: fixed; /* Center horizontally */
-    left: 46.8vw; /* Adjust left for horizontal centering */
-    text-underline-offset: 0.3vw;
-    text-decoration: underline;
-  }
-
-  .chessboard {
-    width: 100vw; /* Full viewport width */
-    height: auto; /* Scale proportionally */
-    position: fixed;
-    left: 0;
-    bottom: -20vh; /* Align it at the bottom of the viewport */
-    z-index: -1000;
-    max-height: 40vh; /* Limit max height */
-  }
-
-  .disclaimer {
-    font-family: 'Oswald';
-    font-size: 0.6vw; 
-    color: white;
-    position: absolute; 
-    bottom: 0vh; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    max-width: 90%; 
-    text-align: center; 
-    padding: 5px 20px; 
-    white-space: nowrap; /* Prevents text wrapping */
-    background: black;
-    border: 4px solid white; 
-    border-radius: 20px; 
-  }
-
-  .header-buttons {
-    margin-left: auto; /* Push to the right */
-    display: flex; /* Flex container */
-    align-items: center; /* Center vertically */
-    margin-right: 1.3vw; /* Space from the right */
-    font-size: 1vw;
-  }
-
-  .header-buttons a {
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Oswald';
-    color: black;
-    text-decoration: none; /* Remove underline from links */
-    padding: 0.8vh 1.5vh; /* Add padding */
-    border: 1px solid transparent; /* Optional border for button */
-    border-radius: 1vh;
-    display: flex; /* Align icon and text */
-    align-items: center; /* Center vertically */
-  }
-
-  .header-buttons a:hover {
-    background-color: black; /* Hover background */
-    color: white; /* Hover text color */
-  }
-
-  .contact-icon,
-  .qm-icon {
-    width: 3vh; /* Consistent size */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 1vh; /* Space between icon and text */
-  }
-
-  .contact-icon {
-    color: black;
-  }
-
-  .qm-icon {
-    color: black;
-  }
-}
-
-/* Media Query for Large Screens (1440px to 1920px) [Large Monitors] */
-@media (min-width: 1440px) and (max-width: 1920px){
-  .header,
-  .top-bar {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    width: 100%;
-    height: 3.3vw; /* Use vw for responsiveness */
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    justify-content: space-between;
-  }
-
-  .header {
-    top: 0;
-  }
-
-  .top-bar {
-    top: 3.9vw;
-    height: 7px; /* Maintain fixed height */
-  }
-
-  .header-text img {
-    padding: 0;
-    width: 19%; /* Responsive width */
-    max-width: 1.8vw; /* Prevent logo from becoming too large */
-    margin-left: 3vw; /* Space from the left */
-    vertical-align: -.8vh;
-    margin-right: 0.5vw; /* Space between image and text */
-  }
-
-  .header-text,
-  .home-page {
-    font-family: 'Oswald';
-    color: black;
-    font-size: 1.5em; /* Responsive font size */
-    text-align: center;
-  }
-
-  .home-page {
-    position: fixed; /* Center horizontally */
-    left: 46.8vw; /* Adjust left for horizontal centering */
-    text-underline-offset: 0.3vw;
-    text-decoration: underline;
-  }
-
-  .chessboard {
-    width: 100vw; /* Full viewport width */
-    height: auto; /* Scale proportionally */
-    position: fixed;
-    left: 0;
-    bottom: -20vh; /* Align it at the bottom of the viewport */
-    z-index: -1000;
-    max-height: 40vh; /* Limit max height */
-  }
-
-  .disclaimer {
-    font-family: 'Oswald';
-    font-size: 0.6vw; 
-    color: white;
-    position: absolute; 
-    bottom: 0vh; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    max-width: 90%; 
-    text-align: center; 
-    padding: 5px 20px; 
-    white-space: nowrap; /* Prevents text wrapping */
-    background: black;
-    border: 4px solid white; 
-    border-radius: 20px; 
-  }
-
-  .header-buttons {
-    margin-left: auto; /* Push to the right */
-    display: flex; /* Flex container */
-    align-items: center; /* Center vertically */
-    margin-right: 1.3vw; /* Space from the right */
-    font-size: 1vw;
-  }
-
-  .header-buttons a {
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Oswald';
-    color: black;
-    text-decoration: none; /* Remove underline from links */
-    padding: 0.8vh 1.5vh; /* Add padding */
-    border: 1px solid transparent; /* Optional border for button */
-    border-radius: 1vh;
-    display: flex; /* Align icon and text */
-    align-items: center; /* Center vertically */
-  }
-
-  .header-buttons a:hover {
-    background-color: black; /* Hover background */
-    color: white; /* Hover text color */
-  }
-
-  .contact-icon,
-  .qm-icon {
-    width: 3vh; /* Consistent size */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 1vh; /* Space between icon and text */
-  }
-
-  .contact-icon {
-    color: black;
-  }
-
-  .qm-icon {
-    color: black;
-  }
-}
-
-/* Media Query for screens from (1028px to 1440px) [Standard Monitors] */
-@media (min-width: 1280px) and (max-width: 1440px){
-  .header,
-  .top-bar {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    width: 100%;
-    height: 3.3vw; /* Use vw for responsiveness */
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    justify-content: space-between;
-  }
-
-  .header {
-    top: 0;
-  }
-
-  .top-bar {
-    top: 3.9vw;
-    height: 7px; /* Maintain fixed height */
-  }
-
-  .header-text img {
-    padding: 0;
-    width: 19%; /* Responsive width */
-    max-width: 1.8vw; /* Prevent logo from becoming too large */
-    margin-left: 3vw; /* Space from the left */
-    vertical-align: -.8vh;
-    margin-right: 0.5vw; /* Space between image and text */
-  }
-
-  .header-text,
-  .home-page {
-    font-family: 'Oswald';
-    color: black;
-    font-size: 1em; /* Responsive font size */
-    text-align: center;
-  }
-
-  .home-page {
-    position: fixed; /* Center horizontally */
-    left: 46.8vw; /* Adjust left for horizontal centering */
-    text-underline-offset: 0.3vw;
-    text-decoration: underline;
-  }
-
-  .disclaimer {
-    font-family: 'Oswald';
-    font-size: 0.6vw; 
-    color: white;
-    position: absolute; 
-    bottom: 0vh; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    max-width: 90%; 
-    text-align: center; 
-    padding: 5px 20px; 
-    white-space: nowrap; /* Prevents text wrapping */
-    background: black;
-    border: 4px solid white; 
-    border-radius: 20px; 
-  }
-
-  .chessboard {
-    width: 100vw; /* Full viewport width */
-    height: auto; /* Scale proportionally */
-    position: fixed;
-    left: 0;
-    bottom: -20vh; /* Align it at the bottom of the viewport */
-    z-index: -1000;
-    max-height: 40vh; /* Limit max height */
-  }
-
-  .header-buttons {
-    margin-left: auto; /* Push to the right */
-    display: flex; /* Flex container */
-    align-items: center; /* Center vertically */
-    margin-right: 1.3vw; /* Space from the right */
-    font-size: 1vw;
-  }
-
-  .header-buttons a {
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Oswald';
-    color: black;
-    text-decoration: none; /* Remove underline from links */
-    padding: 0.8vh 1.5vh; /* Add padding */
-    border: 1px solid transparent; /* Optional border for button */
-    border-radius: 1vh;
-    display: flex; /* Align icon and text */
-    align-items: center; /* Center vertically */
-  }
-
-  .header-buttons a:hover {
-    background-color: black; /* Hover background */
-    color: white; /* Hover text color */
-  }
-
-  .contact-icon,
-  .qm-icon {
-    width: 3vh; /* Consistent size */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 1vw; /* Space between icon and text */
-  }
-
-  .contact-icon {
-    color: black;
-  }
-
-  .qm-icon {
-    color: black;
-  }
-}
-
-/* Media Query for screens from (1024px to 1280px) [Small Desktops / Laptops ] */
-@media (min-width: 1024px) and (max-width: 1280px) {
-  .header,
-  .top-bar {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    width: 100%;
-    height: 3.3vw; /* Use vw for responsiveness */
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    justify-content: space-between;
-  }
-
-  .header {
-    top: 0;
-  }
-
-  .top-bar {
-    top: 3.9vw;
-    height: 7px; /* Maintain fixed height */
-  }
-
-  .header-text img {
-    padding: 0;
-    width: 19%; /* Responsive width */
-    max-width: 1.8vw; /* Prevent logo from becoming too large */
-    margin-left: 3vw; /* Space from the left */
-    vertical-align: -.8vh;
-    margin-right: 0.5vw; /* Space between image and text */
-  }
-
-  .header-text,
-  .home-page {
-    font-family: 'Oswald';
-    color: black;
-    font-size: 1em; /* Responsive font size */
-    text-align: center;
-  }
-
-  .home-page {
-    position: fixed; /* Center horizontally */
-    left: 46.8vw; /* Adjust left for horizontal centering */
-    text-underline-offset: 0.3vw;
-    text-decoration: underline;
-  }
-
-  .disclaimer {
-    font-family: 'Oswald';
-    font-size: 0.6rem; 
-    color: white;
-    position: absolute; 
-    bottom: 1vh; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    max-width: 90%; 
-    text-align: center; 
-    padding: 5px 20px; 
-    white-space: nowrap; /* Prevents text wrapping */
-    background: black;
-    border: 4px solid white; 
-    border-radius: 20px; 
-  }
-
-  .chessboard {
-    width: 100vw; /* Full viewport width */
-    height: auto; /* Scale proportionally */
-    position: fixed;
-    left: 0;
-    bottom: -20vh; /* Align it at the bottom of the viewport */
-    z-index: -1000;
-    max-height: 40vh; /* Limit max height */
-  }
-
-  .header-buttons {
-    margin-left: auto; /* Push to the right */
-    display: flex; /* Flex container */
-    align-items: center; /* Center vertically */
-    margin-right: 1.3vw; /* Space from the right */
-    font-size: 1vw;
-  }
-
-  .header-buttons a {
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Oswald';
-    color: black;
-    text-decoration: none; /* Remove underline from links */
-    padding: 0.8vh 1.5vh; /* Add padding */
-    border: 1px solid transparent; /* Optional border for button */
-    border-radius: 1vh;
-    display: flex; /* Align icon and text */
-    align-items: center; /* Center vertically */
-  }
-
-  .header-buttons a:hover {
-    background-color: black; /* Hover background */
-    color: white; /* Hover text color */
-  }
-
-  .contact-icon,
-  .qm-icon {
-    width: 3vh; /* Consistent size */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 1vw; /* Space between icon and text */
-  }
-
-  .contact-icon {
-    color: black;
-  }
-
-  .qm-icon {
-    color: black;
-  }
-}
-/* -------------------------------------------------------------------------------------------------------------------------------END------------------------------------------------------------------------------------------------------------------------------ */
